@@ -1,0 +1,76 @@
+\documentclass[a4paper]{article}
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{graphics}
+\usepackage{tikz-cd} 
+\newtheorem{myDef}{Definition} 
+\newtheorem{myTheo}{Theorem}
+\newtheorem{myCol}{Corollary}
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\providecommand{\C}{\mathbb{C}}
+
+\title{Projective and Injective Modules}
+\begin{document}
+    \maketitle
+    \section*{1.Projective Modules}
+    \begin{myDef}
+        A module P over a ring R is said to be $\textbf{projective}$, if given any diagram of R-module 
+        homomorphisms\\
+        \begin{center}
+            \begin{tikzcd}[column sep=0.7cm, row sep=1.6cm]
+                & P \arrow[d, "f"]\\ 
+            A  \arrow[r, "g"] & B \arrow[r]& 0
+        \end{tikzcd}\\
+        \end{center}
+        with the bottom row exact, there exists an R-module homomorphism $h:P\rightarrow A$ such that the 
+        diagram\\
+        \begin{center}
+            \begin{tikzcd}[column sep=0.7cm, row sep=1.6cm]
+                & P \arrow[d, "f"] \arrow[ld, "h"]\\ 
+            A  \arrow[r, "g"] & B \arrow[r]& 0
+        \end{tikzcd}\\
+        \end{center}
+        is commutative.
+    \end{myDef}
+    \noindent
+    \textbf{note} The bottom row exact means homomorphism $g$ is an epimorphism. An R-module P is said to be projective
+     means for any epimorphism $g:A\rightarrow B$ and R-module homomorphism $f:P\rightarrow B$ there exists $h:P\rightarrow A$
+     such that:$f=gh$
+    \begin{myTheo}
+        Every free module $\mathrm{F}$ over a ring $\mathrm{R}$ with identity is projective.
+        \begin{proof}
+            Let F be a free module over ring R and F is free on set X. Let $\iota:X\rightarrow F$.
+            For any pair of R-module A,B with $g:A\rightarrow B$ an epimorphism and $f:F\rightarrow B$ a homomorphism\\
+        \begin{center}
+            \begin{tikzcd}[column sep=0.7cm, row sep=1.6cm]
+                & F \arrow[d, "f"] \\ 
+            A  \arrow[r, "g"] & B \arrow[r]& 0
+            \end{tikzcd}
+        \end{center}
+        $f(\iota(x))\in B, x\in X$. Since $g$ is an epimorphism, there exists some $a_x\in A$ such that $g(a_x)=f(\iota(x))$.Let
+        $h': X\rightarrow A, x\mapsto a_x$ then $h'$ induces a homomorphism $h:F\rightarrow A$.Hence we have: $h(\iota(x))=a_x$ and
+        $g(h(\iota(x))) = g(a_x)=f(\iota(x))$.This holds for any $x\in X$. Hence $gh\iota=f\iota$.We have following diagram\\
+        \begin{center}
+            \begin{tikzcd}
+                X \arrow[r, "\iota"] \arrow[rd, "\phi"]& F\arrow[d, "f"] \\
+                  & A
+            \end{tikzcd}
+        \end{center}
+        According to the property of free module: For any homomorphism $\phi:X\rightarrow A$,there exists unique homomorphism $f:F\rightarrow A$
+        such that $\phi=f\iota$. Here let $\phi=f\iota=gh\iota$. We have: $f=gh$
+        \end{proof}
+    \end{myTheo}
+
+    \begin{myCol}
+       Every module A over a ring R is the homomorphism image of a projective R-module 
+       \begin{proof}
+           Every module A(over R) is homomorphism image of a free module over R. By $\mathrm{Theorem 1}$, every free module is a projective module.
+       \end{proof}
+    \end{myCol}
+\end{document}
+
+
+
