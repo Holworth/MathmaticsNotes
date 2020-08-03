@@ -12,7 +12,8 @@
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Z}{\mathbb{Z}}
 \providecommand{\C}{\mathbb{C}}
-\title{Modules and Homorphism}
+\title{Modules and Homomorphism}
+\date{July 27,2020}
 \begin{document}
     \maketitle
     \begin{myDef}
@@ -49,13 +50,13 @@
     \end{myCol}
     
     \begin{myDef}
-        Let $\mathrm{R}$ be a ring and $\mathrm{A,B}$ be $\mathrm{R}$-module. A $\mathbf{R-module \;homorphism}$ f is an abelian group homorphism
+        Let $\mathrm{R}$ be a ring and $\mathrm{A,B}$ be $\mathrm{R}$-module. A $\mathbf{R-module \;homomorphism}$ f is an abelian group homomorphism
         $A\rightarrow B$ satifies:$\forall a,b\in \mathrm{A},r\in \mathrm{R}$:\\
         $$
         f(a+b)=f(a)+f(b),f(ra)=rf(a)
         $$ 
         if $f$ is an abelian group $\mathbf{monomorphism}(resp.\mathbf{epimorphism,isomorphism})$ then $f$ is called an $\mathrm{R}$-module $\mathbf{monomorphism}(resp.\mathbf{epimorphism,isomorphism})$.
-    The kernel of $f$ is the kernel of $f$ as an abelian group homorphism: $\ker f=\{a\in A|f(a)=0_B\}$
+    The kernel of $f$ is the kernel of $f$ as an abelian group homomorphism: $\ker f=\{a\in A|f(a)=0_B\}$
     \end{myDef}
     \noindent
     \textbf{note}:
@@ -77,7 +78,7 @@
     \textbf{EXAMPLES}
     \noindent
     \begin{enumerate}[(i)]
-        \item Let $f:A\rightarrow B$ be an $\mathrm{R}$-module homorphism, then $\ker f$ is a submodule of $\mathrm{A}$ and $\mathrm{Im} f$ is a submodule of $\mathrm{B}$
+        \item Let $f:A\rightarrow B$ be an $\mathrm{R}$-module homomorphism, then $\ker f$ is a submodule of $\mathrm{A}$ and $\mathrm{Im} f$ is a submodule of $\mathrm{B}$
         \item Let $I$ be a left ideal of $R$, $A$ an $\mathrm{R}$-module, $S$ a nonempty subset of $A$.Define $IS$ as follows:\\
         $$
         IS=\{\sum_{i=1}^nr_is_i|r_i\in I, s_i\in S, n\in \N^{*}\}
@@ -151,7 +152,7 @@
     \begin{myTheo}
        (isomorphism theorems)
        \begin{enumerate}[(i)]
-           \item Let $A,B$ be $R$-module and $f:A\rightarrow B$ an $R$-module homorphism.Then we have:\\
+           \item Let $A,B$ be $R$-module and $f:A\rightarrow B$ an $R$-module homomorphism.Then we have:\\
            $$
            A/\ker f\cong \mathrm{Im}f
            $$ 
@@ -210,10 +211,57 @@
         &\pi_k(r\{a_i\})=\pi_k(\{ra_i\})=(ra_i)_k=ra_k=r\pi_k(\{a_i\})
         \end{aligned}
         $$
-        Thus $\pi_k$ is an $R$-module homorphism. It's obviously that $\pi_k$ is epimorphism since for each $a_k\in A_k$, we have:$\pi_k(\mathbf{a_k'})=a_k$ where $\mathbf{a_k'}$ is the element with only the $k^{th}$ element is $a_k$ and others are 0.\\
+        Thus $\pi_k$ is an $R$-module homomorphism. It's obviously that $\pi_k$ is epimorphism since for each $a_k\in A_k$, we have:$\pi_k(\mathbf{a_k'})=a_k$ where $\mathbf{a_k'}$ is the element with only the $k^{th}$ element is $a_k$ and others are 0.\\
         \vspace{0.2cm}\\
         (iv) Canonical injection $\iota_k:A_k\rightarrow \sum_{i\in I}A_i,a_k\mapsto \mathbf{a_k}$ where $\mathbf{a_k}$ is the element with $k^{th}$ element is $a_k$ and others are 0. $\iota_k$ is easily to be proved as an $R$-module 
-        homorphism. And it's trivial that $\ker \iota_k={0_{A_k}}$. Therefore $\iota_k$ is monomorphism.
+        homomorphism. And it's trivial that $\ker \iota_k={0_{A_k}}$. Therefore $\iota_k$ is monomorphism.
     \end{proof}
-    
+    \vspace{0.5cm}
+    \begin{myTheo}
+        If $\mathrm{R}$ is a ring, $\{A_i\;|\;i\in I\}$ a family of $\mathrm{R}$-modules,$\mathrm{C}$ an $\mathrm{R}$-module,and $\{\phi_i:\mathrm{C}\rightarrow \mathrm{A}_i\;|\;i\in I\}$ a family of $\mathrm{R}$-module homomorphisms, then there is a unique
+        $\mathrm{R}$-module homomorphism $\phi:\mathrm{C}\rightarrow \prod_{i\in I}A_i$ such that $\pi_i\phi=\phi_i,\forall i\in I$.Hence $\prod_{i\in I}A_i$ is the product of $\{A_i\;|\;i\in I\}$ in the category of $\mathrm{R}$-modules.
+    \end{myTheo}
+    \begin{proof}
+        The $\mathrm{R}$-module homomorphism is easy to see:
+        $$
+        \phi:\mathrm{C}\rightarrow \prod_{i\in I}A_i,c\mapsto \{\phi_i(c)\}_{i\in I}
+        $$
+        $\phi$ is easy to be proved as an $\mathrm{R}$-module homomorphism. Hence we have:$\pi_k\phi(c)=\pi_k(\{\phi_i(c)\}_{i\in I})=phi_k(c),c\in \mathrm{C},k\in I$. Thus we have $\pi_i\phi=\phi_i,i\in I$.\\
+        To prove the uniqueness of $\phi$, let $f$ be another $\mathrm{R}$-module homomorphism $f:C\rightarrow \prod_{i\in I}A_i$ with $\pi_if=\phi_i,i\in I$.We need to prove that $\phi=f$. If there is some $c\in\mathrm{C}$ such that $f(c)\neq\phi(c)$,then $f(c)$ and $\phi(c)$ 
+        have at lease one position with different elements,let's say the $k^{th}$ element. Then we have:$\pi_k(\phi(c))\neq\pi_k(f(c))$, which means $\phi_k(c)\neq \phi_k(c)$. This is obviously not gonna happen. Therefore we must have $\phi=f$.
+    \end{proof}
+    \vspace{0.5cm}
+    \begin{myTheo}
+        If $\mathrm{R}$ is a ring, $\{A_i\;|\;i\in I\}$ a family of $\mathrm{R}$-modules,$\mathrm{D}$ an $\mathrm{R}$-module,and $\{\psi_i:A_i\rightarrow \mathrm{D}\;|\;i\in I\}$ a family of $\mathrm{R}$-module homomorphisms, then there is a unique
+        $\mathrm{R}$-module homomorphism $\psi:\sum_{i\in I}A_i\rightarrow \mathrm{D}$ such that $\psi\iota_i=\psi_i,\forall i\in I$.Hence $\prod_{i\in I}A_i$ is the coproduct of $\{A_i\;|\;i\in I\}$ in the category of $\mathrm{R}$-modules.
+    \end{myTheo}
+    \begin{proof}
+        The $\mathrm{R}$-module homomorphism $\psi$ is easy to see:
+        $$
+        \psi: \sum_{i\in I}A_i\rightarrow D,\{a_i\}_{i\in I}\mapsto \sum_{i\in I}\psi_i(a_i)
+        $$
+        Here $\sum_{i\in I}\psi(a_i)$ means we add finite many nonzero elements together. $\psi$ is easy to be seen as an $\mathrm{R}$-module homomorphism. And it's easy to prove that $\psi\iota_i=\psi_i$.\\
+        To prove the uniqueness of $\psi$, let $f$ be another $\mathrm{R}$-module homomorphism with $f\iota_i=\psi_i$. Then for any $\{a_i\}\in \sum_{i\in I}A_i$, we have:
+        $$
+        f(\{a_i\})=f(\sum_{i\in I}\mathbf{a_i})=f(\sum_{i\in I}\iota_i(a_i))=\sum_{i\in I}(f\iota_i)(a_i)=\sum_{i\in I}\psi_i(a_i)
+        $$
+        Thus $f=\psi$.We have proved the uniqueness of $\psi$
+    \end{proof}
+    \vspace{0.5cm}
+    \begin{myTheo}
+        Let $\mathrm{R}$ be a ring and $\mathrm{A_1,A_2,...,A_n}$ $\mathrm{R}$-modules. Then $\mathrm{A}\cong\mathrm{A_1}\bigoplus\mathrm{A_2}\bigoplus...\bigoplus\mathrm{A_n}$ if and only if for each $i=1,2,...,n$ there are $\mathrm{R}$-module homomorphism $\pi_i:\mathrm{A}\rightarrow \mathrm{A_i}$
+        and $\iota_i:\mathrm{A}_i\rightarrow \mathrm{A}$ such that:\\
+        \vspace{0.05cm}\\
+        $\mathrm{(i)}$ $\pi_i\iota_i = 1_{A_i}$ for $i=1,2,...,n$\\
+        $\mathrm{(ii)}$ $\pi_j\iota_i=0$ for $j\neq i$\\
+        $\mathrm{(iii)}$ $\iota_1\pi_1 + \iota_2\pi_2 +...+\iota_n\pi_n=1_A$
+    \end{myTheo}
+    \begin{proof}
+        ($\Rightarrow$) If $\mathrm{A}\cong \mathrm{A_1}\bigoplus\mathrm{A_2}\bigoplus...\bigoplus\mathrm{A_n}$, let $\pi_i,\iota_i$ be the canonical projection and injection. It's easy to prove
+        that $\pi_i,\iota_i$ satify condtions(i)-(iii)\\
+
+        ($\Leftarrow$) If $\pi_i,\iota_i$ satisfy (i)-(iii). Let $\pi_i',\iota_i'$ be the canonical projection and injection between
+         $\mathrm{A_1}\bigoplus\mathrm{A_2}\bigoplus...\bigoplus \mathrm{A_n}$ and $\mathrm{A_i}$.Let $\phi:A_1\bigoplus A_2\bigoplus...\bigoplus A_n \rightarrow A$ be given by $\phi=\iota_1\pi_1'+\iota_2\pi_2'+...+\iota_n\pi_n'$ and $psi:A\rightarrow A_1\bigoplus A_2\bigoplus...\bigoplus A_n$ by 
+         $\psi=\iota_1'\pi_1+\iota_2'\pi_2+...+\iota_n'\pi_n$. Then it's easy to verify that $\phi\psi=1_A$ and $\psi\phi=1_{A_1\bigoplus A_2\bigoplus...\bigoplus A_n}$. Therefore $A\cong A_1\bigoplus A_2\bigoplus...\bigoplus A_n$.
+    \end{proof}
 \end{document}
