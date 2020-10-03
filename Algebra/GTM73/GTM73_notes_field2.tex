@@ -1,0 +1,152 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{amsmath, amsthm, amssymb, amsfonts}
+\usepackage{graphics}
+\usepackage{tikz-cd}
+\usepackage{enumerate}
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\newtheorem{difinition}{Definition}
+
+\newtheorem{theorem}{Theorem}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\theoremstyle{definition}
+\newtheorem{lemma}[theorem]{Lemma}
+
+
+\title{Fundamental Theorem of Galois Theory}
+\date{October 2, 2020}
+\begin{document}
+    \maketitle
+    \begin{difinition}
+            Let E and F be extension fields of a field K. A nonzero map $\sigma:E\rightarrow F$ which is both a field homomorphism and a 
+            K-module homomorphism is called a $\mathbf{K-homomorphism}$. Similarly, if an isomorphism $\sigma\in Aut F$ is also a 
+            K-module homomorphism, then $\sigma$ is called a $\mathbf{K-automorphism}$ of F. The group of all K-automorphism 
+            is called the $\mathbf{Galois\; group}$ of F over K, which is denoted by $Aut_K F$
+    \end{difinition}
+    \vspace{0.3cm}
+    \begin{remark}
+            If $\sigma\in Aut_KF$, then for any $k\in K, u\in F^{*}$ we have:
+            $$
+            \sigma(ku)=\sigma(k)\sigma(u)\\
+            \sigma(ku)=k\sigma(u)
+            $$ as a result of $\sigma$ is both K-module automorphism but also a field automorphism.Hence we have $\sigma(k)=k, \forall k\in K$ as $\sigma(u)$ has inverse in $F$.
+            In contrast, if $\sigma \in Aut F$ with $\sigma(k)=k, \forall k\in K$, then we have $\sigma(ku)=\sigma(k)\sigma(u)=k\sigma(u)$, which means $\sigma$ is a K-module isomorphism, hence a K-automorphism.
+            
+    \end{remark}
+
+    \vspace{0.5cm}
+    \begin{theorem}
+            Let F be an extension filed of K, $f(x)\in \mathbf{K[x]}$. If $u\in F$
+            is a root of $f(x)$ and $\sigma \in Aut_K F$ then $\sigma(u)$ is also a root 
+            of $f(x)$.
+            
+    \end{theorem}
+    \vspace{0.3cm}
+    \begin{proof}
+            Let $\displaystyle f(x)=\sum_{i=0}^{n}f_i x^i$ , then $$\displaystyle f(\sigma(u))=\sum_{i=0}^{n}f_i \sigma(u)^i
+            = \sum_{i=0}^{n}f_i \sigma(u^i) = \sigma(\sum_{i=0}f_i u^i ) = \sigma(0)=0$$
+            which shows $\sigma(u)$ is also a root of $f(x)$
+    \end{proof}
+    \vspace{0.3cm}
+    \indent With Theorem1, we have the following results: Let $u\in F$ is algebraic over $K$
+    with $f(x)$ the minimal polynomial of $u$, if $f(x)$ has m distinct roots over $K$,
+    then $|Aut_K K(u)|\leq m$. It's easy to see that $\forall \sigma, \delta \in Aut_K K(u)$,
+    if $\sigma \neq \delta$, then $\sigma(u)\neq \delta(u)$ , otherwise $\sigma$ and $\delta$ has the same effect on $\{1, u, u^2,...,u^{n-1}\}$, which is a basis of $K(u)$, hence $\sigma$ and $\delta$ has the same effect on all elements of $K(u)$, which contradicts the fact that $\sigma\neq \delta$. By $\textbf{Theorem1}$ we know that $\sigma(u)$ and $\delta(u)$ are distinct roots of $f(x)$, so there are at most $m$ distinct K-automorphism as there are at most $m$ distinct roots.
+
+    \vspace{0.5cm}
+    \begin{difinition}
+            Let F be an extension field of K, E an intermediate field and H a subgroup of 
+            $Aut_K F$ Then:
+            \begin{enumerate}
+                    \item $H^{'}=\{v\in F | \sigma(v)=v, \forall \sigma \in H\}$
+                    \item $E^{'}=\{\sigma\in Aut_K F | \sigma(u)=u, \forall u\in E\} $
+            \end{enumerate}
+    \end{difinition}
+    \vspace{0.3cm}
+    \begin{remark}
+        In other words, $H^{'}$ is the set of all those elements in F such that these 
+        elements contains itself under the isomorphism effect, it's also easy to see that $H^{'}$ is an intermediate field of $K$, hence $H^{'}$ is called the 
+        $\mathbf{fixed\; field\; of\; H}$.\\
+        \indent $E^{'}$ contains all those K-automorphism such that they remains identity 
+        maps on $E$. By the corollary we mentioned earlier,we know that $E^{'}=Aut_E F$.
+        Specifically, we have:
+        $$
+        F^{'}=Aut_{F}F=\{1_F\}, K^{'}=Aut_{K}F
+        $$ On the other hand, we have $\{1_F\} < Aut_{K}F$ and $\{1_F\}^{'}=F$. This 
+        reminds us to think about the relationships between the sets of all subgroups of 
+        $Aut_K F$ and the sets of intermediate fields of $F$
+    \end{remark}
+    \vspace{0.5cm}
+    \begin{difinition}
+            Let F be an extension field of K, $Aut_K F$ the Galois group of $F$ over $K$,
+            if the fixed field of $Aut_{K}F$ is $K$, then $F$ is said to be a $\textbf{Galois\;extension}$ of K or $\textbf{be\;Galois\;over\;K}$
+            
+    \end{difinition}
+    \vspace{0.5cm}
+    \begin{theorem}
+            Let $F$ be an extension field of $K$, $K_0=Aut_K F^{'}$. Then $Aut_{K_0}F=Aut_{K} F$, therefore $F$ is Galois over $K_0$
+    \end{theorem}
+    \vspace{0.3cm}
+    \begin{proof}
+        For any $k\in K$, we know that $\sigma(k)=k,\forall \sigma\in Aut_{K}F$, hence 
+        $k\in K_0$, therefore $K\subset K_0$. Then $\forall \sigma \in Aut_{K_0}F$, $\sigma$
+        maps all elements in $K_0$ to itself, of cause maps every element in $K$ to itself
+        as $K\subset K_0$. Hence $\sigma \in Aut_{K}F$ and $Aut_{K_0}F<Aut_{K}F$. For 
+        any $\sigma \in Aut_{K}F$, by the definiton of $K_0$, $\sigma(k_0)=k_0,\forall k_0 \in K_0$, hence $\sigma\in Aut_{K_0}F$ and $Aut_{K}F<Aut_{K_0}F$. These two results show
+        that $Aut_{K}F=Aut_{K_0}F$. And we have $Aut_{K_0}F^{'}=Aut_{K}F^{'}=K_0$. 
+        Therefore $F$ is Galois over $K_0$
+    \end{proof}
+    
+    \vspace{0.5cm}
+    In the rest section, we will prepare and prove the fundamental theorem of Galois
+    theroy, which demonstrates a $\textbf{one-to-one correspondence}$ between the sets of all intermediate
+    fields of the extension $F$ over $K$ and the sets of all subgroups of the Galois group
+    $Aut_KF$.But there are some rather lengthy preliminaries to do.
+    \vspace{0.5cm}
+
+    \begin{lemma}
+        Let $F$ be an extension field of $K$ with intermediate field $L$ and $M$. Let $H$ and $J$ be
+        subgroups of G=$Aut_KF$. Then:
+        \begin{enumerate}
+                \item $F^{'}=1$ and $K^{'}=G$ 
+                \item $1^{'}=F $
+                \item $L\subset M \Rightarrow M^{'}<L^{'}$
+                \item $H<J\Rightarrow J^{'}\subset H^{'}$
+                \item $L\subset L^{''}$ and $H < H^{''}$ where $L^{''}=(L^{'})^{'}$ and $H^{''}=(H^{'})^{'} $
+                \item $L^{'}=L^{'''}$ and $H^{'}=H^{'''}$
+        \end{enumerate}                    
+    \end{lemma}
+    \vspace{0.3cm}
+    \begin{proof}
+        1,2 are direct results of the difinition. Consider 3: If $L\subset M$, then 
+        for any $F-automorphism$ that fix $M$, it must fix $L$, therefore $M^{'}< L^{'}$.
+    \end{proof}
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
