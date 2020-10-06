@@ -6,15 +6,15 @@
 \usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
 
 \newenvironment{myprf}
-{\renewcommand\qedsymbol{$ $}\begin{proof}[$\textbf{Proof}$]}
+{\renewcommand\qedsymbol{$ $}\begin{proof}[$\mathbf{Proof}$]}
   {\end{proof}}
 
 \newenvironment{myremark}
-{\renewcommand\qedsymbol{$ $}\begin{proof}[$\textbf{REMARK}$]}
+{\renewcommand\qedsymbol{$ $}\begin{proof}[$\mathbf{REMARK}$]}
   {\end{proof}}
 
 \newenvironment{solution}
-{\renewcommand\qedsymbol{$ $}\begin{proof}[$\textbf{Solution}$]}
+{\renewcommand\qedsymbol{$ $}\begin{proof}[$\mathbf{Solution}$]}
   {\end{proof}}
 \title{Chapter5 Fields and Galois theory Solutions}
 \date{October 5, 2020}
@@ -291,7 +291,63 @@ for $u^m$ over $K$?
  \end{myprf}
  \subsection*{18.}
  A complex number is said to be an $\textbf{algebraic number}$ if it is algebraic over $\mathbb{Q}$ and an 
- $\textbf{algebraic integer}$ if it is the root of a monic polynomial in $\mathbb{Z}[x]$
+ $\textbf{algebraic integer}$ if it is the root of a monic polynomial in $\mathbb{Z}[x]$.\\
+ \indent $\textbf{(a)}$ If $u$ is an algebraic number, there exists an integer $n$ such that $nu$ is an algebraic
+ integer.\\
+ \indent $\textbf{(b)}$ If $r\in \mathbb{Q}$ is an algebraic integer, then $r\in \mathbb{Z}$.\\
+ \indent $\textbf{(c)}$ If $u$ is an algebraic integer and $n\in\mathbb{Z}$ then $u+n$ and $nu$ are algebraic 
+ integers\\
+ \indent $\textbf{(d)}$ The sum and product of two algebraic integers are algebraic integers.
+ \begin{myprf}
+         $\textbf{(a)}$ If $u$ is an algebraic number, let $f(x)\in \mathbb{Q}[x]$ satisfies $f(u)=0$, and write
+         $f(u)$ as the following form:
+         $$
+         \sum_{i=0}^{n}\frac{p_i}{q_i}u^i=0, p_i,q_i\in \mathbb{Z}
+         $$ By multiplying the production of all $q_i$ we can write this as:
+         $$
+         \sum_{i=0}^{n}a_i u^i=0, a_i\in \mathbb{Z}
+         $$. Multiplying $a_n^{n-1}$ and we have: $\displaystyle \sum_{i=0}^{n}a_n^{n-1}a_iu^i=0$, which is
+         $$
+         \sum_{i=0}^{n}a_ia_n^{n-1-i}(a_nu)^i=0
+         $$. Let $\displaystyle g(x)=\sum_{i=0}^{n}a_ia_n^{n-1-i}x^i$ then $g(x)$ is obvious monic and $g(a_nu)=0$. Therefore 
+         $a_nu$ is an algebraic integer.\\
+         \vspace{0.2cm}
+         \\
+         $\textbf{(b)}$ Let $u=p/q$ with $p$ and $q$ ($p,q\in \mathbb{Z})$
+         relatively prime(absolute value) be an algebraic integer. And let $f(x)\in \mathbb{Z}[x]$ be a monic
+         polynomial such that $f(u)=0$, and write it as follows:
+           $$
+           \sum_{i=0}^{n}a_i(\frac{p}{q})^i=0, a_i\in \mathbb{Q}, a_n=1
+           $$, multiplying $q^n$ we will get:$\displaystyle \sum_{i=0}^{n}a_ip^iq^{n-i}=0$ and $\displaystyle
+           p^n=-q\sum_{i=0}^{n-1}a_ip^iq^{n-1-i}$.  This implies that $q\mid p^n$ and thus $q\mid p$ as a result
+           of $p$ and $q$ are relatively prime. We have $u=p/q$ is an integer.\\
+           \vspace{0.2cm}
+           \\
+           $\textbf{(c)}$ We first prove that $u+n$ is an algeraic integer, $\forall n\in \mathbb{Z}$. 
+           Let $f(x) \in \mathbb{Z}[x]$ be a monic polynomial such that $f(u)=0$, written in the following 
+           form:
+           $$
+           \sum_{i=0}^{m}a_iu^i=0, a_i\in \mathbb{Z}, a_n=1;
+           $$ We have:$\displaystyle (u+n)^m+\sum_{i=1}^{m}(a_{m-i}-{{m}\choose{i}}n^i)u^{m-i}=0$. By writing 
+           $u^{m-1}$ in the above form and replace it with $(u+n)^{m-1}$, we will have:
+           $$
+           (u+n)^{m}+(a_{m-1}-{{m}\choose{1}}n)(u+n)^{m-1}+\sum_{i=0}^{m-2}C_iu^i = 0
+           $$ this process will continue to $u$ and left a single term $r$ in $\mathbb{Z}$. The polynomial:
+           $\displaystyle g(x)=x^m+(a_{m-1}-{{m}\choose{1}})x^{m-1} +...+ r\in \mathbb{Z}[x]$ 
+           satisfies $g(u+n)=0$ and $g(x)$ is monic. We draw the conclusion that $u+n$ is an algeraic integer.\\
+           As for $nu$, it's obvious if we multiply $n^m$ in the equation: $\displaystyle \sum_{i=0}^{m}a_iu^i=0$
+           and allocate each term $a_i u^i$ with $n^i$ multiplying into $u^i$.\\
+           \vspace{0.2cm}
+           \\
+           $\textbf{(d)}$ 
+
+        
+
+
+ 
+    
+         
+ \end{myprf}
 
 
  
