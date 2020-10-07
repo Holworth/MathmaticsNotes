@@ -285,10 +285,8 @@ for $u^m$ over $K$?
                  $\mathbb{Q}(i)$ is that 
                  $f((a+bi)(a-bi))=f(a+bi)f(a-bi)$ is not always true in vector space.
          \end{myremark}
-
-        
-         
  \end{myprf}
+
  \subsection*{18.}
  A complex number is said to be an $\textbf{algebraic number}$ if it is algebraic over $\mathbb{Q}$ and an 
  $\textbf{algebraic integer}$ if it is the root of a monic polynomial in $\mathbb{Z}[x]$.\\
@@ -339,19 +337,75 @@ for $u^m$ over $K$?
            and allocate each term $a_i u^i$ with $n^i$ multiplying into $u^i$.\\
            \vspace{0.2cm}
            \\
-           $\textbf{(d)}$ 
+           $\textbf{(d)}$ CAN'T SOLVE IT!
 
-        
-
-
+ \end{myprf}
  
-    
+ \subsection*{19.}
+ If $u,v\in F$ are algebraic over $K$ of degrees $m$ and $n$ respectively, then
+ $[K(u,v):K] \leq mn$. If $(m,n)=1$,then $[K(u,v):K]=mn$.
+ \begin{myprf}
+        $[K(u,v):K]=[K(u,v):K(u)]\times [K(u):K]$. The second components is $m$, and the
+        first component is obvious less or equal to $n$ as there is a polynomial $f(x)\in K[x]$
+        with degree $n$ that satisfies $f(u)=0$. The minimal polynomial of $u$ must has 
+        degree less than or equal to $n$.Therefore $[K(u,v):K] \leq mn$.\\
+        Notice that
+        $$
+        \begin{aligned}
+                [K(u,v):K]&=[K(u,v):K(u)]\times [K(u):K]\\
+                          &=[K(u,v):K(v)]\times [K(v):K]
+        \end{aligned}
+        $$
+        \vspace{0.3cm}
+        \\
+        For the $\textbf{second}$ part, 
+        we have $[K(u):K]\mid [K(u,v):K(v)]\times [K(v):K]$. With $m,n$ are replatively
+        prime we have: $[K(u):K] \mid [K(u,v):K(v)]$ and hence $[K(u):K]\leq 
+        [K(u,v):K(v)]$. It's obvious that $[K(u,v):K(v)]\leq [K(u):K]$.Therefore we have
+        $[K(u,v):K(v)]=[K(u):K]$, which means $[K(u,v):K]=[K(u):K]\times [K(v):K]=m\times
+        n$
+ 
+ \subsection*{20.}
+ Let $L$ and $M$ be intermediate fields in the extension $K\subset F$\\
+ $\textbf{(a)}$ $[LM:K]$ is finite iff $[L:K]$ and $[M:K]$ are finite\\
+ $\textbf{(b)}$ If $[LM:K]$ is finite, then $[L:K]$ and $[M:K]$ divide $[LM:K]$ and
+ $$
+ [LM:K]\leq [L:K][M:K]
+ $$
+ $\textbf{(c)}$ If $[L:K]$ and $[M:K]$ are finite and relatively prime, then
+ $$
+ [LM:K]=[L:K][M:K]
+ $$
+ $\textbf{(c)}$ If $L$ and $M$ are algebraic over $K$, so is $LM$
+ \begin{myprf}
+        $\textbf{(a)}$ $\Rightarrow$ Both $L$ and $M$ are subspace of $LM$, therefore 
+        we have $[L:K] \leq [LM:K]$, $[M:K]\leq [LM:K]$, which are finite.\\
+        \vspace{0.3cm}
+        \\
+        $\Leftarrow$ Notice that $LM=L(M)$. Because $[M:K]$ is finite, we can set the 
+        basis of $M$ over $K$ is $\{v_1,v_2,...,v_n\}$.Then it's easy to see that 
+        $L(M)=L(v_1,...,v_n)$.And:
+        $$
+        [L(M):K]=\prod_{i=1}^{n}[L(v_1,...,v_{i}):L(v_1,..,v_{i-1})]\times[L:K], L(v_0)=L
+        $$
+        Notice that each $v_i$ is algebraic over $K$, therefore each component in the 
+        above expression is finite. Finally we have proved that $[LM:K]$ is finite.\\
+        \vspace{0.3cm}
+        \\
+        $\textbf{(b)}$ $[LM:K]=[LM:L]\times[L:K]=[LM:M]\times[M:K]$. Therefore the first
+        part of the declaration is true. We will claim that $[LM:L]\leq [M:K]$. This is
+        easy to see that $L(M)=L(v_1,...,v_n)$ where $\{v_i\}_{i=1,...,n}$ is the basis
+        of $M$ over $K$. Therefore $v_1,..,v_n$ spans $L(M)$ and the dimension of $L(M)$
+        over $L$ is less than $n$. The second part follows immediately.
          
  \end{myprf}
 
 
- 
+        
 
+        
 
+         
+ \end{myprf}
 \end{document}
 
