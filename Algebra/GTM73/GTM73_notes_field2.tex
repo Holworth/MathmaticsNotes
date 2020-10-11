@@ -22,7 +22,7 @@
 \newtheorem{lemma}[theorem]{Lemma}
 
 
-\title{Fundamental Theorem of Galois Theory}
+\title{Fundamental Theorem of Galois Theory(1)}
 \date{October 2, 2020}
 \begin{document}
     \maketitle
@@ -129,32 +129,111 @@
     \begin{myprf}
         1,2 are direct results of the difinition. Consider 3: If $L\subset M$, then 
         for any $F-automorphism$ that fix $M$, it must fix $L$, therefore $M^{'}< L^{'}$.
+        the 4th one is the same: every element in $J^{'}$ must be fixed for under every
+        isomorphism of $J$, therefore fixed by every isomorphism of $H$, and belongs to
+        $H^{'}$.\\
+        As for $(5)$, consider any $l\in L$, according to the definition of $L^{'}$, $L^{'}$ consists of those isomorphisms that fix every element of $L$, therefore every 
+        isomorphism fix $l$, which shows that $l\in L^{''}$ by definition. Therefore we 
+        have $L\subset L^{''}$. The second part could be proved in the same way.\\
+        For $(6)$, we first notice that $L^{'}<(L^{'})^{''}=L^{'''}$ by the second 
+        part of $(5)$. And $L\subset L^{''}\Rightarrow (L^{''})^{'}<L^{'}$ by $(5)$
+        and $(3)$. Therefore we have $L^{'}=L^{'''}$. The second part follows in the same
+        way.
+
     \end{myprf}
+    \begin{myremark}
+            $F$ is galois over $K$ iff $(Aut_K F)^{'}=K$, which means $K^{''}=K$. 
+            Therefore we have: $F$ is galoic over any intermediate field $E$ iff 
+            $E=E^{''}$.\\
+            \vspace{0.1cm}\\
+            \indent
+            Let $X$ be an intermediate field or subgroup of the Galois group. $X$ is
+            called $\textbf{closed}$ if $X^{''}=X$. And we have $F$ is Galois over $K$
+            iff $K$ is closed.
+    \end{myremark}
+    \vspace{0.4cm}
+    \begin{theorem}
+            If $\mathrm{F}$ is an extension field of $\mathrm{K}$, then there is a one-to-one correspondence 
+        between the closed intermediate fields of the extension and the closed subgroups
+        of the Galois group, given by $\mathrm{E}\mapsto \mathrm{E}^{'}=\mathrm{Aut_{E}F}$.
+    \end{theorem}
+    \vspace{0.1cm}
+    \begin{myprf}
+        Let $\mathrm{A}$  be the set of all closed intermediate fields of $\mathrm{F}$ and
+        $\mathrm{B}$ be the set of all closed subgroups of Galois group. Define $f$ 
+        as follows:
+        $$
+        f:\mathrm{A}\rightarrow \mathrm{B},\mathrm{E} \mapsto \mathrm{E}^{'}\\
+        $$ Notice that for any map image $\mathrm{E}^{'}$, we have $\mathrm{E}^{'''}=
+        \mathrm{E}^{'}$, which means $\mathrm{E}^{'}$ is closed. Therefore this map
+        is well-defined.\\
+        Let $g$ be defined as follows:
+        $$
+        g:\mathrm{B}\rightarrow \mathrm{A}, \mathrm{H}\mapsto \mathrm{H}^{'}
+        $$ Then for any $\mathrm{E}\in \mathrm{A}$, we have:$gf(\mathrm{E})=
+        g(\mathrm{E}^{'})=\mathrm{E}^{''}=\mathrm{E}$ as $\mathrm{E}$ is closed, 
+        thus $gf=1_{\mathrm{A}}$. Similarly, we have $fg=1_{\mathrm{B}}$, which means
+        $f$ and $g$ are bijective, it's done.
+    \end{myprf}
+    \vspace{0.5cm}
+
+    \begin{lemma}
+            Let  $F$ be an extension field of $K$ and $L,M$ intermediate fields with 
+            $L\subset M$. If $[M:L]$ is finite, then $[L^{'}:M^{'}]\leq [M:L]$. In
+            particular, if $[F:K]$ is finite, then $|\mathrm{Aut}_K F|\leq [F:K]$.
+    \end{lemma}
+    \vspace{0.1cm}
+    \begin{myprf}
+        We will prove this assertion by induction on $n=[M:L]$. When $n=1$, it's done
+        with $M=L$. Suppose for any $i<n$ this theorem is true, then choose one element
+        $u\in M, u\notin L$. Since $[M:L]$ is finite, we have $u$ is algebraic over 
+        $L$. Let $f(x)\in L[x]$ be the minimal polynomial of $u$, and $k$ the degree of 
+$f(x)$. Therefore we have:$[L(u):L]=k$ and $[M:L(u)]=n/k$. If $\mathbf{k}<\mathbf{n}$, we have
+        $[M:L(u)]>1$ and $[L^{'}:M^{'}]=[L^{'}:L(u)^{'}]\times [L(u)^{'}:M^{'}]\leq
+        k\times (n/k)=n$ by induction.\\
+        \indent Otherwise if $k=n$, which means $M=L(u)$.To prove this , 
+        we will construct an injective map
+        from $\textbf{the set of all left cosets of}\; \mathbf{M^{'}}\;\textbf{in}\; \mathbf{L^{'}}$ to the set $T$ of 
+        all $\textbf{distinct roots}$ of $f(x)\in L[x]$, whence $\mid S\mid \leq \mid T\mid$ 
+        and $\mid T \mid \leq n$. \\
+        \indent
+        Let $\tau M^{'}$ be a left coset of $M^{'}$ in $L^{'}$. We define $g$ as follows:
+        $$
+        g:S\rightarrow T, \tau M^{'}\mapsto \tau(u)
+        $$ We will show this map is well-defined. First, $\tau \in L^{'}$, which means
+        $\tau$ fix every element in $L$, therefore $\tau(u)$ is also a root of $f$ by 
+        theorem 1. This means the map we defined maps the object to a right place. Second,
+        if $\tau M^{'}=\sigma M^{'}$, then $\sigma^{-1}\tau\in M^{'}$, notice that 
+        $u\in M$, we have: $\sigma^{-1}\tau(u)=u\Rightarrow \tau(u)=\sigma(u)$, which 
+        means $g(\tau M^{'})=g(\sigma M^{'})$. Therefore the image has no relationship 
+        with the representative object of the cosets, this map is also well defined.\\
+        \vspace{0.1cm}\\
+        \indent In the last, we will show that $g$ is also injective. If $g(\sigma M^{'})
+        =g(\tau M^{'})$, then $\sigma(u)=\tau(u)$, and $\tau^{-1}\sigma(u)=u$, which means
+        $\tau^{-1}\sigma$ fix $u$. Notice that $L(u)$ is generated by $1,u,...,u^{n-1}$.
+        We also conclude that $\tau^{-1}\sigma$ fix this basis and further more, it fix
+        $\mathbf{L(u)=M}$. Therefore $\tau^{-1}\sigma\in M^{'}$ and $\tau M^{'}=\sigma M^{'}$. This
+        means $g$ is injective, and $\mid S\mid\leq\mid T\mid \leq n$, which is 
+        $[L^{'}:M^{'}]\leq [M:L]$.
+    \end{myprf}
+    \vspace{0.5cm}
+    The following lemma is an analogue of $\textbf{Lemma 5}$ for subgroups of the Galois 
+    group.
+    \vspace{0.5cm}
+    \begin{lemma}
+            Let $F$ be an extension field of $K$ and let $H,J$ be subgroups of the Galois
+            group $\mathrm{Aut_KF}$ with $H<J$.If $[J:H]$ is finite, then 
+            $[H^{'}:J^{'}]\leq [J:H]$
+
+    \end{lemma}
+    \vspace{0.1cm}
+    \begin{myprf}
+        Let $[J:H]=n$ and suppose that $[H^{'}:J^{'}]>n$. Then 
+            
+    \end{myprf}
+    
+
 
 
 \end{document}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
