@@ -228,8 +228,69 @@ $f(x)$. Therefore we have:$[L(u):L]=k$ and $[M:L(u)]=n/k$. If $\mathbf{k}<\mathb
     \end{lemma}
     \vspace{0.1cm}
     \begin{myprf}
-        Let $[J:H]=n$ and suppose that $[H^{'}:J^{'}]>n$. Then 
-            
+            Let $[J:H]=n$ and suppose that $[H^{'}:J^{'}]>n$. 
+            Then exist $u_1,u_2,...,u_{n+1}\in H^{'}$ that are linearly independent over
+            $J^{'}$. Let $\{\tau_1,\tau_2,...,\tau_n\}$ be a complete set of 
+            representatives of the left cosets of $H$ in $J$(that is, $J=\tau_1 H\cup
+            \tau_2 H\cup ...\cup \tau_n H$ and $\tau_i^{-1}\tau_j\in H$ iff $i=j$)and 
+            consider the system of $n$ homogeneous linear equations in $n+1$ unknowns
+            with coefficients $\tau_i(u_j)$ in the field $F$:
+            $$
+            \begin{aligned}
+                    \tau_1(u_1)x_1&+\tau_1(u_2)x_2+...+\tau_1(u_{n+1})x_{n+1}=0\\
+                    \tau_2(u_1)x_1&+\tau_2(u_2)x_2+...+\tau_2(u_{n+1})x_{n+1}=0\\
+                    .\\
+                    .\\
+                    .\\
+                    \tau_n(u_1)x_1&+\tau_n(u_2)x_2+...+\tau_n(u_{n+1})x_{n+1}=0\\
+            \end{aligned}
+            $$ And we label this system as (1). Such a system always has a nontrivial 
+            solution(that is, one different from the zero solution: $x_1=x_2=...=x_{n+1}
+            =0$).Among all such nontrivial solutions choose one, say $x_1=a_1,...,x_{n+1}
+            =a_{n+1}$ with $\textbf{minimal number of nonzero}$ $\mathbf{a_i}$. We will
+            assume that $x_1=a_1,x_2=a_2,...,x_r=a_r,x_{r+1}=...=x_{n+1}=0$ by reindexing
+            this solution. And we will assume that $x_1=a_1=1_{F}$ by multiplying 
+            $a_1^{-1}$ for each element.\\
+            \indent We shall show below that the hypothesis that $u_1,...,u_{n+1}\in H^{'}$
+            are linearly  independent over $J^{'}$ implies that there exists $\sigma\in J$
+            such that $x_1=\sigma a_1,x_2=\sigma a_2,...,x_r=\sigma a_r,x_{r+1}=...=
+            x_{n+1}=0$ is a solution of the system(1) and $\sigma a_2\neq a_2$. Since
+            the difference of two solutions is also a solution, let $x_1=a_1-\sigma a_1,
+            x_2=a_2-\sigma a_2,...,x_{r}=a_r-\sigma a_r,x_{r+1}=...=x_{n+1}=0$, is also
+            a solution of system(1), but $x_1=a_1-\sigma a_1=1_F-1_F=0$ and $x_2\neq0$ as
+            $a_2\neq \sigma a_2$. This contradicts the minimality of the solution 
+            $x_1=a_1,...,x_r=a_r,x_{r+1}=...=x_{n+1}=0$. Therefore $[H^{'}:J^{'}]\leq n$
+            as desired.\\
+            \indent Now we will prove such $\sigma \in J$ exist. Let $\tau_1 \in H$, then
+            $\tau_1(u_i)=u_i,i=1,...,n+1$ as $u_i\in H^{'}$. And we change the first 
+            equation into:
+            $$
+            u_1a_1+u_2a_2+...+u_ra_r=0
+            $$ The linear independence of the $u_i$ over $J^{'}$ and the fact that all
+            $a_i$ are nonzero imply that some $a_i$, say $a_2$ is not in $J^{'}$. 
+            Therefore there exists $\sigma \in J$ such that $\sigma a_2\neq a_2$. \\
+            \indent Next consider the system of equations:
+            $$
+            \begin{aligned}
+                    \sigma \tau_1(u_1)x_1+\sigma \tau_1(u_2)+...+\sigma \tau_1(u_{n+1})x_{n+1}&=0\\
+                    \sigma \tau_2(u_1)x_1+\sigma \tau_2(u_2)+...+\sigma \tau_2(u_{n+1})x_{n+1}&=0\\
+                    .\\
+                    .\\
+                    .\\
+                    \sigma \tau_n(u_1)x_1+\sigma \tau_n(u_2)+...+\sigma \tau_n(u_{n+1})x_{n+1}&=0\\
+            \end{aligned}
+            $$ If we label this system as $(2)$, it's obvious that $x_1=\sigma(a_1),...
+            x_{n+1}=\sigma(a_{n+1})$ is a solution of system(2). We claim that system 
+            (2), except for the order of equations, is identical with system (1)(so that
+            $x_1=\sigma a_1,...,x_r=\sigma a_r,x_{r+1}=...=x_{n+1}=0$ is a solution of 
+            (1)). To see this we have to first verify the following two facts:\\
+            \indent (1) For any $\sigma\in J$, $\{\sigma \tau_1,\sigma \tau_2,...,\sigma\tau_n\}\subset J$ is a complete set of coset representatives of $H$ in $J$.\\
+            \indent (2) If $\xi$ and $\theta$ are both elements in the same coset of $H$
+            in $J$, then (since $u_i\in H^{'}$)$\xi(u_i)=\theta(u_i)$ for i=1,2,...,n+1.\\
+            \indent It follows from (1) that there is some reordering $i_1,...,i_{n+1}$
+            of $1,2,...,n+1$, so that for each $k=1,2,...,n+1$, $\sigma \tau_k$ and 
+            $\tau_{i_k}$ are in the same coset of $H$ in $J$. By (2), the $k$th equation
+            of system(2) is identical with the $i_k$th equation of system (1)
     \end{myprf}
     
 
