@@ -1,0 +1,170 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{blindtext}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amsthm, amssymb, amsfonts}
+\usepackage{bm}
+\usepackage{graphics}
+\usepackage{tikz-cd}
+\usepackage{enumerate}
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\newtheorem{difinition}{Definition}
+
+\newtheorem{theorem}{Theorem}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\newenvironment{myremark}
+{\renewcommand\qedsymbol{$ $}\begin{proof}[$\mathbf{REMARK}$]}
+  {\end{proof}}
+
+\newenvironment{myprf}
+{\renewcommand\qedsymbol{$ $}\begin{proof}[$\mathbf{Proof}$]}
+  {\end{proof}}
+
+\newenvironment{mydef}
+{\renewcommand\qedsymbol{$ $}\begin{proof}[$\mathbf{Definition}$]}
+  {\end{proof}}
+
+\newenvironment{myexam}
+{\renewcommand\qedsymbol{$ $}\begin{proof}[$\mathrm{EXAMPLE}$]}
+  {\end{proof}}
+
+\theoremstyle{definition}
+\newtheorem{lemma}[theorem]{Lemma}
+
+\title{Topology Spaces}
+\date{October 26th, 2020}
+\begin{document}
+\maketitle
+\section{Topological Spaces}
+\begin{mydef}
+        A $\mathbf{topology}$ on a set $X$ is a collection $\mathcal{T}$of subsets of $X$ having the 
+        following properties:\\
+        \indent(1) $\varnothing$ and $X$ are in $\mathcal{T}$\\
+        \indent(2) For any subcollection of $\mathcal{T}$, indexed by set
+        $I$, we have: $\displaystyle \bigcup_{\alpha\in I}U_{\alpha} \in 
+        \mathcal{T}$\\
+        \indent(3) For any finite subcollection of $\mathcal{T}$ with $n$ 
+        elements, we have: $\displaystyle \bigcap_{i=1}^{n}U_{i}\in \mathcal{T}$\\
+        A set for which a topology $\mathcal{T}$ is specified is called a 
+        $\mathbf{topological\;space}$. And the element of $\mathcal{T}$ is called 
+        $\mathbf{Open\;Set}$
+\end{mydef}
+        With the element of $\mathcal{T}$ is defined as open set, we could say a topology
+        is a collection of subsets of $X$ such that $\varnothing$ and $X$ itself are open
+        and satisfies that arbitrary unions and finite intersections of open sets are 
+        open. We often write set $X$ and its topology $\mathcal{T}$ as the ordered pair:
+        $(X,\mathcal{T})$. And when we say :"Let XXX be open sets", that means we defined
+        a topology on $X$ and $\mathcal{T}$ consists the subsets mentioned above.
+ \begin{myexam}
+        If $X$ is any set, the collection of all subsets of $X$ is a topology on $X$, 
+        called $\mathbf{discrete\;topology}$. The collection which has only $\varnothing$
+        and $X$ itself is called $\mathbf{trivial\;topology}$.
+ \end{myexam}
+ 
+ \begin{myexam}
+        Let $X$ be a set; let $\mathcal{T}_{f}$ be the collectino of all subsets $U$ of
+        $X$ such that $X-U$ is either finite or all of $X$. Then $\mathcal{T}_{f}$ is 
+        a topology of $X$, called $\bm{finite\;complement\;topology}$. Note that
+        $varnothing=U-U$ is finite and $U=U-\varnothing$, therefore we have $\varnothing$
+        and $U$ belong to $\mathcal{T}_{f}$. Let $\{U_{\alpha}\}$ be a subcollection of 
+        $\mathcal{T}$ indexed by $I$. Then we have:
+        $$
+        X-\bigcup U_{\alpha}=\bigcap(X-U_{\alpha})
+        $$ Since each $X-U_{\alpha}$ is finite, we have $X-\bigcup U_{\alpha}$ is finite. If
+        $U_1,...,U_n \in \mathcal{T}_{f}$. Then:
+        $$
+        X-\bigcap_{i=1}^{n} U_i=\bigcup_{i=1}^{n}(X-U_i)
+        $$ Since each $X-U_i$ is finite, the finite union of sets with finite cardinal 
+        numbers are also finite. Thus $\displaystyle \bigcap_{i=1}^{n} U_i\in \mathcal{T}_{f}$\\
+        \indent In conclusion, $\mathcal{T}_{f}$ is a topology on set $X$.
+         
+ \end{myexam}
+ 
+ \begin{myexam} 
+Let $X$ be a set and $\mathcal{T}$ a topology on $X$. If $Y$ is a subset of $U$. We
+define the following collection:
+$$ 
+\mathcal{T}_{Y} = \{Y\cap U\mid U\in \mathrm{T}\}
+$$ It is easy to see that $\mathcal{T}_{Y}$ is a topology on $Y$:
+$$
+\varnothing = \varnothing \cap Y\;\;\;\;Y=X\cap Y
+$$If $\{V_{\alpha}\}$ is a subcollection of $\mathcal{T}_{Y}$, then each $V_{\alpha}$
+could be written as $U_{\alpha}\cap Y$, we have:
+$$ 
+\bigcup{V_{\alpha}} = \bigcup({U_{\alpha}}\cap Y) = (\bigcup U_{\alpha}) \cap Y
+$$ Note that $\displaystyle \bigcup U_{\alpha}$ is in $\mathcal{T}$,hence we have 
+$\displaystyle \bigcup V_{\alpha}\in \mathcal{T}_{Y}$. \\
+If $ V_i=U_i\bigcap Y,i=1,2,...,n$ is a finite collection of $\mathcal{T}_{Y}$. Then:
+$$
+\bigcap_{i=1}^{n} V_i=\bigcap_{i=1}^{n} (U_i\cap Y) =(\bigcap_{i=1}^{n} U_i)\bigcap Y
+$$ Note that $\displaystyle \bigcap_{i=1}^{n} U_i\in \mathcal{T}$, thus we have 
+$\displaystyle \bigcap_{i=1}^{n}V_i\in \mathcal{T}_{Y}$.
+The above new collection consists of the intersection of $Y$ and open sets are called 
+$\bm{subspace\; topology}$, and therefore, $Y$ is a topological space.
+\end{myexam}
+
+\begin{myremark}
+        It is easy to see that a set could be assigned with different topology. A typical
+        example is the discrete topology and trivial topology of the same set $X$. These
+        two topology represents different topological structure. A trivial topology looks
+        like a steel while discrete topology is fine enough to make generate any subset
+        of $X$.
+\end{myremark}
+
+\vspace{0.5cm}
+\begin{mydef}
+        Suppose $\mathcal{T}$ and $\mathcal{T}^{'}$ are two topologies on a given set
+        $X$. If $\mathcal{T}\subset\mathcal{T}^{'}(\mathcal{T}\subsetneqq\mathcal{T}^{'})$
+        ,we say that $\mathcal{T}^{'}$ is  
+        $\bm{finer}(\bm{strictly\;finner})$ than $\mathcal{T}$, or $\mathcal{T}$ is 
+        $\bm{coarser}(\bm{stricly\;coarser})$ than $\mathcal{T}^{'}$. We say
+        $\mathcal{T}$ is $\bm{comparable}$ with $\mathcal{T}^{'}$ if either
+        $\mathcal{T}\subset \mathcal{T}^{'}$ or $\mathcal{T}^{'}\subset \mathcal{T}$
+\end{mydef}
+Sometimes we also say that $\mathcal{T}^{'}$ is larger than $\mathcal{T}$ or $\mathcal{T}$
+is smaller than $\mathcal{T}^{'}$, but not as vivid as finer.
+
+\section{Closed Sets and Limit Point}
+\begin{mydef}
+        Let $(X,\mathcal{T})$ be a topological space. We say a subset $A$ of $X$ is 
+        $\bm{closed}$ if $X-A$ is open.
+\end{mydef}
+
+\begin{myexam}
+        Let $(X,\mathcal{T})$ be a topological space and $\mathcal{T}$ be the discrete 
+        topology, then any subset of $X$ is a closed set. On the other hand, let
+        $\mathcal{T}$ be trivial topology, then any subset that is neither $\varnothing$
+        nor $X$ is neither open nor closed.
+\end{myexam}
+
+\begin{myexam}
+        Let $(\mathbb{R}^{2},\mathcal{T})$ be a topological space and $\mathcal{T}$ 
+        generated by all open ball. And consider the set:
+        $$
+        \{(x,y)\mid x\ge 0,y\ge 0\}
+        $$The set is closed as its complement is:
+        $$
+        (-\infty,0)\times \mathbb{R}\cup \mathbb{R}\times(-\infty,0)
+        $$ And each of them are open.
+\end{myexam}
+
+\begin{myexam}
+        Let $(\mathbb{R}, \mathcal{T})$ be a topological space with topology $\mathcal{T}$
+        consists of all open sets under the metric space $(\mathbb{R}, \mathrm{d})$.
+        Consider $Y=[0,1]\cup(2,3)$ and the subspace topology.\\
+        We claim that $[0,1]$ is an open set of $Y$, because $[0,1]=(-1,\frac{3}{2})\cap
+        Y$. Similarly, $(2,3)$ is also open in $Y$. And the complement of each of them is
+        another interval, therefore $[0,1]$ and $(2,3)$ are both open and closed.
+\end{myexam}
+
+\begin{myremark}
+        By these three examples, we could see that a subset of $X$ can be open, or closed,
+        or both, or neither. In addtition, we see that a subset is open(closed) or not depends on
+        the whole space you consider: $[0,1]$ in EXAMPLE3 is not open in $\mathbb{R}$ but
+        open in $Y$.$(2,3)$ is not closed in $\mathbb{R}$ but closed in $Y$.
+\end{myremark}
+    
+\end{document}
+
