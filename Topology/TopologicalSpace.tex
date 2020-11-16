@@ -167,13 +167,59 @@ is smaller than $\mathcal{T}^{'}$, but not as vivid as finer.
 \end{myremark}
 \begin{theorem}
         Let $X$ be a topology space. Then the following conditions hold:\\
-        (1) $\varnothing$ and $X$ are closed\\
-        (2) For any collection of closed set $\{V_{\alpha}\mid \alpha\in I\}$, we have
+        $\mathrm{(1)}$ $\varnothing$ and $X$ are closed\\
+        $\mathrm{(2)}$ For any collection of closed set $\{V_{\alpha}\mid \alpha\in I\}$, we have
         $\displaystyle \bigcap_{\alpha\in I}V_{\alpha}$ is closed\\
-        (3) The intersection of any finite many closed sets are closed.\\
+        $\mathrm{(3)}$ The intersection of any finite many closed sets are closed.\\
 \end{theorem}
 \begin{myprf}
-        
+        (1) is trivial with $\varnothing=X-X$ and $X=X-\varnothing$.\\
+        As for (2), notice that :\\
+        $$
+        \bigcap_{\alpha\in I}V_{\alpha}=\bigcap_{\alpha\in I}U_{\alpha}^{c}=
+        (\bigcup_{\alpha\in I}U_{\alpha})^{c}
+        $$ where $U_{\alpha}$ is an open set. And we denote $X-U_{\alpha}$ with 
+        $U_{\alpha}^{c}$. (3) follows the same way with the fact that:
+        $$\bigcup_{i=1}^{n} V_{\alpha}=\bigcup_{i=1}^{n} U_{\alpha}^{c}=
+        (\bigcap_{i=1}^{n} U_{\alpha})^{c}$$
 \end{myprf}
+
+\begin{theorem}
+    Let Y be a subsapce of X. Then a set A is closed in Y if and only if it equals the intersection of a closed set of X with Y.        
+\end{theorem}
+\begin{myprf}
+        Consider the subspace topology of $Y$ and let $V_{Y}$ is a closed set under such
+        subspace topology. Then we have $V_{Y}=Y-U_{Y}$ for some open set
+        $U_{Y}$ in $Y$. With the definition of subspace topology, we have 
+        $U_{Y}=U\cap Y$ with $U$ an open set in $X$. Then $V_{Y}=Y-U_{Y}
+        =Y-U\cap Y=Y-U=Y\cap (X-U)$ where $(X-U)$ is closed in $X$. Therefore 
+        if $V_{Y}$ is closed in $Y$, then $V_{Y}$ is intersection of $Y$ and a 
+        closed set in $X$. \\
+        On the other hand, if $V_{Y}=Y\cap V$ for some closed 
+        set $V$ of $X$. We have $V_{Y}=Y\cap (X-U)=Y-U=Y-(Y\cap U)$, which is 
+        closed in $Y$
+\end{myprf}
+\begin{myremark}
+        General speaking, a set that is closed in a subspace may not be closed in the larger 
+        topological space. For example, let $X=\mathbb{R}$ and open set consists
+        of conventional open set in $\mathbb{R}$. Consider the subspace $Y$ generated
+        by the intersection of $[0,1)$ and $X$. Then notice that $[0,\cfrac{1}{2})$
+        is open in $Y$ as $[0,\cfrac{1}{2})=(-1,\cfrac{1}{2})\cap [0,1)$. Therefore
+        $Y-[0,\cfrac{1}{2})=[\cfrac{1}{2},1)$ is closed in $Y$, however, it's not
+        closed in $\mathbb{R}$.\\
+        But we have the following theorem explained the so called "transitivity"
+        of closed property:
+        \vspace{0.1cm}
+        \begin{theorem}
+               Let Y be a subspace of X. If A is closed in Y and Y is closed in X,
+               then A is closed in X.
+        \end{theorem}
+        \begin{myprf}
+               By theorem 2, $A=Y\cap V$ with $V$ closed in $X$. Therefore, $A$
+               is closed in $X$ by the fact that the intersection of two closed 
+               sets is closed.
+        \end{myprf}
+\end{myremark}
+
 \end{document}
 
