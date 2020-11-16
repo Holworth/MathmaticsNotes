@@ -154,7 +154,7 @@ is smaller than $\mathcal{T}^{'}$, but not as vivid as finer.
         Let $(\mathbb{R}, \mathcal{T})$ be a topological space with topology $\mathcal{T}$
         consists of all open sets under the metric space $(\mathbb{R}, \mathrm{d})$.
         Consider $Y=[0,1]\cup(2,3)$ and the subspace topology.\\
-        We claim that $[0,1]$ is an open set of $Y$, because $[0,1]=(-1,\frac{3}{2})\cap
+        We claim hat $[0,1]$ is an open set of $Y$, because $[0,1]=(-1,\frac{3}{2})\cap
         Y$. Similarly, $(2,3)$ is also open in $Y$. And the complement of each of them is
         another interval, therefore $[0,1]$ and $(2,3)$ are both open and closed.
 \end{myexam}
@@ -220,6 +220,42 @@ is smaller than $\mathcal{T}^{'}$, but not as vivid as finer.
                sets is closed.
         \end{myprf}
 \end{myremark}
-
+\subsection{Limit Point and Closur}
+\begin{mydef}
+    Let $X$ be a topological space and $A$ a subset of $X$. An element $x$ of $X$
+    is said to be $\bm{limit point}$ of $A$ if: for every open set $U$ that 
+    contains $x$, $U\cap A\neq \varnothing$ or $\{x\}$.
+\end{mydef}
+\begin{mydef}
+        Let $A$ be a subset of the topologival space $X$; let $A^{'}$ be the set
+        of all limit points of $A$, we define the closure of $A$ as the union
+        of $A$ and $A^{'}$, denoted by $\bar{A}$. Which is:
+        $$
+        \bar{A}=A\cup A^{'}
+        $$
+\end{mydef}
+\begin{theorem}
+    Let X be a topological space. Then A is closed in  X if and only if:$\bar{A}=A$
+\end{theorem}
+\begin{myprf}
+        $\Leftarrow$: If $\bar{A}=A$, we need to show that $A$ is closed, or to
+        show that
+        $X-A$ is open. For any element $x\in X-A$, $x$ is neither an element of
+        $A$ nor the limit point of $A$. $x\notin A^{'}$ means there is some 
+        open set $U$ that contains $x$ but $U\cap A=\varnothing$ or
+        $\{x\}$. Now that $x\notin A$, we have $U\cap A=\varnothing$. For any
+        $x\in X-A$, we have such open set $U_x$. And thus:
+        $$
+        X-A=\bigcup_{x\in (X-A)} U_x
+        $$ is union of open set in $X$, therefore an open set. Hence we have $A$
+        is closed.\\
+        \\
+        $\Rightarrow$: If $A$ is closed. To prove $A=\bar{A}$, we only need to 
+        show that $A^{'}\subset A$, which is: any limit point of $A$ is in $A$.
+        Suppose $x$ is a limit point of $A$ but $x\in X-A$. Then notice that $X-A$ is
+        an open set that contains $x$ but $(X-A)\cap A=\varnothing$, which 
+        contradicts the definition of limit point. Therefore any limit point of 
+        $A$ is in $A$, and hence $A=\bar{A}$.
+\end{myprf}
 \end{document}
 
