@@ -7,6 +7,8 @@
 \usepackage{graphics}
 \usepackage{tikz-cd}
 \usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{romannum}
 \usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
 \newtheorem{difinition}{Definition}
 
@@ -257,5 +259,76 @@ is smaller than $\mathcal{T}^{'}$, but not as vivid as finer.
         contradicts the definition of limit point. Therefore any limit point of 
         $A$ is in $A$, and hence $A=\bar{A}$.
 \end{myprf}
+\vspace{0.5cm}
+\begin{theorem}
+        Let X be a topological space and A a subset of X, then $\bar{A}$ is the
+        smallest closed set that contains A.
+\end{theorem}
+\begin{myprf}
+        The proof are divided into two parts:
+        \begin{enumerate}[label=(\roman*)]
+                \item $\bar{A}$ is closed.
+                \item Every closed set that contains $A$ must contain $\bar{A}$.
+        \end{enumerate}
+        For (\romannum{2}), we only need to show that every closed set that
+        contains $A$ must contain the limit point of $A$. This is easy to show:
+        Let $B$ a closed set that contains $A$ and $x$ a limit point of $A$, then
+        $x$ must be a limit point of $B$ as $A\subset B$. By theorem 4 and 
+        the fact that $B$ is closed, we have: $x\in \bar{B}=B$. Therefore, 
+        $\bar{A}\subset B$\\
+        For (\romannum{1}), we only need to show that $\bar{A}=\bar{\bar{A}}$ by
+        theorem 4. which is concluded as the following lemma.
+\end{myprf}
+\begin{lemma}
+        Let $X$ be a topological space and $A$ a subset of $X$, then 
+        $\bar{\bar{A}}=\bar{A}$.
+\end{lemma}
+\begin{myprf}
+        $\bar{A}\subset \bar{\bar{A}}$ according to the definition of closure.
+        As for the other side ,we need to show that the limit point of $\bar{A}$
+        is in $\bar{A}$.\\
+        If $x$ is a limit point of $\bar{A}$. If $x\in A$, we're done. 
+        Otherwise let $U$ be any open set that contains $x$, we have:
+        $$
+        U\cap \bar{A}\neq \varnothing, \{x\}
+        $$ We claim that $x$ is a limit point of $A$, by claiming that
+        $U\cap A\neq \varnothing$(of course it can't be $\{x\}$ as $x\notin A$).
+        \begin{enumerate}[label=(\roman*)]
+                \item If $U\cap A\neq \varnothing$, we're done.
+                \item Otherwise $U\cap A=\varnothing$ but $U\cap A^{'}\neq 
+                        \varnothing$. $U\cap A^{'}\neq \varnothing$ shows that
+        there is some point, say $y$, is a limit point of $A$, and $y\notin A$. 
+        Therefore $U\cap A\neq \varnothing$ as $U$ is an open set
+       containing $y$, this contradicts that assumption that $U\cap A=\varnothing$
+        \end{enumerate}
+        In conclusion, $U\cap A\neq \varnothing$ and thus $x$ is a limit point 
+        of $A$ by definition.\\
+
+        \noindent
+        Both sides contains the other side, therefore we have:$\bar{\bar{A}}=
+        \bar{A}$.
+\end{myprf}
+
+\noindent
+By using the result of lemma 6, we may draw the conclusion of theorem 5 as 
+explained in the proof.
+\begin{myremark}
+     The name "closure" means that $\bar{A}$ remains constant under the map 
+     by mapping a set of topological space into the union of $A$ and 
+     $A^{'}$. Or, as explained 
+     int theorem 5, closure is the smallest closed set that contains $A$.\\
+     So far,we have actually given two ways of explaining what is a closed set
+     is. One by clarifying the relationship between open set and closed set; and
+     the other by using the definition of limit point. Theorem 4, 5 and lemma 6
+     has showed the equivalence of these two expression, and we conclude it as:
+\end{myremark}
+\begin{theorem}
+     Let $X$ be a topological space, a subset $A$ of $X$ is closed iff every limit
+     point of $A$ is in $A$.
+\end{theorem}
+\begin{myprf}
+       Omitted, see theorem 4.
+\end{myprf}
+
 \end{document}
 
