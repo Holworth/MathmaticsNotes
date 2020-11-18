@@ -32,6 +32,10 @@
 {\renewcommand\qedsymbol{$ $}\begin{proof}[$\mathrm{EXAMPLE}$]}
   {\end{proof}}
 
+\newenvironment{myprop}
+{\renewcommand\qedsymbol{$ $}\begin{proof}[$\mathbf{Proposition}$]}
+  {\end{proof}}
+
 \theoremstyle{definition}
 \newtheorem{lemma}[theorem]{Lemma}
 
@@ -129,6 +133,7 @@ Sometimes we also say that $\mathcal{T}^{'}$ is larger than $\mathcal{T}$ or $\m
 is smaller than $\mathcal{T}^{'}$, but not as vivid as finer.
 
 \section{Closed Sets and Limit Point}
+\subsection{Closed Set}
 \begin{mydef}
         Let $(X,\mathcal{T})$ be a topological space. We say a subset $A$ of $X$ is 
         $\bm{closed}$ if $X-A$ is open.
@@ -316,7 +321,12 @@ explained in the proof.
      The name "closure" means that $\bar{A}$ remains constant under the map 
      by mapping a set of topological space into the union of $A$ and 
      $A^{'}$. Or, as explained 
-     int theorem 5, closure is the smallest closed set that contains $A$.\\
+     int theorem 5, closure is the smallest closed set that contains $A$.
+     Further more, we can easily prove the closure of $A$ 
+     has an equvalent definition:
+     $$
+     \bar{A}=\bigcap_{A\subset V,V\;closed}V
+     $$\\
      So far,we have actually given two ways of explaining what is a closed set
      is. One by clarifying the relationship between open set and closed set; and
      the other by using the definition of limit point. Theorem 4, 5 and lemma 6
@@ -328,6 +338,88 @@ explained in the proof.
 \end{theorem}
 \begin{myprf}
        Omitted, see theorem 4.
+\end{myprf}
+\vspace{0.3cm}
+\noindent
+The following theorem describes the closure of a subset in subspace.
+\begin{theorem}
+       Let $X$ be a topological space and $Y$ a subspace of $X$; let $A$ be 
+       a subset of $Y$; let $\bar{A}$ denote the closure of $A$ in $X$, Then 
+       the closure of $A$ in $Y$ equals $\bar{A}\cap Y$.
+\end{theorem}
+\begin{myprf}
+        By theorem 5 and its remark, we know that the closure of $A$ in $Y$, 
+        denoted by $\bar{A_{Y}}$, equals to the insersection of all closed
+        set in $Y$ that contains $A$. Note that any closed set in $Y$ equals 
+        to the intersection of $Y$ and a closed set in $X$. Therefore 
+        we have:
+        $$
+        \begin{aligned}
+                \bar{A_Y}&=\bigcap_{A\subset V_Y,V_Y\;closed\;in\;Y}V_Y\\
+                         &=\bigcap_{A\subset V\cap Y,V\;closed\;in\;X}(V\cap Y)\\
+                         &=(\bigcap_{A\subset V,V\;closed\;in\;X}V)\bigcap Y\\
+                         &=\bar{A_X}\bigcap Y
+        \end{aligned}
+        $$ 
+\end{myprf} 
+\begin{myremark}
+\noindent
+The equivalence between the second line and the third line is easy to prove with
+the following claim:
+$$
+A\subset V,V\;closed\;in\;X\Leftrightarrow A\subset V\cap Y,V\cap Y\;closed\;in\;Y
+$$
+        A question is that whether the following proposition is true:
+        \begin{myprop}
+               Let $X$ be a topological space and $Y$ is a subspace of $X$;
+               $A$ is a subset of $X$(not $Y$), then:
+               $$
+               \overline{A\cap Y}=\bar{A_X}\cap Y
+               $$
+        \end{myprop}
+        \noindent
+        Unfortunately, this proposition is false. But we have the left side
+        subsets the right side.
+\end{myremark}
+\subsection{Dense Set}
+\begin{mydef}
+    Let $X$ be a topological space and $A$ a subset of $X$. $A$ is said to be 
+    a $\bm{dense}$ set of $X$ if $\bar{A}=X$. 
+\end{mydef}
+In other words, a set $A$ is called dense, if any point $x$ in $X$ belongs to $A$ or $x$ is a limit point of $A$. There are many examples of dense set, the most
+common one,  which is frequently mentioned in Mathematical Analysis, is that
+$\mathbb{Q}$ is dense in $\mathbb{R}$. 
+\begin{mydef}
+        Let $X$ be a topological space, the $\bm{interior}$ of $A$ is defined as
+        the union of all open sets that is contained in $A$, denoted as 
+        $\mathbf{IntA}$. The element of $\mathrm{Int}A$ is called 
+        $\bm{interior\; point}$
+\end{mydef}
+\noindent
+It's easy to see the following relation between $\mathrm{Int}A$, $\bar{A}$ and
+$A$:
+$$
+\mathrm{Int}A\subset A\subset \bar{A}
+$$ 
+\noindent
+And further more, $A$ is open iff $\mathrm{Int}A=A$, $A$ is closed iff 
+$\bar{A}=A$.
+\begin{theorem}
+        $X$ is a topological space and $A$ a subset of $X$.
+        The following conditions are equalvalent:
+        \begin{enumerate}[label=(\roman*)]
+                \item   $x$ is an interior point of $A$.
+                \item   There is an open set $U$, such that: $x\in U\subset A$
+        \end{enumerate}
+\end{theorem}
+\begin{myprf}
+        (i)$\Rightarrow$ (ii): \\
+        $$x\in \mathrm{Int}A\Rightarrow x\in \displaystyle
+        \bigcup_{U\subset A,U\;open}U$$
+        Therefore, there is an open set in the right side that contains
+        $x$ and it's done.\\
+        (ii)$\Rightarrow$ (i):\\
+        $$x\in U\subset \bigcup_{U\subset A,U\;open}U=\mathrm{Int}A$$
 \end{myprf}
 
 \end{document}
