@@ -170,8 +170,18 @@ is smaller than $\mathcal{T}^{'}$, but not as vivid as finer.
         By these three examples, we could see that a subset of $X$ can be open, or closed,
         or both, or neither. In addtition, we see that a subset is open(closed) or not depends on
         the whole space you consider: $[0,1]$ in EXAMPLE3 is not open in $\mathbb{R}$ but
-        open in $Y$.$(2,3)$ is not closed in $\mathbb{R}$ but closed in $Y$.
+        open in $Y$.$(2,3)$ is not closed in $\mathbb{R}$ but closed in $Y$.\\
+        \indent One might think that a single point is a closed set. This wrong 
+        intuition comes from the special topological space $\mathbb{R}$. But the
+        following example shows exactly that a single point might not be a closed
+        set:
+        $$
+        X=\{0,1\}, \mathcal{T}=\{\{0\}, \{0,1\}, \varnothing\}
+        $$ Then $\{0\}$ is not a closed set as $\{1\}$ is not open. However, 
+        $\{0\}$ is dense in $X$ as its closure equals to $X$, which we will talk
+        about later.
 \end{myremark}
+\vspace{0.5cm}
 \begin{theorem}
         Let $X$ be a topology space. Then the following conditions hold:\\
         $\mathrm{(1)}$ $\varnothing$ and $X$ are closed\\
@@ -190,7 +200,7 @@ is smaller than $\mathcal{T}^{'}$, but not as vivid as finer.
         $$\bigcup_{i=1}^{n} V_{\alpha}=\bigcup_{i=1}^{n} U_{\alpha}^{c}=
         (\bigcap_{i=1}^{n} U_{\alpha})^{c}$$
 \end{myprf}
-
+\vspace{0.5cm}
 \begin{theorem}
     Let Y be a subsapce of X. Then a set A is closed in Y if and only if it equals the intersection of a closed set of X with Y.        
 \end{theorem}
@@ -222,7 +232,8 @@ is smaller than $\mathcal{T}^{'}$, but not as vivid as finer.
                then A is closed in X.
         \end{theorem}
         \begin{myprf}
-               By theorem 2, $A=Y\cap V$ with $V$ closed in $X$. Therefore, $A$
+               By theorem 2, $A=Y\cap V$ with some $V$ closed in $X$. 
+               Therefore, $A$
                is closed in $X$ by the fact that the intersection of two closed 
                sets is closed.
         \end{myprf}
@@ -381,6 +392,47 @@ $$
         Unfortunately, this proposition is false. But we have the left side
         subsets the right side.
 \end{myremark}
+
+We give a theorem about the closure of the union of two subsets and the closure
+of its intersection:
+\begin{theorem}
+       Let $X$ be a topological space and $A$, $B$ subsets of $X$. Then we have:
+       $$
+       \overline{A\cup B}=\bar{A}\cup\bar{B},\overline{A\cap B}\subset \bar{A}
+       \cap \bar{B}
+       $$
+ \begin{myprf}
+       We first prove that $\overline{A\cup B}=\bar{A}\cup \bar{B}$. For any 
+       $x\in\overline{A\cup B}$, if $x\in A\cup B$ then $x$ belongs to the
+       right side. Otherwise if $x$ is the limit point of $A\cup B$ and $x\notin
+       A\cup B$. We will show that $x\in A^{'}$ or $x\in B^{'}$. If $x\notin
+       A^{'}$ and $x\notin B^{'}$, then there are some open sets $W,V$ such that
+       $x\in W,x\in V$ but $W\cap A=\varnothing,V\cap B=\varnothing$. Therefore:
+       $(W\cap V)\cap (A\cup B)=\varnothing$, with $W\cap V$ an open set contains
+       $x$, which contradicts the assumption that $x$ is a limit point of $A\cup
+       B$. Therefore, $x\in A^{'}$ or $x\in B^{'}$ and $\overline {A\cup B}
+       \subset \bar{A}\cup \bar{B}$. \\
+       \indent
+       For the other inclusion:$\bar{A}\cup \bar{B}\subset \overline{A\cup B}$. 
+       For $x\in \bar{A}\cup\bar{B}$, assume $x\in \bar{A}$, then $x\in A$ 
+       or $x\in A^{'}$. If $x\in A$ then $x\in A\cup B\subset \overline{A\cup B}$;
+       If $x\in A^{'}$ then $x$ is obviously a limit point of $A\cup B$ as 
+       $A\subset A\cup B$, which means $x\in (A\cup B)^{'}\subset 
+       \overline{A\cup B}$ and thus $\bar{A}\cup \bar{B}\subset \overline{A\cup B}$. Therefore we have the first part of this theorem proved.The second part 
+       follows the same way.
+ \end{myprf}
+ \begin{myremark}
+        $\overline{A\cap B}\subsetneqq \bar{A}\cap \bar{B}$ might be true. 
+        Consider $X=\mathbb{R}$ and its conventional topology. Let $A=[0,1),
+        B=(1,2]$, then we have:
+        $$
+        \overline{A\cap B}=\varnothing\subsetneqq
+        \bar{A}\cap \bar{B}=\{1\}
+        $$
+ \end{myremark}
+
+\end{theorem}
+
 \subsection{Dense Set}
 \begin{mydef}
     Let $X$ be a topological space and $A$ a subset of $X$. $A$ is said to be 
