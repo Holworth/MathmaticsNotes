@@ -13,7 +13,8 @@
 \newtheorem{difinition}{Definition}
 
 \newtheorem{theorem}{Theorem}
-\theorembodyfont{\upshape}
+\theoremstyle{definition}
+%\theorembodyfont{\normalfont}
 
 \theoremstyle{remark}
 \newtheorem*{remark}{Remark}
@@ -152,6 +153,7 @@ equivalent topology.
 \end{mydef}
 
 \section{Continuous Function}
+\subsection{Continuous Function}
 \begin{mydef}
        Let $X$ and $Y$ be topological spaces. A function $f:X\rightarrow Y$ is
        said to be $\textbf{continuous}$ if for each open set $V$ of $Y$, 
@@ -181,15 +183,161 @@ this.
 \begin{theorem}
        Let X and Y be topological spaces; let $f\;:\;X\rightarrow Y$. Then the 
        following conditions are equivalent:
-       \begin{enumerate}
+       \begin{enumerate}[label=(\arabic*)]
               \item $f$ is continuous 
-              \item Let $B$ be a basis for $Y$, then $f^{-1}(B_{\beta})$ is open
+              \item Let $\mathcal{B}$ be a basis for $Y$, then $f^{-1}(B_{\beta})$ is open
                       in $X$
               \item For every subset $A$ of $X$, one has $f(\bar{A})\subset 
-                      \overline f(A)$
+                      \overline {f(A)}$
+              \item For every subset $B$ of $Y$, one has $\overline{f^{-1}(B)}
+                              \subset f^{-1}(\bar{B})$
               \item For every closed set $B$ of $Y$, $f^{-1}(B)$ is closed in $X$.
        \end{enumerate}
 \end{theorem}
+\vspace{0.3cm}
+\begin{myprf}
+        $\mathbf{(1)\Rightarrow (2)}$: Every $B_{\beta}\in \mathcal{B}$ is 
+        an open set in $Y$,  therefore $f^{-1}(B_{\beta})$ is open in $X$.\\
+        \\
+        $\mathbf{(1)\Rightarrow (3)}$: Let $x$ is a limit point of $A$, it's sufficient
+        to show that $f(x)$ is a limit point of $f(A)$ if $f(x)\notin f(A)$
+        (There
+        are other situations where $x\in A$ or $f(x)\in f(A)$, but it's
+        simple). We prove as proceed:
+        For any open set $U$ of $Y$ that contains $f(x)$, consider $f^{-1}(U)$,
+        note that $x\in f^{-1}(U)$ as $f(x)\in U$. And by definition of continuous
+        function we have $f^{-1}(U)$ is an open set of $X$ that contains $x$. 
+        Therefore $f^{-1}(U)\cap A \neq \varnothing$ and $U\cap f(A)\neq 
+        \varnothing$. By definition, $f(x)$ is a limit point of $f(A)$.\\
+        \\
+        $\mathbf{(2)\Rightarrow (1)}$ We will show that $f$ is continous if it
+        satisfies condition in $(2)$. For any open set $U$ in $Y$, we can denote
+        $U$ as union of the basis elements, such that:$\displaystyle 
+        U=\bigcup_{\beta\in I}B_{\beta}$, and by theorem about inverse image 
+        of union, we have:
+        $$
+        f^{-1}(\bigcup_{\beta\in I}B_{\beta})=\bigcup_{\beta\in I} f^{-1}(B_{\beta})
+        $$, which is open in $X$. The proof is done.\\
+        \\
+        $\mathbf{(3)\Rightarrow (4)}$ By the definition of inverse image, it's 
+        sufficient to show that $f(\overline{f^{-1}(B)})\subset \bar{B}$.
+        By (3), we have:
+        $$
+        f(\overline{f^{-1}(B)})\subset \overline{f(f^{-1}(B))}\subset \bar{B}
+        $$
+        The last subsets holds as $f(f^{-1}(B)\subset B$.\\
+        \\
+        $\mathbf{(4)\Rightarrow (5)}$ If $F$ is closed in $Y$, then 
+        $\bar{F}=F$. Then we have: $\overline{f^{-1}(F)}\subset f^{-1}(\bar{F})
+        =f^{-1}(F)$ by $(3)$. It's obvious that $f^{-1}(F)\subset \overline{f^{-1}(F)}$ and hence $f^{-1}(F)=\overline{f^{-1}(F)}$, which shows
+                $f^{-1}(F)$ is closed in $X$\\
+        \\
+        $\mathbf{(5)\Rightarrow (1)}$ For any open set $U\in Y$, consider
+        $f^{-1}(U)$. Let $V=Y\setminus U$, then $V$ is closed and
+        $f^{-1}(U)=f^{-1}(Y\setminus V)=X\setminus f^{-1}(V)$. Notice that
+        $f^{-1}(V)$ is closed, therefore $f^{-1}(U)$ is open and $f$ is 
+        a continous function.
+\end{myprf}
+\subsection{Limit and Hausdorff Space}
+We mention before the proof of theorem 3, that in $\mathbb{R}-\mathbb{R}$ function
+we have $\lim\limits_{n\to \infty}f(a_n)=f(\lim\limits_{n\to \infty}a_n)$ if 
+$f$ is continous. We may generalize this theorem if we
+define the $\textbf{limit}$ of a sequence of point in topological space.
+\vspace{0.5cm}
+\begin{mydef}
+        Let $X$ be a topological space, $\{x_n\}\subset X$ is a sequence of point
+        in $X$, we say $x$ is the $\textbf{limit}$ of $\{x_n\}$, denoted by
+        $\lim\limits_{n\to\infty}x_n=x$(this denotion might be invalid), if :\\
+        \indent
+        $$
+        U\underset{open}{\subset}X, x\in X\Rightarrow
+        \exists N\in \mathbb{N}, st. \forall n>N, x_n\in U
+        $$ The open set $U$ of $X$ that contains $x$ is called a $\textbf
+        {neighborhood}$ of $x$
+\end{mydef}
+\begin{myremark}
+        The limit of $\{x_n\}$ might not be unique in a general topological space. 
+\\
+\indent
+        Consider $X=\{0,1\}, \mathcal{T}=\{\varnothing, X, \{0\}\}$. And consider
+        a point sequence :$\{x_n=0\},\forall n\in \mathbb{N}$. Then both 0 and 1 ar         e limit of this sequence by definition.\\
+        \indent
+        As explained above, $\lim\limits_{n\to\infty} x_n=x$ is an invalid denotion
+        if there are two limits. However, we may put a constraints on the space
+        to make there exists only one limit(if there is any) for a sequence.
+\end{myremark}
+\vspace{0.5cm}
+\begin{mydef}$\textbf{(Hausdorff space)}$
+       Let $X$ be a topological space. $X$ is said to be a $\textbf{Hausdorff 
+       space}$ if for any $x_1,x_2\in X$ and $x_1\neq x_2$, there exists two
+       open sets $U_1,U_2\subset X$ such that $x_1\in U_1, x_2\in U_2$ and 
+       $U_1\cap U_2=\varnothing$
+\end{mydef}
+\vspace{0.3cm}
+\begin{theorem}
+        Let $X$ be a Hausdorff space, then any sequence $\{x_n\}$ has unique limit
+        (if there is any)
+\end{theorem}
+\begin{myprf}
+        If there are two limits of $\{x_n\}$, say $a$ and $b$. Then by definition
+        of Hausdorff space, there are two open sets $U_a,U_b$ contains $a$ and $b$
+        respectively but $U_a\cap U_b=\varnothing$. According to the definition
+        of limit, there exists $N_1,N_2$ such that $x_n\in U_a,\forall n>N_1$;
+        $x_n\in U_b, \forall n>N_2$. Let $N=\max(N_1,N_2)$, then $x_n
+        \in U_a\cap U_b, n>N$, a contradiction.
+\end{myprf}
+There are multiple other interesting facts about Hausdorff space. Recall that we
+mentioned a fact in last section: a single point might not be closed in a general
+topological space. A typical example is as follows:
+$$
+X=\{a,b,c\}, \mathcal{T}=\{\{a,b\},\{b\},\{b,c\},\varnothing,X\}
+$$
+In this topological space, $\{b\}$ is not closed. And further more, the sequence
+$\{x_n\}$ where $x_n=b,\forall n\in \mathbb{N}$ has two limits $a$ and $c$.\\
+\indent
+We have proved in Hausdorff space, sequence has only one limit. Further more, a
+single point is closed in Hausdorff space.
+\begin{theorem}
+       Let $X$ be a Hausdorff space, then every finite set of $X$ is closed.
+\end{theorem}
+\begin{myprf}
+        It suffices to show that any single point is closed. Let $\{x_0\}$ be a
+        one-point set. For any $x\in X,x\neq x_0$, there is some open set
+        $U_x$ contains $x$ but does not intersect $x_0$, therefore $x$ is not 
+        a limit point of $x_0$. We have this fact for arbitraty $x\neq x_0$. So
+        the closure of $\{x_0\}$ is $\{x_0\}$ itself. Therefore $\{x_0\}$ is closed
+        .
+\end{myprf}
+The condition that finite point sets be closed is called $\mathbf{T_1\;axiom}$. 
+And $T_1$ axiom is $\textbf{weaker}$ than Hausdorff condition, which means: a topological 
+space that satisfies $T_1$ axiom may not be a Hausdorff space. We will explain
+the reason in later chapters.
+\vspace{0.5cm}
+\begin{theorem}
+      Let $X$ be a space satisfying the $T_1$ axiom; let $A$ be a subset of $X$.
+      Then the point $x$ is a limit point of $A$ if and only if
+      every neighborhood of $x$
+      contains infinitely many points of $A$.
+\end{theorem}
+\begin{myprf}
+        $(\Leftarrow):$ 
+        If any neighborhood of $x$ contains infinitely many points of 
+      $A$, the neighborhood must contain some points other than $x$ iteself, 
+      so that $x$ is a limit point of $A$.\\
+      $(\Rightarrow):$ Conversely, suppose that $x$ is a limit point of $A$, and
+      suppose there is some open set $U$ containing $x$ but intersects only
+      finitely many points with $A$. Consider $A\setminus\{x\}\cap U$, denoted
+      by $V$, then $V$ also has finitely many points. \\
+      \indent
+      By $T_1$ axiom, $V$ 
+      is closed in $X$ and $X\setminus V$ is open. Notice that $U\cap (X\setminus
+      V)$ is an open set that contains $x$. However, this open set intersects
+      an empty set with $A$, which contradicts the assumption 
+      that $x$ is a limit point of $A$. 
+\end{myprf}
+
+
+
 
 \end{document}
 
