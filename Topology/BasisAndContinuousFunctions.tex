@@ -13,6 +13,7 @@
 \newtheorem{difinition}{Definition}
 
 \newtheorem{theorem}{Theorem}
+\theorembodyfont{\upshape}
 
 \theoremstyle{remark}
 \newtheorem*{remark}{Remark}
@@ -150,6 +151,45 @@ equivalent topology.
         
 \end{mydef}
 
+\section{Continuous Function}
+\begin{mydef}
+       Let $X$ and $Y$ be topological spaces. A function $f:X\rightarrow Y$ is
+       said to be $\textbf{continuous}$ if for each open set $V$ of $Y$, 
+       the set $f^{-1}(V)$ is an open set of $X$
+\end{mydef}
+It is easy to see that the continuity of a function $f$ depends not only on the
+function itself, but also the specified topology of its domain and range. To 
+emphasize this fact, we may say $f$ is continuous $\textbf{\textit{relative}}$ to specific topologies on $X$ and $Y$.
+
+\begin{myexam}
+       In analysis, a real-value function of real variable is said to be 
+       continuous if it's continuous at every point of its domain. And a function
+       $f:\mathbb{R}\rightarrow \mathbb{R}$ is continous at $x_0$ is define as
+       follows:\\
+       \indent
+       $\forall \epsilon >0, $ there is some $\delta$ such that $\mid f(x)-f(x_0)
+       \mid $ if $\mid x-x_0 \mid< \delta $.\\
+       Then a continous real variable function is continous from $\mathbb{R}$
+       to $\mathbb{R}$.
+\end{myexam}
+
+We have seen many other theorems about continuity in mathmatical analysis, for 
+exmaple, a continuous function would map a limit point to a limit point, which is
+$\lim\limits_{n\to \infty}f(a_n)=f(\lim\limits_{n\to \infty}a_n)$. Some of these
+theorems are generalized for more general space, the following theorem describes
+this.
+\begin{theorem}
+       Let X and Y be topological spaces; let $f\;:\;X\rightarrow Y$. Then the 
+       following conditions are equivalent:
+       \begin{enumerate}
+              \item $f$ is continuous 
+              \item Let $B$ be a basis for $Y$, then $f^{-1}(B_{\beta})$ is open
+                      in $X$
+              \item For every subset $A$ of $X$, one has $f(\bar{A})\subset 
+                      \overline f(A)$
+              \item For every closed set $B$ of $Y$, $f^{-1}(B)$ is closed in $X$.
+       \end{enumerate}
+\end{theorem}
 
 \end{document}
 
