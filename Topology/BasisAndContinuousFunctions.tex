@@ -336,8 +336,51 @@ the reason in later chapters.
       that $x$ is a limit point of $A$. 
 \end{myprf}
 
+Now let's back to the topic of continous function. The following theorem is
+a generalized property of its $\mathbb{R}$ version
 
+\begin{theorem}
+       Let $X$ and $Y$ be Hausdorff spaces. And $f$ a continous function from
+       $X$ to $Y$. Let $\{x_n\}$ be a sequence in $X$ and converged to $x$,
+       then sequence$\{f(x_n)\}$ has a limit, and $\lim\limits_{n\to
+       \infty} f(x_n)=f(\lim\limits_{n\to\infty}x_n)$
+\end{theorem}
 
+\begin{myprf}
+        Let $\lim\limits_{n\to\infty}x_n=x$, then we only need to show that 
+        any open set of $Y$ that contains $f(x)$ must contain all elements
+        after of $\{f(x_n)\}$ after some $N$.\\
+        \indent Let $V\underset{open}{\subset} Y$ and $f(x)\in V$, then $x
+        \in f^{-1}(V)$ and $f^{-1}(V)\underset{open}{\subset} X$. Therefore,
+        according to the definition of limit, $\exists N\in \mathbb{N},
+        \forall n>N, x_n\in f^{-1}(V)$. Therefore, $\forall n>N,f(x_n)\in
+        V$ and the proof is done.
+\end{myprf}
+
+\subsection{Homeomorphisms}
+\begin{mydef}($\textbf{Homeomorphism}$)
+       Let $X$ and $Y$ be topological spaces; let $f:X\rightarrow Y$ be a 
+       bijection. If both $f$ and $f^{-1}$ are continuous, then $f$ is called
+       $\textbf{homeomorphism}$
+\end{mydef}
+The condition that $f^{-1}:Y\rightarrow X$ is continuous says that 
+for each open set of $X$, $(f^{-1})^{-1}(U)$ is open in $Y$. Notice that 
+$(f^{-1})^{-1}(U)=f(U)$. So the condition actually says that $f(U)$ is open
+if and only if $U$ is open.\\
+\indent The homeomorphism says that not only every element of $X$ corresponds to
+some element of $Y$, there is also a corresponsence between the collection of 
+open sets of $X$ and $Y$. This is quite similar to the concept of $\textbf{\textit
+{Isomorphism}}$ which preserves the algebraic structure. $\textbf{\textit{Homeomorphism}}$
+is a bijection that preserves the $\textbf{\textit{topological structure}}$\\
+\indent Let $f:X\rightarrow Y$ be an injective continuous function, where
+$X$ and $Y$ are topological spaces. Let $f(X)$ is subspace
+topology. Then $f^{'}:X\rightarrow
+f(X)$ is a bijection . If $f^{'}$ happens
+to be a homeomorphism, then $f$ is called an $\textbf{\textit{imbedding}}$\\
+\indent
+Munkres's book provides a very classical example where a function is bijective
+and continuous without being homeomorphism, which shows that the continuity
+of $f^{-1}$ is neccessary. 
 
 \end{document}
 
