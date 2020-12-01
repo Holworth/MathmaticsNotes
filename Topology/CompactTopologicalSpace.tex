@@ -1,0 +1,108 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{blindtext}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amsthm, amssymb, amsfonts}
+\usepackage{bm}
+\usepackage{graphics}
+\usepackage{tikz-cd}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{romannum}
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\newtheorem{difinition}{Definition}
+
+\newtheorem{theorem}{Theorem}
+\theoremstyle{definition}
+%\theorembodyfont{\normalfont}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\newenvironment{myremark}
+{\renewcommand\qedsymbol{$ $}\begin{proof}[$\mathbf{REMARK}$]}
+  {\end{proof}}
+
+\newenvironment{myprf}
+{\renewcommand\qedsymbol{$ $}\begin{proof}[$\mathbf{Proof}$]}
+  {\end{proof}}
+
+\newenvironment{mydef}
+{\renewcommand\qedsymbol{$ $}\begin{proof}[$\mathbf{Definition}$]}
+  {\end{proof}}
+
+\newenvironment{myexam}
+{\renewcommand\qedsymbol{$ $}\begin{proof}[$\mathbf{EXAMPLE}$]}
+  {\end{proof}}
+
+\newenvironment{myprop}
+{\renewcommand\qedsymbol{$ $}\begin{proof}[$\mathbf{Proposition}$]}
+  {\end{proof}}
+
+\theoremstyle{definition}
+\newtheorem{lemma}[theorem]{Lemma}
+
+\title{\textbf{Compactness of Topological Space}}
+\date{December 1st, 2020}
+\begin{document}
+\maketitle
+\section{Compact Spaces} 
+
+\indent Compact Spaces is a kind of special topological spaces. In such a
+topological space, a local property may be true in the whole space. In mathmatical
+analysis, we have already seen some compact spaces, for example, the closed 
+interval. A basis but important theorem in analysis says that a continuous 
+function must be bounded in a closed interval. The key point of the proof to
+this theorem is the concept of $\textit{compactness}$.
+\vspace{0.5cm}
+\begin{mydef}
+        Let $X$ be topological space. A collection $\mathcal{A}$ of subsets of
+        $X$ is said to be a $\textbf{\textit{covering}}$ of $X$, if their
+        union equals to $X$.If elements of this collection are
+        all open sets, then $\mathcal{A}$ is said to be an $\textbf{\textit{open
+        covering}}$ of $X$.
+\end{mydef}
+\vspace{0.5cm}
+\begin{mydef}
+        A topological space $X$ is said to be $\textbf{\textit{compact}}$, 
+        if every open covering of $X$ has finite subcollection that covers $X$.
+\end{mydef}
+Finite subcollection means we can pick up finite many open set to form a
+new collection. Here are some examples about compact topological spaces.
+\begin{myexam}
+       The following subspace of $\mathbb{R}$ is compact:
+       $$
+       X=\{0\}\cup \{1/n\mid n\in \mathbb{N}^{+}\}
+       $$
+       \indent Let $\mathcal{A}$ be an open covering of $X$, we will pick up 
+       finite of them to cover $X$. Since $\displaystyle
+       0\in X=\bigcup_{U\in \mathcal{A}} U$, there must be some open set that
+       contains 0, we pick up this open set. Notice that 0 is a limit point of 
+       $X\setminus\{0\}$,  there are only finite many points not included in this
+       open set. So we can pick finite many open sets to cover them.
+\end{myexam}
+\vspace{0.5cm}
+\begin{mydef}
+      Let $X$ be a topological space and $Y$ a subset of $X$. $Y$ is said to be 
+      a $\textbf{\textit{compact set}}$ (of $X$), 
+      if any open covering of $Y$ has finite subcover.
+\end{mydef}
+\begin{myremark}
+        We say a collection $\mathcal{A}$ of $X$ is a cover of $Y$, if:
+        $$
+        Y\subset \bigcup_{U\in \mathcal{A}}U
+        $$ and $\mathcal{A}$ is said to be an open cover iff every elements of
+        $\mathcal{A}$ is an open set.\\
+        \indent Different from the definition of $\textit{compact space}$, a
+        $\textit{compact set}$ specifies the compactness of a subset,but there
+        are no substantial difference between this two definitions. We will
+        demonstrate you a theorem proof(very easy, just follow the 
+        definition):
+\end{myremark}
+\begin{theorem}
+        Let $X$ be a topological space. $Y$ is a compact set if and only if $Y$
+        is compact space under subspace topology.
+\end{theorem}
+\noindent
+Now we may not distinguish $\textit{compact set}$ and $\textit{compact space}$ 
+deliberately.
+\end{document}
