@@ -167,7 +167,7 @@ special space.
 \end{theorem}
 \begin{myprf}
         We will just give a sketch of proof for this theorem.\\
-        ($\Rightarrow$): If $Y$ is compact, it must be closed as $\mathcal{R}^n$
+        ($\Rightarrow$): If $Y$ is compact, it must be closed as $\mathbb{R}^n$
         is Hausdorff. To see $Y$ is bounded, we consider the distance between any
         point of $Y$ and the original point $\mathbf{0}$. 
         For any $y\in Y$, there is an open
@@ -188,6 +188,36 @@ special space.
         is compact.\\
         ( There are many methods to proving $U$ is compact. A direct way
         is use the same technique of proving compactness of closed interval.)
-
+\end{myprf}
+\vspace{0.5cm}
+\begin{theorem}
+        The image of a compact space under a continuous function is still 
+        compact.
+\end{theorem}
+\begin{myprf}
+        To simplify this question, we will prove that a continous function maps
+        a compact set to a compact set.\\
+        \indent Let $X$, $Y$ be topological space and $f:X\rightarrow Y$ a 
+        continuous function. Let $A\subset X$ a compact set, we will prove that
+        $f(A)$ is a compact set of $Y$. Consider an open covering of $f(A)$, 
+        say $\{U_{\alpha}\mid \alpha\in I\}$. And consider $\{f^{-1}(U_{\alpha})
+        \mid \alpha\in I\}$ in $X$. Since $f$ is continuous, each 
+        $f^{-1}(U_{\alpha})$ is open in $X$. And obviously $\displaystyle 
+        A\subset \bigcup_{\alpha\in I}f^{-1}(U_{\alpha})$. $A$ has a finite
+        sub-cover, say: $\displaystyle A\subset \bigcup_{i=1}^{n} f^{-1}(U_i)$.
+        Then $\displaystyle f(A)\subset \bigcup_{i=1}^{n} U_i$ and the proof is
+        done.
+\end{myprf}
+\vspace{0.5cm}
+\begin{theorem}
+        Let $f:X\rightarrow Y$ be a bijection continous function. If $X$ is 
+        compact and $Y$ is Hausdorff, then $f$ is homeomorphism.
+\end{theorem}
+\begin{myprf}
+        For any open set $U\subset X$, we have $U^{c}$ is closed in $X$,
+        therefore, compact in $X$(\textit{theorem 2}). Thus, $f(U^{c})$ is compact
+        in $Y$(\textit{theorem 5}), and therefore closed (\textit{theorem 3})
+        Note that $f(U^{c})=f(U)^{c}$ as $f$ is bijective, we have $f(U)$ is open.
+        Therefore, $f(U)$ is open if and only if $U$ is open, the proof is done.
 \end{myprf}
 \end{document}
