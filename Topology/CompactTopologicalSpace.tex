@@ -80,6 +80,13 @@ new collection. Here are some examples about compact topological spaces.
        $X\setminus\{0\}$,  there are only finite many points not included in this
        open set. So we can pick finite many open sets to cover them.
 \end{myexam}
+\begin{myexam}
+        Consider $\mathbb{R}$ and general topology on $\mathbb{R}$, then $(0,1]$
+        is not compact. The reason is that we have an open cover:
+        $$
+        \mathcal{A}=\{(1/n,1] \mid n\in \mathbb{N}^{+}\}
+        $$ but $\mathcal{A}$ has no finite sub-cover.
+\end{myexam}
 \vspace{0.5cm}
 \begin{mydef}
       Let $X$ be a topological space and $Y$ a subset of $X$. $Y$ is said to be 
@@ -105,4 +112,82 @@ new collection. Here are some examples about compact topological spaces.
 \noindent
 Now we may not distinguish $\textit{compact set}$ and $\textit{compact space}$ 
 deliberately.
+\vspace{0.5cm}
+\begin{theorem}
+        Every closed set of a compact space is a compact set, thus a compact
+        space.
+\end{theorem}
+\begin{myprf}
+       Let $X$ be a compact space, and $Y$ a closed set of $X$. We shall see that
+       every open cover of $Y$ has a finite sub-cover.\\
+       \indent Let $\mathcal{A}=\{U_{\alpha}\mid \alpha\in I\}$ is an open cover
+       of $Y$, st. $Y\subset \displaystyle \bigcup_{\alpha\in I} U_{\alpha}$.
+       Then $\displaystyle \bigcup_{\alpha\in I}U_{\alpha} \cup Y^{c}$ is an open
+       covering of $X$ as $Y$ is closed in $X$($Y^{c}=X\setminus Y$). Thus there
+       are finite sub-cover of $X$ for $X$ is compact.  Let: $
+       \displaystyle \bigcup_{i=1}^{n}U_i=X$,  which is also a finite sub-cover
+       of $Y$. If $Y^{c}$ is one of these open sets, kick it out, and we get a 
+       finite sub-cover from $\mathcal{A}$ for $Y$, which concludes that $Y$ 
+       is compact set in $X$.
+\end{myprf}
+\vspace{0.5cm}
+
+In mathmatical analysis, we have proved so-called "finite-covering theorem" for
+closed interval, therefore every closed interval of $\mathbb{R}$ is 
+compact. One may naively think that compact set must be closed set. This
+is not true: Consider $X=\{0, 1, 2\}, \mathcal{T}=\{\varnothing, X, {1,2}\}$. 
+Then $\{1\}$ is compact as there are totally finite open set, however, 
+$\{1\}$ is not closed. But we will see this assertion is true in some more 
+particular space.
+\vspace{0.4cm}
+
+\begin{theorem}
+        Every compact set of a Hausdorff space is closed.
+\end{theorem}
+\begin{myprf}
+        Let $X$ be a Hausdorff space and $Y$ a compact set of $X$. We will show
+        that $Y$ is closed. We will prove that every elements not in $Y$ is
+        also not a limit point of $Y$.\\
+        \indent Fix a point of $Y^{c}$, say $x$. For any $y\in Y$, there exists
+        two open set $U_y, V_y$, such that:$x\in U_y, y\in V_y$ but 
+        $U_y\cap V_y=\varnothing$ for $X$ is Hausdorff. $\{V_y\mid y\in Y\}$
+        is obviously an open covering of $Y$. Then there are finite sub-cover,say
+        $\{V_{y_1}, V_{y_2},...,V_{y_n}\}$. Consider $\displaystyle U=
+        \bigcup_{i=1}U_{y_i}$. Then $U$ is an open set that contains $x$, and it's 
+        easy to prove that $U\cap V_{y_i}=\varnothing, i=1,2,...,n$, thus 
+        $U\cap Y=\varnothing$. This indicates that $x$ is not a limit point of 
+        $Y$. Hence, $\bar{Y}=Y$ and $Y$ is closed. The proof is done.
+\end{myprf}
+The following theorem is a direct corollary of $\textbf{\textit{Theorem 2}}$(not
+$\textbf{\textit{Theorem 3}})$. It discusses what a compact set is in a more 
+special space.
+\begin{theorem}($\textbf{Heine–Borel theorem}$)
+        A subset of $\mathbb{R}^n$ is compact if and only if it's closed and 
+        bounded
+\end{theorem}
+\begin{myprf}
+        We will just give a sketch of proof for this theorem.\\
+        ($\Rightarrow$): If $Y$ is compact, it must be closed as $\mathcal{R}^n$
+        is Hausdorff. To see $Y$ is bounded, we consider the distance between any
+        point of $Y$ and the original point $\mathbf{0}$. 
+        For any $y\in Y$, there is an open
+        ball $B(y, r_y)$ that contains $y$ but doesn't contain $\mathbf{0}$. Then 
+        $Y\subset\bigcup_{y\in Y} B_y$. We can pick finite of these open ball to
+        cover $Y$, say $B(y_1,r_{y_1}),....,B(y_n,r_{y_n})$. 
+        Then every point of $Y$ must be
+        one of these open balls. Assume $y\in B(y_1,r_{y_1})$ then 
+        $d(y,\mathbf{0})\leq d(y, y_1)+d(y_1, \mathbf{0})$. Note that there are
+        only finite many open ball, then we can let $M=\max r_{y_i}, N=
+        \max d(y_i, \mathbf{0})$. Thus $d(y,\mathbf{0}) \leq M+N$ and the proof
+        is done.\\
+        \noindent
+        ($\Leftarrow$) If $Y$ is bounded, then $Y\subset [a_1,b_1]\times\cdots
+        [a_n,b_n]$ for some $a_i, b_i$. We denote this cubic with $U$.
+        Note that $Y$ is also closed in U because $U\cap Y$ is closed in $U$.
+        We assert that $U$ is compact, and by $\textit{theorem 3}$, $Y$
+        is compact.\\
+        ( There are many methods to proving $U$ is compact. A direct way
+        is use the same technique of proving compactness of closed interval.)
+
+\end{myprf}
 \end{document}
