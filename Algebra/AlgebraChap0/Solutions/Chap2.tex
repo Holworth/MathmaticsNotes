@@ -1,0 +1,171 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage{amsthm} %lets us use \begin{proof}
+\usepackage{amsmath}
+\usepackage{amssymb} %gives us the character \varnothing
+\usepackage[dvipsnames]{xcolor}
+\usepackage{enumitem}
+\newcommand{\catname}[1]{{\normalfont\textbf{#1}}}
+\newlist{notes}{enumerate}{1}
+\setlist[notes]{label=Note: ,leftmargin=*}
+\title{Chapter2 Solutions}
+
+\begin{document}
+  \section*{Definition of Group}
+  \subsection*{1.1} Write a careful proof that every group is the group of isomorphisms of a
+groupoid. In particular, every group is the group of automorphisms of some object
+in some category
+\begin{proof}
+  Let $G$ be a group, we define a category \catname{C} as follows:
+  \begin{itemize}
+    \item Obj(\catname{C}) = $\{*\}$
+    \item Hom$(*,*)$ = $\{g \mid g \in G\}$
+  \end{itemize}
+  We prove the fore-defined structure does form a category:
+  \begin{itemize}
+    \item \textbf{Composition of Morphisms}\quad  
+    There is a function as follows:\\
+    $$
+    \mbox{Hom}(*,*) \times \mbox{Hom}(*,*) \rightarrow \mbox{Hom}(*,*)
+    $$
+    $$
+    (g,h)\mapsto gh
+    $$
+    This composition law explicitly satisfies associativity.
+    
+    \item \textbf{Identity} $1_G\in \mbox{Hom}(*,*)$ is the identity.
+  \end{itemize}
+  Also, for any $g\in \mbox{Hom}(*,*)$, there exists $g^{-1}\in \mbox{Hom}(*,*)$ such that
+  $gg^{-1} = g^{-1}g = 1_G$. Thus, every morphism in $\mbox{Hom}(*,*)$ is an isomorphism and 
+  $\catname{C}$ is a groupoid.
+\end{proof}
+
+\subsection*{1.4} Suppose that $g^2 = e$ for all elements $g$ of a group $G$; prove that G is commutative.
+\begin{proof}
+  For any $g,h\in G$, we have:
+  $$
+  gh = g^{-1}h^{-1} = (hg)^{-1} = hg 
+  $$
+  Which indicates $G$ is commutative
+\end{proof}
+
+\subsection*{1.7} Prove Corollary 1.11: \\
+$$
+\textit{Let $g$ be an element of finite order, and let $N\in\mathbb{Z}$. Then:}
+$$
+$$
+\textit{$g^{N}=e\Leftrightarrow N$ is a multiple of $\mid g\mid$}
+$$
+
+\begin{proof}
+  $(\Rightarrow)$ According to Lemma1.10\\
+  \indent\indent $(\Leftarrow)$ $$g^N=(g^{\mid g\mid})^{\frac{N}{\mid g\mid}}=(e_G)^{\frac{N}{\mid g\mid}}=e_G$$
+\end{proof}
+
+\subsection*{1.8} Let $G$ be a finite {\color{red}\textbf{abelian}} group, with exactly one element f of order 2. Prove that $\prod_{g\in G}g=f$
+\begin{proof}
+  Since $G$ is abelian, the product of all elements of $G$ is well-defined, that is to say, the results is irrelevant to the multiplication order.
+
+  Thus, we have:
+  $$
+  \prod_{g\in G}g = (a_1a_1^{-1})(a_2a_2^{-1})\cdots(a_na_n^{-1})fe_G=f
+  $$
+\end{proof}
+\noindent \textbf{Note} The original problem has no abelian condition, which is a false proposition: Consider 
+$Q_8=\{\pm 1, \pm i, \pm j, \pm k\}$, which is a non-commutative group and only $-1$ has an order of 2. However, the 
+product of all elements in $Q_8$ may generate different results:
+$$
+1ijk(-1)(-i)(-j)(-k) = 1
+$$
+$$
+1i(-i)j(-j)k(-k)(-1) = -1
+$$
+
+\subsection*{1.9} Let $G$ be a finite group, of order $n$, and let $m$ be the number of 
+elements $g \in G$ of order exactly 2. Prove that $n-m$ is odd. Deduce that if $n$ is even then
+$G$ necessarily contains elements of order 2.
+\begin{proof}
+  All elements can be make pair with its inverse, thus:
+  $$
+  G=\bigcup \{a_i, a_i^{-1}\}
+  $$
+  For those elements which have order greater than 2, $a_i$ and $a_i^{-1}$ are different. Thus we have:
+  $n = m + 2k + 1$ where $k$ is the number of pair where element has order greate than 2.
+
+  This shows that $n-m=2k+1$ is an odd value. If $n$ is even, then $m$ is certainly greater than 0, meaning there 
+  are elements has order equals to 2.
+\end{proof}
+
+\subsection*{1.11} Prove that for all $g,h$ in a group $G$, $|gh| = |hg|$
+\begin{proof}
+  We prove that for $n\in \mathbb{N}^{+}$, $(gh)^{n}=e\Longleftrightarrow (hg)^{n}=e$
+  $$
+  \begin{aligned}
+  (gh)^n=e  &\Longleftrightarrow (gh)(gh)\cdots(gh)=e\\
+            &\Longleftrightarrow g(hg)^{n-1}h = e \\
+            &\Longleftrightarrow(hg)^{n-1}h=g^{-1}\\
+            &\Longleftrightarrow(hg)^n = e
+  \end{aligned}
+  $$
+  Thus we have: $|hg| \mid |gh|$ and $|gh| \mid |hg|$, indicating $|gh| = |hg|$
+\end{proof}
+
+\subsection*{1.12}
+In the group of invertible $2\times 2$ matrices, consider
+$$
+g = 
+\begin{pmatrix}
+  0 & -1\\
+  1 &  0
+\end{pmatrix}
+\quad
+,
+\quad
+h = 
+\begin{pmatrix}
+  0  & 1\\
+  -1 & -1
+\end{pmatrix}
+$$
+
+\noindent Verify that $|g| = 4,|h| = 3,$ and $|gh| = \infty$
+
+\begin{proof}
+  It is easy to show that $g^{2}=-I$, thus $|g| = 4$.
+  For $h$ we have:
+  $$
+  h^2 = \begin{pmatrix}
+    0 & -1\\
+    1 & 0
+  \end{pmatrix}\quad, \quad
+  h^3 = \begin{pmatrix}
+    1 & 0 \\
+    0 & 1
+  \end{pmatrix}
+  $$
+  Thus, $|h| = 3$.
+  $gh = \begin{pmatrix}
+    1 & 1\\
+    0 & 1
+  \end{pmatrix}
+  $, it's not hard to verify that $(gh)^n
+    = \begin{pmatrix}
+      1 & n\\
+      0 & 1
+    \end{pmatrix}
+  $(By induction), which indicates $gh$ has no finite order.
+\end{proof}
+\noindent \textbf{Note} If $g$ and $h$ are commutative, then $|gh|\leq lcm(|g|,|h|)$. However, for a non-commutative group, 
+there is no general result for the order of $gh$.
+
+\subsection*{1.14} prove that if $g$ and $h$ commute, and
+$gcd(|g|, |h|) = 1$, then $|gh| = |g||h|$
+\begin{proof}
+  If $(gh)^t = e, t\in \mathbb{N}^{+}$ then: $g^t = h^{-t}$. We have:
+  $$
+  g^{t|h| } = h^{-t|h| } = e \Rightarrow |g| \mid t|h| \Rightarrow |g| \mid t
+  $$ since $gcd(|g|, |h|)=1$. Also, $|h| \mid t$ and $|g||h| \mid t$ because $gcd(|g|, |h|)=1$.
+  Note that $(gh)^{|g||h|}=e$ we have: $|gh| \mid |g||h|$. By the above fact, we have $|g||h|\mid |gh|$. Thus 
+  we have: $|gh| = |g||h|$.
+\end{proof}
+
+\end{document}
