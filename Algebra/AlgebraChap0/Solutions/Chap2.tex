@@ -1,17 +1,22 @@
-\documentclass[a4paper, 12pt]{article}
+\documentclass[a4paper, pdf, 12pt]{article}
 \usepackage{amsthm} %lets us use \begin{proof}
 \usepackage{amsmath}
 \usepackage{amssymb} %gives us the character \varnothing
 \usepackage[dvipsnames]{xcolor}
 \usepackage{enumitem}
+\usepackage{pst-node}
+\usepackage{auto-pst-pdf}
+\usepackage{tikz-cd} 
+
 \newcommand{\catname}[1]{{\normalfont\textbf{#1}}}
 \newlist{notes}{enumerate}{1}
 \setlist[notes]{label=Note: ,leftmargin=*}
-\title{Chapter2 Solutions}
+\setlist[itemize]{leftmargin=*}
 
+\title{Chapter2 Solutions}
 \begin{document}
-  \section*{Definition of Group}
-  \subsection*{1.1} Write a careful proof that every group is the group of isomorphisms of a
+\section*{Definition of Group}
+\subsection*{1.1} Write a careful proof that every group is the group of isomorphisms of a
 groupoid. In particular, every group is the group of automorphisms of some object
 in some category
 \begin{proof}
@@ -22,20 +27,20 @@ in some category
   \end{itemize}
   We prove the fore-defined structure does form a category:
   \begin{itemize}
-    \item \textbf{Composition of Morphisms}\quad  
-    There is a function as follows:\\
-    $$
-    \mbox{Hom}(*,*) \times \mbox{Hom}(*,*) \rightarrow \mbox{Hom}(*,*)
-    $$
-    $$
-    (g,h)\mapsto gh
-    $$
-    This composition law explicitly satisfies associativity.
-    
+    \item \textbf{Composition of Morphisms}\quad
+          There is a function as follows:\\
+          $$
+            \mbox{Hom}(*,*) \times \mbox{Hom}(*,*) \rightarrow \mbox{Hom}(*,*)
+          $$
+          $$
+            (g,h)\mapsto gh
+          $$
+          This composition law explicitly satisfies associativity.
+
     \item \textbf{Identity} $1_G\in \mbox{Hom}(*,*)$ is the identity.
   \end{itemize}
   Also, for any $g\in \mbox{Hom}(*,*)$, there exists $g^{-1}\in \mbox{Hom}(*,*)$ such that
-  $gg^{-1} = g^{-1}g = 1_G$. Thus, every morphism in $\mbox{Hom}(*,*)$ is an isomorphism and 
+  $gg^{-1} = g^{-1}g = 1_G$. Thus, every morphism in $\mbox{Hom}(*,*)$ is an isomorphism and
   $\catname{C}$ is a groupoid.
 \end{proof}
 
@@ -43,17 +48,17 @@ in some category
 \begin{proof}
   For any $g,h\in G$, we have:
   $$
-  gh = g^{-1}h^{-1} = (hg)^{-1} = hg 
+    gh = g^{-1}h^{-1} = (hg)^{-1} = hg
   $$
   Which indicates $G$ is commutative
 \end{proof}
 
 \subsection*{1.7} Prove Corollary 1.11: \\
 $$
-\textit{Let $g$ be an element of finite order, and let $N\in\mathbb{Z}$. Then:}
+  \textit{Let $g$ be an element of finite order, and let $N\in\mathbb{Z}$. Then:}
 $$
 $$
-\textit{$g^{N}=e\Leftrightarrow N$ is a multiple of $\mid g\mid$}
+  \textit{$g^{N}=e\Leftrightarrow N$ is a multiple of $\mid g\mid$}
 $$
 
 \begin{proof}
@@ -67,31 +72,31 @@ $$
 
   Thus, we have:
   $$
-  \prod_{g\in G}g = (a_1a_1^{-1})(a_2a_2^{-1})\cdots(a_na_n^{-1})fe_G=f
+    \prod_{g\in G}g = (a_1a_1^{-1})(a_2a_2^{-1})\cdots(a_na_n^{-1})fe_G=f
   $$
 \end{proof}
-\noindent \textbf{Note} The original problem has no abelian condition, which is a false proposition: Consider 
-$Q_8=\{\pm 1, \pm i, \pm j, \pm k\}$, which is a non-commutative group and only $-1$ has an order of 2. However, the 
+\noindent \textbf{Note} The original problem has no abelian condition, which is a false proposition: Consider
+$Q_8=\{\pm 1, \pm i, \pm j, \pm k\}$, which is a non-commutative group and only $-1$ has an order of 2. However, the
 product of all elements in $Q_8$ may generate different results:
 $$
-1ijk(-1)(-i)(-j)(-k) = 1
+  1ijk(-1)(-i)(-j)(-k) = 1
 $$
 $$
-1i(-i)j(-j)k(-k)(-1) = -1
+  1i(-i)j(-j)k(-k)(-1) = -1
 $$
 
-\subsection*{1.9} Let $G$ be a finite group, of order $n$, and let $m$ be the number of 
+\subsection*{1.9} Let $G$ be a finite group, of order $n$, and let $m$ be the number of
 elements $g \in G$ of order exactly 2. Prove that $n-m$ is odd. Deduce that if $n$ is even then
 $G$ necessarily contains elements of order 2.
 \begin{proof}
   All elements can be make pair with its inverse, thus:
   $$
-  G=\bigcup \{a_i, a_i^{-1}\}
+    G=\bigcup \{a_i, a_i^{-1}\}
   $$
   For those elements which have order greater than 2, $a_i$ and $a_i^{-1}$ are different. Thus we have:
   $n = m + 2k + 1$ where $k$ is the number of pair where element has order greate than 2.
 
-  This shows that $n-m=2k+1$ is an odd value. If $n$ is even, then $m$ is certainly greater than 0, meaning there 
+  This shows that $n-m=2k+1$ is an odd value. If $n$ is even, then $m$ is certainly greater than 0, meaning there
   are elements has order equals to 2.
 \end{proof}
 
@@ -99,12 +104,12 @@ $G$ necessarily contains elements of order 2.
 \begin{proof}
   We prove that for $n\in \mathbb{N}^{+}$, $(gh)^{n}=e\Longleftrightarrow (hg)^{n}=e$
   $$
-  \begin{aligned}
-  (gh)^n=e  &\Longleftrightarrow (gh)(gh)\cdots(gh)=e\\
-            &\Longleftrightarrow g(hg)^{n-1}h = e \\
-            &\Longleftrightarrow(hg)^{n-1}h=g^{-1}\\
-            &\Longleftrightarrow(hg)^n = e
-  \end{aligned}
+    \begin{aligned}
+      (gh)^n=e & \Longleftrightarrow (gh)(gh)\cdots(gh)=e \\
+               & \Longleftrightarrow g(hg)^{n-1}h = e     \\
+               & \Longleftrightarrow(hg)^{n-1}h=g^{-1}    \\
+               & \Longleftrightarrow(hg)^n = e
+    \end{aligned}
   $$
   Thus we have: $|hg| \mid |gh|$ and $|gh| \mid |hg|$, indicating $|gh| = |hg|$
 \end{proof}
@@ -112,19 +117,19 @@ $G$ necessarily contains elements of order 2.
 \subsection*{1.12}
 In the group of invertible $2\times 2$ matrices, consider
 $$
-g = 
-\begin{pmatrix}
-  0 & -1\\
-  1 &  0
-\end{pmatrix}
-\quad
-,
-\quad
-h = 
-\begin{pmatrix}
-  0  & 1\\
-  -1 & -1
-\end{pmatrix}
+  g =
+  \begin{pmatrix}
+    0 & -1 \\
+    1 & 0
+  \end{pmatrix}
+  \quad
+  ,
+  \quad
+  h =
+  \begin{pmatrix}
+    0  & 1  \\
+    -1 & -1
+  \end{pmatrix}
 $$
 
 \noindent Verify that $|g| = 4,|h| = 3,$ and $|gh| = \infty$
@@ -133,28 +138,28 @@ $$
   It is easy to show that $g^{2}=-I$, thus $|g| = 4$.
   For $h$ we have:
   $$
-  h^2 = \begin{pmatrix}
-    0 & -1\\
-    1 & 0
-  \end{pmatrix}\quad, \quad
-  h^3 = \begin{pmatrix}
-    1 & 0 \\
-    0 & 1
-  \end{pmatrix}
+    h^2 = \begin{pmatrix}
+      0 & -1 \\
+      1 & 0
+    \end{pmatrix}\quad, \quad
+    h^3 = \begin{pmatrix}
+      1 & 0 \\
+      0 & 1
+    \end{pmatrix}
   $$
   Thus, $|h| = 3$.
   $gh = \begin{pmatrix}
-    1 & 1\\
-    0 & 1
-  \end{pmatrix}
+      1 & 1 \\
+      0 & 1
+    \end{pmatrix}
   $, it's not hard to verify that $(gh)^n
     = \begin{pmatrix}
-      1 & n\\
+      1 & n \\
       0 & 1
     \end{pmatrix}
   $(By induction), which indicates $gh$ has no finite order.
 \end{proof}
-\noindent \textbf{Note} If $g$ and $h$ are commutative, then $|gh|\leq lcm(|g|,|h|)$. However, for a non-commutative group, 
+\noindent \textbf{Note} If $g$ and $h$ are commutative, then $|gh|\leq lcm(|g|,|h|)$. However, for a non-commutative group,
 there is no general result for the order of $gh$.
 
 \subsection*{1.14} prove that if $g$ and $h$ commute, and
@@ -162,10 +167,301 @@ $gcd(|g|, |h|) = 1$, then $|gh| = |g||h|$
 \begin{proof}
   If $(gh)^t = e, t\in \mathbb{N}^{+}$ then: $g^t = h^{-t}$. We have:
   $$
-  g^{t|h| } = h^{-t|h| } = e \Rightarrow |g| \mid t|h| \Rightarrow |g| \mid t
+    g^{t|h| } = h^{-t|h| } = e \Rightarrow |g| \mid t|h| \Rightarrow |g| \mid t
   $$ since $gcd(|g|, |h|)=1$. Also, $|h| \mid t$ and $|g||h| \mid t$ because $gcd(|g|, |h|)=1$.
-  Note that $(gh)^{|g||h|}=e$ we have: $|gh| \mid |g||h|$. By the above fact, we have $|g||h|\mid |gh|$. Thus 
+  Note that $(gh)^{|g||h|}=e$ we have: $|gh| \mid |g||h|$. By the above fact, we have $|g||h|\mid |gh|$. Thus
   we have: $|gh| = |g||h|$.
 \end{proof}
 
+\section*{Examples of groups}
+
+\subsection*{2.1}
+One can associate an $n \times n$ matrix $M_{\sigma}$ with a permutation $\sigma \in S_n$, by
+letting the entry at $(i,\sigma(i))$ be 1, and letting all other entries be 0. For example,
+the matrix corresponding to the permutation
+$$
+  \sigma = \begin{pmatrix}
+    1 & 2 & 3 \\
+    3 & 1 & 2
+  \end{pmatrix} \in S_3
+$$
+
+\noindent would be
+$$
+  M_{\sigma} = \begin{pmatrix}
+    0 & 0 & 1 \\
+    1 & 0 & 0 \\
+    0 & 1 & 0
+  \end{pmatrix}
+$$
+
+\noindent Prove that, with this notation,
+$$
+  M_{\sigma\tau } = M_{\sigma}M_{\tau}
+$$
+
+\noindent for all $\sigma,\tau \in S_n$,where the product on the right is the ordinary product of matrices.
+
+\begin{proof}
+  $$
+    \begin{aligned}
+      M_\sigma M_\tau(i,j) & = \sum_{k = 1}^{n}M_{\sigma}(i,k)M_{\tau}(k,j) \\
+                           & = \sum_{\substack{1\leq k\leq n                \\\sigma(i)=k, \tau(k)=j}}1
+    \end{aligned}
+  $$
+  Only when $\tau\circ\sigma(i)=j$ would makes this item equals to 1, thus $M_{\sigma}M_{\tau}(i,j)=M_{\sigma\tau}(i,j)$. It's done.
+\end{proof}
+
+\subsection*{2.2}
+Prove that if $d \leq n$, then $S_n$ contains elements of order $d$.
+\begin{proof}
+  The permutation
+  $$
+    \sigma = \begin{pmatrix}
+      1 & 2 & 3 & \cdots & d-1 & d & d+1 & \cdots & n \\
+      2 & 3 & 4 & \cdots & d   & 1 & d+1 & \cdots & n
+    \end{pmatrix}
+  $$
+  is obviously an element has an order of $d$.
+\end{proof}
+
+\subsection*{2.6} For every positive integer $n$ construct a group containing two elements $g, h$
+such that $|g| = 2, |h| = 2$, and $|gh| = n$.
+\begin{proof}
+  $D_{2n}$ satisfies this condition.
+\end{proof}
+
+\subsection*{2.7} Find all elements of $D_{2n}$ that commute with every other element.
+
+\subsection*{2.12} Prove that there are no integers $a,b,c$ such that $a^2+b^2=3c^2$.
+\begin{proof}
+  Let $(a,b,c)$ be the smallest tuple that satisfies $a^2+b^2=3c^2$ then we have:
+  $$
+    a^2+b^2 = [0]_{3}
+  $$
+  There is only one possible way to achive this: $a = [0]_{3}, b = [0]_3$. Let $a = 3a^{'}, b = 3b^{'}$ then we have:
+  $3(a'^{2} + b'^{2}) = c^{2}$, indicating $c = [0]_{3}$. Let $c = 3c'$ would incur $a'^{2} + b'^{2} = 3c'^{2}$ and we have a
+  solution $(a', b', c')$ which is smaller than $(a, b, c)$, a contradiction.
+
+\end{proof}
+
+\subsection*{2.13} Prove that if $\mbox{gcd}(m, n)$ = 1, then there exist integers $a$ and $b$ such that
+$$
+  am + bn = 1
+$$ Conversely, prove that if $am+ bn = 1$ for some integers $a$ and
+$b$, then $\mbox{gcd}(m, n) = 1$
+\begin{proof}
+  $[m]_{n}$ is an generator of $\mathbb{Z}/n\mathbb{Z}$. Thus, there exists some positive integer $a$ such that:
+  $a[m]_{n}=[1]_{n}$, i.e $[am]_{n} = [1]_{n}$. Further, we have: $am - 1 = b'n$ for some $b' \in \mathbb{N}$. which is:
+  $am - b'n = 1$, Let $b = -b'$, the equation holds.\\
+
+  If there are $a,b$ such that $am+bn=1$ then $\mbox{gcd}(m,n)$ is a divisor of left side, thus a divisor of 1. Then $\mbox{gcd}(m,n)$ has to be 1.
+\end{proof}
+
+\subsection*{2.15} Let $n>0$ be an odd integer.
+\begin{itemize}
+  \item Prove that if $\mbox{gcd}(m,n) = 1$, then $\mbox{gcd}(2m+ n, 2n) = 1$.
+  \item Prove that if $\mbox{gcd}(r, 2n) = 1$, then $gcd(\frac{r+n}{2}, n) = 1$
+  \item Conclude that the function $[m]_n \rightarrow [2m + n]_{2n}$ is a bijection between $(\mathbb{Z}/n\mathbb{Z})^{*}$
+        and $(\mathbb{Z}/2n\mathbb{Z})^{*}$
+\end{itemize}
+The number $\phi(n)$ of elements of $(\mathbb{Z}/n\mathbb{Z})^{*}$ is Euler’s $\phi$-function. The reader has just
+proved that if n is odd, then $\phi(2n) = \phi(n)$. Much more general formulas will be
+given later on (cf. Exercise V.6.8)
+
+\begin{proof}
+  \noindent (1) Let $d = \mbox{gcd}(2m+n,2n)$ then $d \mid 2(2m+n) - 2n$, which is $d \mid 4m$. Thus:
+  $d \mid \mbox{gcd}(4m, 2n)$. Note that $\mbox{gcd}(m,n)=1$, then $\mbox{gcd}(4m,2n) = 2\mbox{gcd}(2m,n)=2$.
+  Thus $d=1$ or $d=2$. Note that $2m+n$ is odd, then $d = 1$.\\
+
+  \noindent (2) Let $d = \mbox{gcd}(\frac{r+n}{2},n)$, then $d \mid 2\times \frac{r+n}{2} - n$, that is $d\mid r$. Then $d\mid n$ indicates
+  $d\mid \mbox{r,n}$. Thus $d=1$.\\
+
+  \noindent (3)
+  According to (1), $\mbox{gcd}(m,n)=1$ indicates $mbox{gcd}(2m+n, 2n)=1$, thus the element $[2m+n]_{2n}\in (\mathbb{Z}/2n\mathbb{Z})^{*}$.
+  Next we will verify that this function is well-defined.
+
+  If $[m_1]_{n} = [m_2]_{n}$ then $n\mid (m_2-m_1)\Rightarrow 2n\mid (2m_2-2m_1)\Rightarrow 2n\mid ((2m_2+n)-(2m_1+n))$.
+  Thus, $[2m_2+n]_{2n} = [2m_1+n]_{2n}$. This indicates the function is well-defined.
+
+  If $[2m_1+n]_{2n} = [2m_2+n]_{2n}$ then we have $2n\mid ((2m_2+n)-(2m_1+n))$, which is
+  $2n\mid 2(m_2-m_1)$, and further $n\mid (m_2-m_1)$, indicating $[m_2]_{n} = [m_1]_{n}$. Thus, this function
+  is injective.
+
+  For any $[2m+n]_{2n}\in (\mathbb{Z}/2n\mathbb{Z})^{*}$, we have $f([m]_{n})=[2m+n]_{2n}$. According to (2),
+  $\mbox{gcd}(\frac{2m+n+n}{2}, n) = 1$, which is $\mbox{gcd}(m+n,n)=1\Rightarrow\mbox{gcd}(m,n)=1$. Thus, $[m]_{n}\in (\mathbb{Z}/n\mathbb{Z})^{*}$ and
+  $f$ is surjective.
+
+  In conclusion, $f$ is both injective and surjective, thus bijective.
+
+\end{proof}
+
+\section*{The Category $\textbf{Grp}$}
+\subsection*{3.3} Show that if $G, H$ are abelian groups, then $G \times H$ satisfies the universal
+property for coproducts in $\textbf{Ab}$
+\begin{proof}
+  Let $\tau_{G}$ and $\tau_{H}$ satisfies $\tau_{G}(g) = (g, 0_{H})$ and $\tau_{H}(h) = (0_{G}, h)$. We have to show that the following 
+  commutative graph exists:
+  $$
+  \begin{tikzcd}[row sep=huge]
+      & A & \\
+  G \ar[r, "\tau_{G}"] \ar[ur, "f_{G}"] & \ar[u, dashed, "\exists!f"] G\times H & \ar[ul, "f_{H}"] \ar[l, "\tau_{H}"] H
+  \end{tikzcd}
+  $$
+  We define $f$ as follows:
+  $$
+  f: G\times H\rightarrow A, \quad (g,h)\mapsto f_G(g) + f_H(h)
+  $$
+  We show that $f$ is an homomorphism: 
+  $$
+  \begin{aligned}
+    f((g_1, h_1) + (g_2, h_2)) = f((g_1 + g_2, h_1 + h_2)) &= f_G(g_1+g_2) + f_H(h_1+h_2) \\
+            &= f_G(g_1) + f_G(g_2) + f_H(h_1) + f_H(h_2) \\
+            &= (f_G{g_1}+f_{H}(h_1)) + (f_G{g_2} + f_H(h_2)) \\
+            &= f(g_1, h_1) + f(g_2, h_2)
+  \end{aligned}
+  $$
+  And we show that $f$ is unique. if $f'$ satisfies the above commutative diagram, then we have:
+  $$
+  \begin{aligned}
+    f'(g, h) = f'(g, 0_{H}) + f'(0_{G}, h) &= f'(\tau_{G}(g)) + f'(\tau_{H}(h)) \\
+      &= (f'\tau_{G})(g) + (f'\tau_{H})(h) \\
+      &= f_{G}(g) + f_{H}(h) = f(g,h)
+  \end{aligned}
+  $$ Thus, $f$ is unique. And by the definition of coproduct, $G\times H$ is the coproduct of $G$
+  and $H$ in category $\textbf{Ab}$.
+
+\end{proof}
+
+\subsection*{3.4} Let $G, H$ be groups, and assume that $G \cong H \times G$. Can you conclude that $H$
+is trivial.
+
+\vspace{0.3cm}
+\noindent
+\textit{Solution} \quad No, $H$ might be non-trivial group. The following example:
+$$
+  2\mathbb{Z}\times \mathbb{Z}_2 \cong \mathbb{Z}\cong \mathbb{Z}_2
+$$
+indicates that $H=\mathbb{Z}_2$ is not a trivial group. We construct homomorphims as follows:
+$$
+  f: 2\mathbb{Z}\times \mathbb{Z}_2\longrightarrow \mathbb{Z}
+$$
+$$
+  (\left[a\right],2k)\mapsto 2k + a, a=0,1
+$$ Then it is easy to verify that $f$ is bijective.
+$
+  \forall x = (\left[a\right], 2k_1), y = (\left[b\right], 2k_2).
+$
+$$
+  f(x+y) = f(\left[a+b\right],2k_1+2k_2) = 2k_1 + 2k_2 + (a+b) = f(x)+f(y)
+$$ Thus, $f$ is an homomorphim, therefore, $2\mathbb{Z}\times \mathbb{Z}_2\cong \mathbb{Z}$. The
+right part, $2\mathbb{Z}\cong \mathbb{Z}$ is trivial.
+
+
+\subsection*{3.5}
+Prove that $\mathbb{Q}$ is not the direct product of two nontrivial groups
+\begin{proof}
+  Proof by contradiction, say $\mathbb{Q}$ is the direct product of two groups $\mathbb{Q}\cong G\times H$, say that
+  $G$ is nontrivial. We prove that $\pi_{G}$ is injective by proving no other element is mapped to be $0_{G}$ except for $0\in \mathbb{Q}$
+
+  Suppose that $\pi_{G}\left(\cfrac{m}{n}\right)=0_{G}$. We have: $\pi_{G}(m)=n\pi_{G}(m)=nm\pi_{G}(1) = 0_G$. Thus $\pi_{G}(1)=0_{G}$.
+  Which means $\pi_{G}(\mathbb{Z})=\left\{0_G\right\}$.
+
+  Thus, for any $\cfrac{a}{b}\in \mathbb{Q}$, we have: $0_{G}=\pi_{G}(a)=b\pi_{G}(\cfrac{a}{b})\Rightarrow \pi_{G}(\cfrac{a}{b})=0_{G}$, which means
+  $\pi_{G}(\mathbb{Q})=\left\{0_G\right\}$. Note that $\pi_{G}$ is surjective and $G$ is nontrivial, we have above assumption failed, that is to say,
+  no element $\cfrac{a}{b}$ satisfies $\pi_{G}(\cfrac{a}{b})=0_{G}$, which means $\pi_{G}$ is injective.
+
+  Thus $H$ must be trivial, otherwise, $\pi_{G}(g_1, h_1) = g_1 = \pi_{G}(g_1, h_2)$ indicates that $\pi_{G}$ is not injective.
+\end{proof}
+
+\subsection*{3.6}
+Consider the product of the cyclic groups $C_2, C_3$: $C_2 \times C_3$. By
+Exercise $3.3$, this group is a coproduct of $C_2$ and $C_3$ in $\mathbf{Ab}$. Show that it is not a
+coproduct of $C_2$ and $C_3$ in $\catname{Grp}$, as follows:
+\begin{itemize}
+  \item find injective homomorphisms $C_2 \rightarrow S_3$, $C_3 \rightarrow S_3$;
+  \item arguing by contradiction, assume that $C_2 \times C_3$ is a coproduct of $C_2, C_3$, and
+        deduce that there would be a group homomorphism $C_2 \times C_3 \rightarrow S_3$ with certain
+        properties;
+  \item show that there is no such homomorphism
+\end{itemize}
+
+\begin{proof}
+  The injective homomorphism is:
+  $$
+    f_{C_2}: C_2\rightarrow S_3
+  $$
+  $$
+    \left[0\right]_{2}\mapsto \begin{pmatrix}
+      1 & 2 & 3 \\
+      1 & 2 & 3
+    \end{pmatrix},
+    \left[1\right]_{2}\mapsto \begin{pmatrix}
+      1 & 2 & 3 \\
+      2 & 1 & 3
+    \end{pmatrix}
+  $$ and
+  $$
+    f_{C_3}: C_3\rightarrow S_3
+  $$
+  $$
+    \left[0\right]_{3}\mapsto \begin{pmatrix}
+      1 & 2 & 3 \\
+      1 & 2 & 3
+    \end{pmatrix},
+    \left[1\right]_{3}\mapsto \begin{pmatrix}
+      1 & 2 & 3 \\
+      2 & 3 & 1
+    \end{pmatrix},
+    \left[2\right]_{3}\mapsto \begin{pmatrix}
+      1 & 2 & 3 \\
+      3 & 1 & 2
+    \end{pmatrix},
+  $$
+  According to the definition of coproduct, the following diagram holds
+
+  $$
+  \begin{tikzcd}[row sep=huge]
+    & S_3 & \\
+    C_2 \ar[r,"\tau_{C_2}"]  \ar[ur, "f_{C_2}"] & C_2\times C_3 \ar[u, dashed, "\exists!f"]& \ar[ul, "f_{C_3}"]\ar[l,"\tau_{C_3}",swap] C_3 
+  \end{tikzcd}
+  $$
+  \\
+  \noindent
+  The homomorphism $f: C_2\times C_3\rightarrow S_3$ satisfies $f\tau_{C_2}=f_{C_2}$ and $f\tau_{C_3}=f_{C_3}$.
+  We prove that such $f$ does not exist:
+  We write $
+  \begin{pmatrix}
+    1 & 2 & 3 \\
+    2 & 1 & 3
+  \end{pmatrix}
+  $ and $
+  \begin{pmatrix}
+    1 & 2 & 3 \\
+    2 & 3 & 1
+  \end{pmatrix}
+  $ as $a$ and $b$ for simplicity: thus we must have:
+  $$
+  \begin{aligned}
+    f([0]_{2}, [0]_{3}) = \mathbf{1}_{S_{3}}, f([1]_{2}, [0]_{3}) = a, f([0]_{2}, [1]_{3}) = b, f([0]_{2}, [1]_{3}) = b^2
+  \end{aligned}
+  $$
+  And we have:
+  $$
+  ab = f([1]_{2}, [0]_{3}) + f([0]_{2}, [1]_{3}) = f([1]_{2}, [1]_{3})
+  $$
+  and 
+  $$
+  (ab)(ab) = f([1]_{2}, [1]_{3})f([1]_{2}, [1]_{3}) = f([0]_{2}, [2]_{3}) = b^2
+  $$
+  This indicates $abab=b^2\Rightarrow ba=a^{-1}b=ab$. However, $ab = \begin{pmatrix}
+   1 & 2 & 3\\
+   3 & 2 & 1 
+  \end{pmatrix}
+  $, $ba = \begin{pmatrix}
+    1 & 2 & 3 \\
+    1 & 3 & 2
+  \end{pmatrix}$ thus $ab \neq ba$. Then such $f$ does not exist. We assert that $C_2\times C_3$ is not the coproduct of $C_2$ and $C_3$ in 
+  category $\textbf{Grp}$.
+\end{proof}
 \end{document}
