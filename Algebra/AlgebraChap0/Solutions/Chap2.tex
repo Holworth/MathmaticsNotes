@@ -765,7 +765,7 @@ $\mathbb{Z} * \mathbb{Z}$ of $\mathbb{Z}$ by itself in the category \textbf{Grp}
       \end{tikzcd}
     $$
   \end{center}
-  Define $\varphi$ such that $\varphi(x) = f_1(1)$ and $\varphi(y) = f_2(1)$. Then we have such 
+  Define $\varphi$ such that $\varphi(x) = f_1(1)$ and $\varphi(y) = f_2(1)$. Then we have such
   $\varphi$ is a homomorphim and is unique. Thus, the free group on $\{x, y\}$ is a coproduct of $\mathbb{Z}$ and $\mathbb{Z}$.
 \end{proof}
 
@@ -775,188 +775,188 @@ abelian groups $F^{ab}(\{x_1,\ldots, x_n\})$\\
 
 \noindent
 \textit{Solution}
-  The Extended result is that: $F(\{x_1,\ldots, x_n\})$ is the coproduct of $n$ $\mathbb{Z}$ in category $\mathbf{Grp}$ and is 
-  a coproduct of $n$ $\mathbb{Z}$ in category Ab.
+The Extended result is that: $F(\{x_1,\ldots, x_n\})$ is the coproduct of $n$ $\mathbb{Z}$ in category $\mathbf{Grp}$ and is
+a coproduct of $n$ $\mathbb{Z}$ in category Ab.
 
 \subsection*{5.8}
 Still more generally, prove that $F(A\sqcup B) = F(A)*F(B)$ and that $F^{ab}(A\sqcup B) =
-F^{ab}(A) \oplus F^{ab}(B)$ for all sets $A, B$. 
+  F^{ab}(A) \oplus F^{ab}(B)$ for all sets $A, B$.
 \begin{proof}
   We will only prove the fact that $F(A\sqcup B) = F(A) * F(B)$. In this question, we can only use the universal property.
   To prove that $F(A\sqcup B)$ is the coproduct of $F(A)$ and $F(B)$, we first construct the ``injection" homomorphim:
   Here is the diagram:
   $$
-  \begin{tikzcd}
-    A \ar[r, "i_{A}"] \ar[d, "\iota_{A}"] & F(A) \ar[d, dashed, "I_{F(A)}"]\\
-    A\sqcup B \ar[r, "i_{A\sqcup B}"] & F(A\sqcup B) \\
-    B \ar[r, "i_{B}"] \ar[u, "\iota_{B}"] & F(B) \ar[u, dashed, "I_{F(B)}"]\\
-  \end{tikzcd}
+    \begin{tikzcd}
+      A \ar[r, "i_{A}"] \ar[d, "\iota_{A}"] & F(A) \ar[d, dashed, "I_{F(A)}"]\\
+      A\sqcup B \ar[r, "i_{A\sqcup B}"] & F(A\sqcup B) \\
+      B \ar[r, "i_{B}"] \ar[u, "\iota_{B}"] & F(B) \ar[u, dashed, "I_{F(B)}"]\\
+    \end{tikzcd}
   $$
-  Note that the set-function $i_{A\sqcup B}\circ\iota_{A}$(or $i_{A\sqcup B}\iota_{B}$) is a function from $A$(or $B$) to $F(A\sqcup B)$, 
-  according to the universal property of $F(A)$, there exists a unique homomorphim $I_{F(A)}$(or $I_{F(B)}$) such that 
-  $I_{F(A)}\circ i_{A} = i_{A\sqcup B}\circ \iota_{A}$ and $I_{F(B)}\circ i_{B} = i_{A\sqcup B}\circ \iota_{B}$. We prove that 
+  Note that the set-function $i_{A\sqcup B}\circ\iota_{A}$(or $i_{A\sqcup B}\iota_{B}$) is a function from $A$(or $B$) to $F(A\sqcup B)$,
+  according to the universal property of $F(A)$, there exists a unique homomorphim $I_{F(A)}$(or $I_{F(B)}$) such that
+  $I_{F(A)}\circ i_{A} = i_{A\sqcup B}\circ \iota_{A}$ and $I_{F(B)}\circ i_{B} = i_{A\sqcup B}\circ \iota_{B}$. We prove that
   $(F(A\sqcup B), I_{F(A)}, I_{F(B)})$ is a coproduct of $F(A)$ and $F(B)$.
 
   Say $G$ is another group with homomorphim$f_{F(A)}: F(A)\rightarrow G$ and $f_{F(B)}: F(B)\rightarrow G$. Then we have:
   $$
-  \begin{tikzcd}
-    A \ar[r, "i_{A}"] \ar[d, "\iota_{A}"] & F(A) \ar[d, "f_{F(A)}"]\\
-    A\sqcup B \ar[r, dashed, "f"] & G \\
-    B \ar[r, "i_{B}"] \ar[u, "\iota_{B}"] & F(B) \ar[u, "f_{F(B)}"]\\
-  \end{tikzcd}
+    \begin{tikzcd}
+      A \ar[r, "i_{A}"] \ar[d, "\iota_{A}"] & F(A) \ar[d, "f_{F(A)}"]\\
+      A\sqcup B \ar[r, dashed, "f"] & G \\
+      B \ar[r, "i_{B}"] \ar[u, "\iota_{B}"] & F(B) \ar[u, "f_{F(B)}"]\\
+    \end{tikzcd}
   $$
-  Note that $A\sqcup B$ is a coproduct of $A$ and $B$, then there is a set function $f$ such that $f\circ \iota_{A} = f_{F(A)}\circ i_{A}$ and 
+  Note that $A\sqcup B$ is a coproduct of $A$ and $B$, then there is a set function $f$ such that $f\circ \iota_{A} = f_{F(A)}\circ i_{A}$ and
   $f\circ \iota_{B} = f_{F(B)}\circ i_{B}$.
 
   According to the universal property of $F(A\sqcup B)$, there exists some $\varphi$ such that the following diagram commutes:
   $$
-  \begin{tikzcd}
-    A\sqcup B \ar[r, "i_{A\sqcup B}"] \ar[rd, "f"] & F(A\sqcup B) \ar[d, dashed, "\varphi"]\\
-    & G
-  \end{tikzcd}
+    \begin{tikzcd}
+      A\sqcup B \ar[r, "i_{A\sqcup B}"] \ar[rd, "f"] & F(A\sqcup B) \ar[d, dashed, "\varphi"]\\
+      & G
+    \end{tikzcd}
   $$
   We have to prove that $f_{F(A)} = \varphi \circ I_{F(A)}$ and $f_{F(A)} = \varphi \circ I_{F(B)}$ and such $\varphi$ is unique.
   We only prove that $f_{F(A)} = \varphi \circ I_{F(A)}$ due to similarity.
 
-  Note that $I_{F(A)}\circ i_{A} = i_{A\sqcup B}\circ \iota_{A}$, we have:$\varphi \circ I_{F(A)}\circ i_{A} = \varphi \circ i_{A\sqcup B} \circ \iota_{A} = (\varphi\circ i_{A\sqcup B})\circ \iota_{A} 
+  Note that $I_{F(A)}\circ i_{A} = i_{A\sqcup B}\circ \iota_{A}$, we have:$\varphi \circ I_{F(A)}\circ i_{A} = \varphi \circ i_{A\sqcup B} \circ \iota_{A} = (\varphi\circ i_{A\sqcup B})\circ \iota_{A}
     = f\circ \iota_{A} = f_{F(A)} \circ i_{A}
   $ that is $(\varphi \circ I_{F(A)})\circ i_{A} = f_{F(A)}\circ i_{A}$.
 
   In the following diagram:
   $$
-  \begin{tikzcd}[column sep=huge]
-     & \ar[ld, dashed, "\varphi \circ I_{F(A)}"]F(A) \ar[rd, "f_{F(A)}"]& \\
-  G  &  \ar[l, "(\varphi \circ I_{F(A)})\circ i_{A}"]A \ar[u, "i_{A}"] \ar[r, "f_{F(A)}\circ i_{A}"] & G
-  \end{tikzcd}
+    \begin{tikzcd}[column sep=huge]
+      & \ar[ld, dashed, "\varphi \circ I_{F(A)}"]F(A) \ar[rd, "f_{F(A)}"]& \\
+      G  &  \ar[l, "(\varphi \circ I_{F(A)})\circ i_{A}"]A \ar[u, "i_{A}"] \ar[r, "f_{F(A)}\circ i_{A}"] & G
+    \end{tikzcd}
   $$
   According to the universal property of $F(A)$, we must have:$\varphi \circ I_{F(A)} = f_{F(A)}$ due to the uniqueness.
   To prove the uniqueness of $\varphi$, we assume that $\varphi^{'}$ satisfies $\varphi^{'}\circ I_{F(A)} = f_{F(A)}$(same for $B$), we have
-  $\varphi^{'}\circ I_{F(A)}\circ i_{A} = f_{F(A)}\circ i_{A}$. The left side equals to 
+  $\varphi^{'}\circ I_{F(A)}\circ i_{A} = f_{F(A)}\circ i_{A}$. The left side equals to
   $\varphi^{'}\circ(i_{A\sqcup B}\circ \iota_{A})$, thus we have:$(\varphi^{'}\circ i_{A\sqcup B})\circ \iota_{A} = f_{F(A)}\circ i_{A}$. According to the universal property of $A\sqcup B$, we have $f = \varphi^{'}\circ i_{A\sqcup B} \Rightarrow \varphi \circ i_{A\sqcup B} = \varphi^{'}\circ i_{A\sqcup B}$.
   And we are done.
 
 \end{proof}
 
-  \section*{6. Subgroups}
-  \subsection*{6.2}
-  Prove that the set of $2 \times 2$ matrices 
-  $$
+\section*{6. Subgroups}
+\subsection*{6.2}
+Prove that the set of $2 \times 2$ matrices
+$$
   \begin{pmatrix}
-    a & b\\
+    a & b \\
     0 & d
   \end{pmatrix}
-  $$ with $a,b,d$ in $\mathbb{C}$ is a subgroup of $\mbox{GL}_{2}(\mathbb{C})$. 
-  More generally, prove that the set of $n\times n$ complex matrices $(a_{ij})_{1\leq i,j\leq n}$ with $a_{ij} = 0$ for $i > j$, and $a_{11}\cdots a_{nn} \neq 0$,
-  is a subgroup of $\mbox{GL}_n(\mathbb{C})$. (These matrices are called `upper triangular', for evident
-  reasons.)
+$$ with $a,b,d$ in $\mathbb{C}$ is a subgroup of $\mbox{GL}_{2}(\mathbb{C})$.
+More generally, prove that the set of $n\times n$ complex matrices $(a_{ij})_{1\leq i,j\leq n}$ with $a_{ij} = 0$ for $i > j$, and $a_{11}\cdots a_{nn} \neq 0$,
+is a subgroup of $\mbox{GL}_n(\mathbb{C})$. (These matrices are called `upper triangular', for evident
+reasons.)
 
-  \begin{proof}
-    Let $A$ denote the set compries matrix described in this question, then for any $a,b\in A$, we have:
-    $$
+\begin{proof}
+  Let $A$ denote the set compries matrix described in this question, then for any $a,b\in A$, we have:
+  $$
     ab^{-1} = \begin{pmatrix}
-      a_{1} & b_{1}\\
-      0 & d_{1}\\
+      a_{1} & b_{1} \\
+      0     & d_{1} \\
     \end{pmatrix}
     \times
     \frac{1}{ad}
     \begin{pmatrix}
-      d_{2} & -b_{2}\\
-      0 & a_{2}
+      d_{2} & -b_{2} \\
+      0     & a_{2}
     \end{pmatrix}
     =\frac{1}{ad} \begin{pmatrix}
       a_1d_2 & b_1a_2 - a_1b_2 \\
-      0 & d_1a_2
+      0      & d_1a_2
     \end{pmatrix}
-    $$
-    And $(a_1d_2)(d_1a_2) = (a_1d_1)(a_2d_2)\neq 0$. Thus we have $ab^{-1}\in A$ and $A$ is 
-    a subgroup of $\mbox{GL}_{2}(\mathbb{C})$.
+  $$
+  And $(a_1d_2)(d_1a_2) = (a_1d_1)(a_2d_2)\neq 0$. Thus we have $ab^{-1}\in A$ and $A$ is
+  a subgroup of $\mbox{GL}_{2}(\mathbb{C})$.
 
-    For a more general case, we show that the multiplication of two `upper triangular' matrix is still 
-    `upper triangular' and the inverse of an `upper trivial' matrix is still upper trivial.
+  For a more general case, we show that the multiplication of two `upper triangular' matrix is still
+  `upper triangular' and the inverse of an `upper trivial' matrix is still upper trivial.
 
-    If $A$ and $B$ are `upper triangular' matrixes, then for $AB$ we have:
-    $$
+  If $A$ and $B$ are `upper triangular' matrixes, then for $AB$ we have:
+  $$
     (AB)_{ij} = \sum_{k = 1}^{n}a_{ik}b_{kj}
-    $$ 
-    For $i > j$, note that:
-    $$
-      a_{ik}b_{kj} = 
+  $$
+  For $i > j$, note that:
+  $$
+    a_{ik}b_{kj} =
     \begin{cases}
-      0, a_{ik} = 0, i > k  \\
+      0, a_{ik} = 0, i > k \\
       0, b_{kj} = 0, k \geq i > j
     \end{cases}
-    $$
-    Thus, we have $(AB)_{ij} = 0$ for $i > j$. This indicates that $AB$ is still `upper triangular'.
+  $$
+  Thus, we have $(AB)_{ij} = 0$ for $i > j$. This indicates that $AB$ is still `upper triangular'.
 
-    For the second proposition, we induct on $n$: for $n=2$, the case is proved above; Let's assume this proposition is held
-    for $n=k$, and for $n=k+1$, for any `upper triangular' matrix, it could be written as:
-    $$
-    B = 
+  For the second proposition, we induct on $n$: for $n=2$, the case is proved above; Let's assume this proposition is held
+  for $n=k$, and for $n=k+1$, for any `upper triangular' matrix, it could be written as:
+  $$
+    B =
     \begin{pmatrix}
-      a_{11} & B_{1\times k}\\
+      a_{11}                 & B_{1\times k} \\
       \mathbf{0}_{k\times 1} & T_{k\times k}
     \end{pmatrix}
-    $$ where $a_{11}\neq 0$ and $T_{k\times k}$ is an `upper triangular' matrix of order $n$.
-    We have its inverse as:
-    $$
-    B^{-1} = 
+  $$ where $a_{11}\neq 0$ and $T_{k\times k}$ is an `upper triangular' matrix of order $n$.
+  We have its inverse as:
+  $$
+    B^{-1} =
     \begin{pmatrix}
-      a_{11}^{-1} & -a_{11}^{-1}B_{1\times k}T_{k\times k}^{-1} \\
+      a_{11}^{-1}            & -a_{11}^{-1}B_{1\times k}T_{k\times k}^{-1} \\
       \mathbf{0}_{k\times 1} & T_{k\times k}^{-1}
     \end{pmatrix}
-    $$
-    According to the assumption that $T_{k\times k}^{-1}$ is an `upper triangular', we have $B^{-1}$ is also `upper triangular'.
-
-    With above two propositions, for any $a,b\in A_{n}$, we have $ab^{-1}$ is still an `upper triangular' matrix, thus $ab^{-1}\in A_{n}$ and the 
-    proof is done.
-  \end{proof}
-
-  \subsection*{6.3}
-  Prove that every matrix in $\mbox{SU}_2(\mathbb{C})$ may be written in the form
   $$
+  According to the assumption that $T_{k\times k}^{-1}$ is an `upper triangular', we have $B^{-1}$ is also `upper triangular'.
+
+  With above two propositions, for any $a,b\in A_{n}$, we have $ab^{-1}$ is still an `upper triangular' matrix, thus $ab^{-1}\in A_{n}$ and the
+  proof is done.
+\end{proof}
+
+\subsection*{6.3}
+Prove that every matrix in $\mbox{SU}_2(\mathbb{C})$ may be written in the form
+$$
   \begin{pmatrix}
-    a + bi & c + di \\
-    -c + di & a - bi\\
+    a + bi  & c + di \\
+    -c + di & a - bi \\
   \end{pmatrix}
-  $$
+$$
 where $a, b, c, d \in \mathbb{R}$ and $a^2 + b^2 + c^2 + d^2 = 1$. (Thus, $\mbox{SU}_2(\mathbb{C})$ may be realized as
 a three-dimensional sphere embedded in $\mathbb{R}^{4}$; in particular, it is simply connected.)
 
 \begin{proof}
-  Let $M\in \mbox{SU}_{2}(\mathbb{C})$ and 
+  Let $M\in \mbox{SU}_{2}(\mathbb{C})$ and
   $$
-  M = \begin{pmatrix}
-    x & y \\
-    z & w
-  \end{pmatrix}
+    M = \begin{pmatrix}
+      x & y \\
+      z & w
+    \end{pmatrix}
   $$. We have $$
     \begin{pmatrix}
-      x & y\\
+      x & y \\
       z & w
     \end{pmatrix}
     \begin{pmatrix}
-      \overline{x} & \overline{z}\\
+      \overline{x} & \overline{z} \\
       \overline{y} & \overline{w}
     \end{pmatrix} = \begin{pmatrix}
-      1 & 0\\
+      1 & 0 \\
       0 & 1
     \end{pmatrix}
     = \begin{pmatrix}
-      \overline{x} & \overline{z}\\
+      \overline{x} & \overline{z} \\
       \overline{y} & \overline{w}
     \end{pmatrix}
     \begin{pmatrix}
-      x & y\\
+      x & y \\
       z & w
     \end{pmatrix}
   $$
   That means: $$
-  \begin{cases}
-    x\overline{z} + y\overline{w} = 0 \\
-    z\overline{x} + w\overline{y} = 0 \\
-    \overline{x}y + \overline{z}w = 0 \\
-    \overline{y}x + \overline{w}z = 0 \\
-  \end{cases}
+    \begin{cases}
+      x\overline{z} + y\overline{w} = 0 \\
+      z\overline{x} + w\overline{y} = 0 \\
+      \overline{x}y + \overline{z}w = 0 \\
+      \overline{y}x + \overline{w}z = 0 \\
+    \end{cases}
   $$
 \end{proof}
 
@@ -967,7 +967,7 @@ not commutative
 \begin{proof}
   For any $a, b\in G$, we have $a = g^{n}, b = h^{n}$ for some $g,h\in G$, and $b^{-1} = (h^{-1})^{n}$. Thus:
   $$
-  ab^{-1} = g^{n} (h^{-1})^{n} = (gh^{-1})^n
+    ab^{-1} = g^{n} (h^{-1})^{n} = (gh^{-1})^n
   $$
   Note that $gh^{-1}\in G$, thus $ab^{-1}\in \{g^{n}\mid g\in G\}$, which means this group is a subgroup of $G$.
   An counter example of the latter assertion would be the permutation group $S_{4}$ and let $n = 2$.
@@ -975,13 +975,13 @@ not commutative
 
 \subsection*{6.7}
 Show that inner automorphisms (cf. Exercise 4.8) form a subgroup of
-$\mbox{Aut}(G)$; this subgroup is denoted $\mbox{Inn}(G)$. Prove that $\mbox{Inn}(G)$ 
+$\mbox{Aut}(G)$; this subgroup is denoted $\mbox{Inn}(G)$. Prove that $\mbox{Inn}(G)$
 is cyclic if and only if $\mbox{Inn}(G)$ is trivial if and only if $G$ is abelian
 \begin{proof}
-  For $\gamma_{a}, \gamma_{b}\in \mbox{Inn}(G)$, we have $\gamma_{a}\gamma_{b}^{-1} = \gamma_{ab^{-1}}\in \mbox{Inn}(G)$. Thus 
-  it is a subgroup of $\mbox{Aut}(G)$. 
-  
-  $\mbox{Inn}(G)$ is trivial is obviously equavialent to the fact that $G$ is abelian. If $\mbox{Inn}(G)$ is cyclic, then there exists 
+  For $\gamma_{a}, \gamma_{b}\in \mbox{Inn}(G)$, we have $\gamma_{a}\gamma_{b}^{-1} = \gamma_{ab^{-1}}\in \mbox{Inn}(G)$. Thus
+  it is a subgroup of $\mbox{Aut}(G)$.
+
+  $\mbox{Inn}(G)$ is trivial is obviously equavialent to the fact that $G$ is abelian. If $\mbox{Inn}(G)$ is cyclic, then there exists
   some $a\in G$ such that for any $g\in G$, there exists some $n\in \mathbb{N}^{+}$ such that $\gamma_{a^{n}} = \gamma_{g}$, this indicates
   $gag^{-1} = a^{n}aa^{-n} = a$ and thus $ga = ag, \forall g\in G$. Thus we have $\forall \gamma_{g}\in \mbox{Inn}(G)$, $\gamma_{g}=\gamma_{a^{m}}$
   and $\forall x\in G, \gamma_{a^{m}}(x) = x$, thus $\gamma_{g} = \mbox{Id}_{G}$. The proof is done.
@@ -992,21 +992,21 @@ Prove that every finitely generated subgroup of $\mathbb{Q}$ is cyclic. Prove th
 not finitely generated
 
 \begin{proof}
-  Let $H<G$ be a finitely generated subgroup and $H=\langle a_1,a_2,...,a_n\rangle$. We induct on $n$ to 
+  Let $H<G$ be a finitely generated subgroup and $H=\langle a_1,a_2,...,a_n\rangle$. We induct on $n$ to
   prove that $H$ is cyclic: \\
   \noindent
   (1) If $n=1$ then we have $F(\{a_1\})$ to be cyclic, thus $H=\varphi(F(\{a_1\}))$ is also cyclic\\
-  (2) Assume for $n$ this holds, consider $n+1$. Since $H^{'}=\langle a_1,a_2,...,a_n\rangle$ is cyclic, there 
+  (2) Assume for $n$ this holds, consider $n+1$. Since $H^{'}=\langle a_1,a_2,...,a_n\rangle$ is cyclic, there
   exits some $q\in \mathbb{Q}$ such that $H^{'} = \langle q\rangle$, Consider $a_{n+1}$ and $q$, let's say $a_{n+1}$
-  and $q$ both has the form: $q=\cfrac{s}{t}, a_{n+1}=\cfrac{s^{'}}{t}$. Consider $q^{'} = \mbox{gcd}(s, s^{'})$ and we will 
+  and $q$ both has the form: $q=\cfrac{s}{t}, a_{n+1}=\cfrac{s^{'}}{t}$. Consider $q^{'} = \mbox{gcd}(s, s^{'})$ and we will
   have both $q$ and $a_{n+1}$ be multiple $\cfrac{q^{'}}{t}$. Note that $\mbox{gcd}(\cfrac{s}{q^{'}}, \cfrac{s^{'}}{q^{'}}) = 1$.
   We will have $x, y\in \mathbb{N}$ such that $\cfrac{xs}{q^{'}} + \cfrac{ys^{'}}{q^{'}} = 1$, by multiplying $\cfrac{q^{'}}{t}$ at both sides:
   $$
-  \cfrac{q^{'}}{t} = \cfrac{xs}{t} + \cfrac{ys^{'}}{t}
+    \cfrac{q^{'}}{t} = \cfrac{xs}{t} + \cfrac{ys^{'}}{t}
   $$
-  This means: $\cfrac{q^{'}}{t}\in \langle a_1, a_2,..., a_{n+1} \rangle$ and it's obviously that each element can be 
-  expressed as multiple of $\cfrac{q^{'}}{t}$. Thus the proposition is true for the case of $n+1$. 
-  
+  This means: $\cfrac{q^{'}}{t}\in \langle a_1, a_2,..., a_{n+1} \rangle$ and it's obviously that each element can be
+  expressed as multiple of $\cfrac{q^{'}}{t}$. Thus the proposition is true for the case of $n+1$.
+
   In conclusion, we have proved that any finitely generated subgroup of $\mathbb{Q}$ is cyclic.
 
   $\mathbb{Q}$ is not finitely generated as $\mathbb{Q}$ is not cyclic.
@@ -1016,7 +1016,7 @@ not finitely generated
 The set of $2\times2$ matrices with integer entries and determinant 1 is denoted
 $\mbox{SL}_2(\mathbb{Z})$:
 $$
-\mbox{SL}_2(\mathbb{Z}) = \bigg\{
+  \mbox{SL}_2(\mathbb{Z}) = \bigg\{
   \begin{pmatrix}
     a & b \\
     c & d
@@ -1024,52 +1024,206 @@ $$
   \mid
   \;
   \mbox{such that}\;a, b, c, d\in \mathbb{Z},ad-bc=1
-\bigg\}
+  \bigg\}
 $$
 Prove that $\mbox{SL}_{2}(\mathbb{Z})$ is generated by the matrices:
 $$
   s = \begin{pmatrix}
-      0 & -1\\
-      1 & 0
+    0 & -1 \\
+    1 & 0
   \end{pmatrix}
   ,
   \quad
   t = \begin{pmatrix}
-    1 & 1\\
+    1 & 1 \\
     0 & 1
   \end{pmatrix}
 $$
 
 \begin{proof}
-  Using induction, we have 
+  Using induction, we have
   $t^{a} = \begin{pmatrix}
-    1 & a\\
-    0 & 1
-  \end{pmatrix}, a\in \mathbb{N}$ and 
+      1 & a \\
+      0 & 1
+    \end{pmatrix}, a\in \mathbb{N}$ and
   $
-  s^{2} = \begin{pmatrix}
-    -1 & 0\\
-    0 & -1
-  \end{pmatrix},
-  s^{3} = \begin{pmatrix}
-    1 & 0 \\
-    0 & 1
-  \end{pmatrix}
+    s^{2} = \begin{pmatrix}
+      -1 & 0  \\
+      0  & -1
+    \end{pmatrix},
+    s^{3} = \begin{pmatrix}
+      1 & 0 \\
+      0 & 1
+    \end{pmatrix}
   $
 \end{proof}
 
 \subsection*{6.12}
-Let $m, n$ be positive integers, and consider the subgroup $\langle m, n\rangle$ of $\mathbb{Z}$ 
+Let $m, n$ be positive integers, and consider the subgroup $\langle m, n\rangle$ of $\mathbb{Z}$
 they generate. By Proposition 6.9,
 $\langle m, n\rangle = d\mathbb{Z}$
 for some positive integer $d$. What is $d$, in relation to $m, n$?
 
 \begin{proof}
-  Since $\langle m, n\rangle = d\mathbb{Z}$, there exits some $x, y\in \mathbb{N}$ such that 
-  $xm + yn = d$. Thus we have $\mbox{gcd}(m, n) \mid d$. On the contrary, note that $m\in d\mathbb{Z}$ and 
-  $n\in d\mathbb{Z}$, thus we have $d\mid m$ and $d\mid n$, which indicates $d\mid \mbox{gcd}(m, n)$. Thus 
+  Since $\langle m, n\rangle = d\mathbb{Z}$, there exits some $x, y\in \mathbb{N}$ such that
+  $xm + yn = d$. Thus we have $\mbox{gcd}(m, n) \mid d$. On the contrary, note that $m\in d\mathbb{Z}$ and
+  $n\in d\mathbb{Z}$, thus we have $d\mid m$ and $d\mid n$, which indicates $d\mid \mbox{gcd}(m, n)$. Thus
   we have $\mbox{gcd}(m, n) = d\mathbb{Z}$.
 \end{proof}
 
+\subsection*{6.16}
+Counterpoint to Exercise 6.15: the homomorphism $\varphi: \mathbb{Z}/3\mathbb{Z} \rightarrow S_{3}$ given
+by
+$$
+  \varphi([0]) = \begin{pmatrix}
+    1 & 2 & 3 \\
+    1 & 2 & 3
+  \end{pmatrix},\quad
+  \varphi([1]) = \begin{pmatrix}
+    1 & 2 & 3 \\
+    3 & 1 & 2
+  \end{pmatrix},\quad
+  \varphi([2]) = \begin{pmatrix}
+    1 & 2 & 3 \\
+    2 & 3 & 1
+  \end{pmatrix}
+$$
+is a monomorphism; show that it has no left-inverse in \textbf{Grp}
+
+\begin{proof}
+  If there the left-inverse of $\varphi$ exits, denoted as $\varphi^{-1}$,
+  then we must have: $\varphi^{-1}\biggl(\begin{pmatrix}
+        1 & 2 & 3 \\
+        3 & 1 & 2
+      \end{pmatrix}\biggr) = [1]$,
+  $\varphi^{-1}\biggl(\begin{pmatrix}
+        1 & 2 & 3 \\
+        2 & 3 & 1
+      \end{pmatrix}\biggr) = [2]$,
+  Consider $\varphi^{-1}((1\;2)), \varphi^{-1}((1\;3))$, $\varphi^{-1}((2\;3))$.
+  We have $\varphi^{-1}(\mbox{id}) = \varphi^{-1}((1\;2)^{2}) = \varphi^{-1}((1\;2))^{2}$
+  That is: $\varphi^{-1}((1\;2))^{2} = [0]$. Thus we must have $\varphi^{-1}((1\;2)) = [0]$.
+  Similarly we have $\varphi^{-1}((2\;3)) = [0], \varphi^{-1}((1\;3)) = [0]$. However,
+  note that $[2] = \varphi^{-1}\biggl(\begin{pmatrix}
+        1 & 2 & 3 \\
+        2 & 3 & 1
+      \end{pmatrix}\biggr) = \varphi^{-1}((1\;2)(1\;3))$ $=\varphi^{-1}((1\;2)) + \varphi^{-1}((1\;3)) = [0]$.
+  a contradiction. This means $\varphi^{-1}$ does not exits in $\textbf{Grp}$.
+\end{proof}
+
+\section{Quotient groups}
+\subsection*{7.1} List all subgroups of $S_3$ and determine which subgroups are normal and which
+are not normal.\\
+\noindent
+\textit{Solution} \quad All subgroups of $S_{3}$ are as follows:
+\begin{itemize}
+  \item Order of 1: $\{\mbox{id}\}$
+  \item Order of 2: $\{\mbox{id}, (1\;2)\}$, $\{\mbox{id}, (1\;3)\}$, $\{\mbox{id}, (2\;3)\}$
+  \item Order of 3: $\biggl\{\mbox{id}, \begin{pmatrix}
+            1 & 2 & 3 \\
+            2 & 3 & 1
+          \end{pmatrix},
+          \begin{pmatrix}
+            1 & 2 & 3 \\
+            3 & 1 & 2
+          \end{pmatrix}
+          \biggr\}
+        $
+\end{itemize}
+The normal subgroups are $\{\mbox{id}\}$ and $\biggl\{
+  \mbox{id},
+  \begin{pmatrix}
+    1 & 2 & 3\\
+    2 & 3 & 1
+  \end{pmatrix},
+  \begin{pmatrix}
+    1 & 2 & 3\\
+    3 & 1 & 2
+  \end{pmatrix}
+\biggr\}$
+
+\subsection*{7.2}
+Is the $image$ of a group homomorphism necessarily a normal subgroup of the
+target?\\
+
+\noindent
+\textit{Solution}
+  For abelian group, the proposition is true as any subgroup of an abelian group is normal.
+  Generally speaking, the proposition is not true. The counterpoint would be
+  $$
+  \varphi: \mathbb{Z}/2\mathbb{Z} \rightarrow S_{3}
+  $$
+  $$
+  \varphi([0]) = \mbox{id},\quad \varphi([1]) = \begin{pmatrix}
+    1 & 2 & 3\\
+    1 & 3 & 2
+  \end{pmatrix}
+  $$
+  And obviously $\mbox{Im}(\varphi)$ is not a normal subgroup as Exercise7.1 claims
+  the only normal subgroup is the subgroup of order 3.
+
+\subsection*{7.6}
+Let G be a group, and let $n$ be a positive integer. Consider the relation
+$$
+a\sim b \Leftrightarrow (\exists g\in G)ab^{-1} = g^{n}
+$$
+\begin{itemize}
+  \item Show that in general $\sim$ is not an equivalence relation
+  \item Prove that $\sim$ is an equivalence relation if $G$ is commutative, and determine the
+corresponding subgroup of $G$.
+\end{itemize}
+
+\begin{proof}
+  Note this relation naturaly satisfies \textit{symmetricity} and \textit{reflexity}:
+  $\forall g\in G, gg^{-1} = \mbox{id} = \mbox{id}^{n}$ and if $a\sim b$ then $ab^{-1} = g^{n}$ 
+  for some $g$, indicates $ba^{-1} = (ab^{-1})^{-1} = (g^{n})^{-1} = (g^{-1})^{n}\Rightarrow b\sim a$
+
+  To show that $\sim$ is not an equavialent relation in general, we need to consider a counterpoint of \textit{transitivity}.
+
+  If $G$ is commutative, then \textit{transitivity} is true as:
+  If $a\sim b, b\sim c$ then $ab^{-1} = g^{n}$ and $bc^{-1} = h^{n}$, 
+  as a result $ab^{-1}bc^{-1} = ac^{-1} = g^{n}h^{n} = (gh)^{n}$, indicating 
+  $a\sim c$.
+\end{proof}
+
+\subsection*{7.7}
+Let $G$ be a group, $n$ a positive integer, and let $H \subseteq G$ be the subgroup
+generated by all elements of order $n$ in $G$. Prove that $H$ is normal.
+
+\begin{proof}
+  If $h$ is an element of order $n$, then for any $g\in G$, we have $ghg^{-1} = \gamma_{g}(h)$ also has an order 
+  of $n$ as $\gamma_{g}$ is an isomorphism.
+
+  Thus, for any elements of $H$, it can be denoted as $g_1g_2\dots g_n$ where $g_i, i=1,2\ldots n$  is 
+  an element of order $n$. Then $\forall g\in G$ we have:
+  $g(g_1g_2\dots g_n)g^{-1} = (gg_1g^{-1})(gg_2g^{-1})\dots (gg_ng^{-1})\in H$ as 
+  $gg_{i}g^{-1}$ is an element of order $n$. Thus we have proved that $H$ is normal.
+\end{proof}
+
+\subsection*{7.8}
+Prove that 
+If $H$ is any subgroup of a group $G$, the relation $\sim_{L}$ defined by
+$$
+(\forall a, b \in G): a \sim_{L} b \Leftrightarrow a^{-1}b\in H
+$$
+is an equivalence relation satisfying (†)
+
+\begin{proof}
+  We only need to prove $\sim_{L}$ is an equavialent relation and the remaining part is
+  done by the author:
+  \begin{itemize}
+    \item \textit{reflexity}: $\forall g\in G$ we have $g^{-1}g = e\in H\Rightarrow g\sim_{L}g$
+    \item \textit{symmetricity}: If $a\sim_{L}b$ then $a^{-1}b\in H\Rightarrow b^{-1}a = (a^{-1}b)^{-1}\in H\Rightarrow b\sim_{L}a$
+    \item \textit{transitivity}: If $a\sim_{L}b$ and $b\sim_{L}c$ then $a^{-1}b, b^{-1}c\in H\Rightarrow a^{-1}c = (a^{-1}b)(b^{-1}c)\in H\Rightarrow a\sim_{L}c$
+  \end{itemize}
+  In conclusion, $\sim_{L}$ is an equavialent relation. And it satisfies the following property:
+  $$
+  a\sim_{L} b\Rightarrow (\forall g\in G)ga\sim_{L} gb 
+  $$
+  as:
+  $$
+  a\sim_{L}b\Rightarrow a^{-1}b\in H\Rightarrow a^{-1}g^{-1}gb\in H\Rightarrow (ga)^{-1}(gb)\in H\Rightarrow ga\sim_{L} gb
+  $$
+\end{proof}
 \end{document}
 
