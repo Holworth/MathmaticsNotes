@@ -1325,7 +1325,8 @@ in Exercise 7.11. (Use Theorem 7.12.) Conclude that $F/[F, F] \cong F^{ab}(A)$.
 
   According to the universal property of $F(A)$, the following diagram holds:
   $$
-  \begin{tikzcd}[column sep = huge, row sep = huge]
+  \begin{tikzcd}[column sep = huge, row sep = huge,
+    every label/.append style={font=\normalsize}]
     A \ar[rd, "f"] \ar[r, "\iota_{A}"]& F\ar[d, dashed, "\exists !\varphi"] \\
       & G
   \end{tikzcd}
@@ -1334,19 +1335,34 @@ in Exercise 7.11. (Use Theorem 7.12.) Conclude that $F/[F, F] \cong F^{ab}(A)$.
   $\varphi(t) = \varphi(g_1g_2\cdots g_{n}) = e_{G}$, thus $[F, F]\subseteq \ker \varphi$.
   Thus according to theorem 7.12, we have:
   $$
-  \begin{tikzcd}[column sep = huge, row sep = huge]
+  \begin{tikzcd}[column sep = huge, row sep = huge, every label/.append
+style={font=\normalsize}]
     F \ar[r, "\varphi"] \ar[rd, "\pi"] & G\\
       & F/[F, F] \ar[u, dashed, "\exists!\widetilde{\varphi}"]
   \end{tikzcd}
   $$
   Put these two diagram together:
   $$
-  \begin{tikzcd}[column sep = huge, row sep = huge]
+  \begin{tikzcd}[column sep = huge, row sep = huge, every label/.append
+style={font=\normalsize}]
     A \ar[rd, "f"]\ar[r, "\iota_{A}"] & F \ar[r, "\pi"]& F/[F, F]\\
       & G \ar[ur, "\exists!\widetilde{\varphi}"] &
   \end{tikzcd}
   $$
   This indicates that $F/[F, F]\cong F^{ab}(A)$.
+\end{proof}
+
+\subsection*{7.13}
+Let $A, B$ be sets, and $F(A), F(B)$ the corresponding free groups. Assume
+$F(A) \cong F(B)$. If $A$ is finite, prove that so is $B$, and $A \cong B$.
+\begin{proof}
+  $F(A)\cong F(B)\Rightarrow F(A)/[F(A), F(A)]\cong F(B)/[F(B), F(B)]$ and according to 
+  exercise7.12, we have: 
+  $$F^{ab}(A)\cong F(A)/[F(A), F(A)]\cong F(B)/[F(B), F(B)]\cong F^{ab}(B)$$
+
+  \noindent
+  The result of exercise 5.10 indicates that $A\cong B$.
+
 \end{proof}
 \end{document}
 
