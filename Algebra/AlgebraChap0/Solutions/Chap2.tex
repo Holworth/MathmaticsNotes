@@ -1567,7 +1567,12 @@ exactly one element of order 2. Does the same conclusion hold if $G$ is not nece
 commutative?
 
 \begin{proof}
-  
+  By exercise 8.17, $G$ has at least one element of order $2$. If there is two elements $g, h$ of order 2, then 
+  consider $G/\langle g \rangle$. Its order is exactly $n$ according to Lagrange’s theorem, and $h\langle g \rangle$
+  has order of $2$, which contradicts Lagrange’s theorem. Thus there is only one element of order 2.
+
+  If $G$ is not commutative, the conclusion is false. Consider $S_{3}$ consists of 6 elements, there are 3 elements of 
+  order 2.(For general group, is there at least an element of order $p$, if $p\mid \lvert G\rvert$ ?)
 \end{proof}
 
 \end{document}
