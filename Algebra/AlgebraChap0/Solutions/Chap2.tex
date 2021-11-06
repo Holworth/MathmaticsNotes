@@ -1533,5 +1533,42 @@ Euler’s $\varphi$-function, see Exercise 6.14.
 Assume $G$ is a finite abelian group, and let $p$ be a prime divisor of $\lvert G\rvert$.
 Prove that there exists an element in $G$ of order $p$.
 
+\begin{proof}
+  Prove by induction on the order of group. For $\lvert G\lvert = 1,2,3$ the proposition is 
+  obviously true. Assume for $k < n$, the proposition is true. Consider $G$ with order of $n$. 
+
+  Proof by contradiction: if any element $g\in G$ has an order that not equals to $p$. Then pick the element 
+  with minimum order(but greater than 1), say $g$ is this element. Then $\langle g \rangle\trianglelefteq G$ as $G$
+  is abelian. And $G/\langle g\rangle$ is also a finite abelian group. And $p \mid \lvert G/\langle g \rangle \rvert$
+  because $\mbox{ord}(g)$ is relatively prime to $\lvert G \rvert$. 
+
+  By inductive assumption, there is some element of $G/\langle g\rangle$ has order exactly equals to $p$. Say $aH$ is such 
+  element$(H = \langle g \rangle)$. Thus we have $(aH)^{p} = a^{p}H = H$, thus $a^{p} = g^{k}, k\in \mathbb{N}$.
+  Note that $g$ has order not equals to $p$, and it has the minimum order among elements of $G$. We assert that $\mbox{ord}(g)$ is prime. 
+  Otherwise $g^{t}, \mbox{where} t\mid \mbox{ord}(g)$ has order $\mbox{ord}(g) / t$, which is smaller. 
+
+  Let $q = \mbox{ord}(g)$, then $a^{pq} = g^{kq} = 1$. We have $\mbox{ord}(a)\mid pq$. Note that $\mbox{ord}(a)$ is relatively prime to $p$. 
+  This indicates $\mbox{ord}(a)\mid q$. Note that $q$ is minimum order, we must have $\mbox{ord}(a) = q = \mbox{ord}(g)$.
+
+  If $\mbox{ord}(a) < p$, then $(aH)^{\mbox{ord}(a)} = H$, which means $\mbox{ord}(aH) \leq \mbox{ord}(a) < p$. Contradicts the assumption. 
+
+  If $\mbox{ord}(a) \geq p$, we assert $p\mid \mbox{ord}(a)$, otherwise $\mbox{ord}(a) = tp + r, 0 < r < \mbox{p}$. Then 
+  $$
+  a^{r} = a^{\mbox{ord}(a) - tp} = g^{\mbox{ord}(a) - tk} \in H
+  $$, indicates $(aH)^{r} = H$, contradicts the factor that $\mbox{ord}(aH) = p$. However, $p\mid \mbox{ord}(a)$ indicates that 
+  $a^{\mbox{ord}(a)/p}$ has order $p$. contradicts our basic assumption that no elements in $G$ has order $p$.
+
+  In conclusion, there is some element in $G$ of order $p$. The induction process is done.
+\end{proof}
+
+\subsection*{8.18}
+Let $G$ be an abelian group of order $2n$, where $n$ is odd. Prove that $G$ has
+exactly one element of order 2. Does the same conclusion hold if $G$ is not necessarily 
+commutative?
+
+\begin{proof}
+  
+\end{proof}
+
 \end{document}
 
