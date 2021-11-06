@@ -1362,7 +1362,176 @@ $F(A) \cong F(B)$. If $A$ is finite, prove that so is $B$, and $A \cong B$.
 
   \noindent
   The result of exercise 5.10 indicates that $A\cong B$.
-
 \end{proof}
+
+\section*{8.Canonical decomposition and Lagrange’s theorem}
+\subsection*{8.1}
+If a group $H$ may be realized as a subgroup of two groups $G_1$ and $G_2$, and
+$$
+\frac{G_1}{H} \cong \frac{G_2}{H}
+$$
+does it follows that $G_1 \cong G_2$? Give a proof or a counterexample.
+
+\begin{proof}
+  The proposition is not true. The counterexample is $G_1 = \mathbb{Z}_{4}, G_2 = \mathbb{Z}_{2}\times \mathbb{Z}_{2}$
+  and $H = \mathbb{Z}_{2}$. 
+  
+  $\mathbb{Z}_{2}$ is a subgroup of $\mathbb{Z}_{2}\times \mathbb{Z}_{2}$ by viewing $\mathbb{Z}_{2}$
+  as $\mathbb{Z}_{2}\times \{0\}$. $\mathbb{Z}_{2}$ is a subgroup of $\mathbb{Z}_{4}$ by mapping $[0]_{2}\mapsto [0]_{4}$ and $[1]_{2}\mapsto [2]_{4}$.
+  And obviously $$
+  \frac{\mathbb{Z}_{2}\times \mathbb{Z}_{2}}{\mathbb{Z}_{2}} \cong \frac{\mathbb{Z}_{4}}{\mathbb{Z}_{2}}
+  $$
+  But $\mathbb{Z}_{2}\times \mathbb{Z}_{2}\ncong \mathbb{Z}_{4}$
+\end{proof}
+
+\subsection*{8.2}
+Extend Example $8.6$ as follows. Suppose $G$ is a group, and $H \subseteq G$ is a
+subgroup of index 2: that is, such that there are precisely two (say, left) cosets of
+$H$ in $G$. Prove that $H$ is normal in $G$
+
+\begin{proof}
+  Consider sets of left cosets: $\{H, tH\}$. If there is some $h\in H, g\in G$, such that 
+  $ghg^{-1}\notin H$. Then $g\notin H$, and $g \in tH$. Thus $g$ can be written as $g = th^{'}$. 
+  We have $ghg^{-1} = (th^{'})h(th^{'})^{-1} = th^{''}t^{-1}$, here $h^{''} = h^{'}hh^{''}$. The assumption
+  says that $th^{''}t^{-1}\in tH$. Thus $th^{''}t^{-1} = th^{'''}$, This indicates $t = h^{''}(h^{'''})^{-1}\in H$. 
+  A contradiction. In conclusion, $H$ is normal in $G$.
+\end{proof}
+
+\subsection*{8.3}
+Prove that every finite group is finitely presented
+\begin{proof}
+  Consider the following commutative diagram:
+  $$
+  \begin{tikzcd}[row sep = huge, column sep = huge]
+    G \ar[rd, "Id"] \ar[r, "\iota_{G}"]& F(G)\ar[d, dashed, "f"]\\
+      & G
+  \end{tikzcd}
+  $$
+  The induced homomorphim $f$ is an epimorphism as $Id$ is surjective. Thus we 
+  have $F(G)/\ker f\cong G$. $\ker f$ is a subgroup of $F(G)$. And Consider 
+  $\iota_{G}^{-1}(\ker f)$ as a subgroup of $G$($\iota_{G}$ is a group homomorphim by 
+  mapping $G$ to itself in $F(G)$. Thus $\iota_{G}^{-1}(\ker f)$ is a subgroup of $G$).
+
+  Note that $\iota_{G}^{-1}(\ker f)$ is finite in $G$, thus it is finite generated. Thus $G$ is finitely 
+  presented.
+\end{proof}
+
+\subsection*{8.8}
+Prove that $\mbox{SL}_n(\mathbb{R})$ is a normal subgroup of $\mbox{GL}_n(\mathbb{R})$, and ‘compute’ $\mbox{GL}_n(\mathbb{R})/ \mbox{SL}_n(\mathbb{R})$ as a well-known group.
+\begin{proof}
+  For $g\in \mbox{GL}_{n}(\mathbb{R}), s\in \mbox{SL}_{n}(\mathbb{R})$, we have $\det (gsg^{-1}) = \det(g)\det(s)\det(g^{-1}) = det(s) = 1$.
+  Thus $gsg^{-1}\in \mbox{SL}_{n}(\mathbb{R})$. This indicates $\mbox{SL}_{n}(\mathbb{R})$ is a normal subgroup of $\mbox{GL}_{n}(\mathbb{R})$.
+  The quotient group $\mbox{GL}_{n}(\mathbb{R})/\mbox{SL}_{n}(\mathbb{R})$ is $\mathbb{R}^{*}$. 
+  $$
+  (\forall g,h\in \mbox{GL}_{n}(\mathbb{R})): g\sim h\Longleftrightarrow gh^{-1} \in \mbox{SL}_{n}(\mathbb{R})
+  \Longleftrightarrow \det(gh^{-1}) = 1$$
+  $$ 
+  \Longleftrightarrow \det(g) = \det(h)
+  $$
+
+  Thus the coset $m\mbox{SL}_{n}(\mathbb{R})$ consists all elements of determinant $\det(m)$. And it's easy to 
+  see that $\mbox{GL}_n(\mathbb{R})/ \mbox{SL}_n(\mathbb{R})\cong \mathbb{R}^{*}$.
+\end{proof}
+
+\subsection*{8.10}
+View $\mathbb{Z}\times \mathbb{Z}$ as a subgroup of $\mathbb{R}\times \mathbb{R}$. 
+Describe the quotient
+$$
+\frac{\mathbb{R}\times \mathbb{R}}{\mathbb{Z}\times \mathbb{Z}}
+$$
+in terms analogous to those used in Example 8.7.\\
+\noindent
+\textit{Solution}
+$\mathbb{Z}$ is a normal subgroup of $\mathbb{R}$ as they are commutative. Thus we have 
+homomorphim: $\varphi:\mathbb{R}\longrightarrow \mathbb{R}/\mathbb{Z}$. This induce homomorphim 
+$\varphi\times \varphi$
+from $\mathbb{R}\times \mathbb{R}$ to $\mathbb{R}/\mathbb{Z}\times \mathbb{R}/\mathbb{Z}$.
+And obviously this homomorphim is surjective as $\varphi$ is surjective and $\ker \varphi = \mathbb{Z}\times \mathbb{Z}$.
+Thus we have:
+$$
+\frac{\mathbb{R}\times \mathbb{R}}{\mathbb{Z}\times \mathbb{Z}}\cong \frac{\mathbb{R}}{\mathbb{Z}}\times \frac{\mathbb{R}}{\mathbb{Z}}
+$$
+Thus, we know that $\displaystyle \frac{\mathbb{R}\times \mathbb{R}}{\mathbb{Z}\times \mathbb{Z}}\cong \mathbf{S}^{1}\times \mathbf{S}^{1}$. 
+
+\noindent
+We can describe this problem in other way: consider homomorphim 
+$$
+\mathbb{R}\times \mathbb{R}\longrightarrow \mathbf{S}^{2}, (r,s)\mapsto (\cos r, \sin r\cos s, \sin r\sin s);
+$$
+This homomorphism is surjective and its kernel is $\mathbb{Z}\times \mathbb{Z}$. Thus we have 
+$$
+\frac{\mathbb{R}\times \mathbb{R}}{\mathbb{Z}\times \mathbb{Z}}\cong \mathbf{S}^{2}
+$$
+
+\subsection*{8.11}
+(Notation as in Proposition $8.10.$) Prove ‘by hand’ (that is, without invoking universal properties) 
+that $N$ is normal in $G$ if and only if $N/H$ is normal in $G/H$.
+\begin{proof}
+  If $N$ is normal in $G$. Then to prove that $N/H$ is normal in $G/H$, we have to show that 
+  $$
+  (\forall nH\in N/H, gH\in G/H): (gH)(nH)(gH)^{-1}\in N/H
+  $$
+  Note that $(gH)(nH)(gH)^{-1} = (gng^{-1})H\in N/H$ and $gng^{-1}\in N$ as $N\trianglelefteq G$.\\
+  \\
+  Conversely, if $N/H \trianglelefteq G/H$ we have to show that $N\trianglelefteq G$. Prove by contradiction, if some 
+  $n\in N, g\in G$ such that $gng^{-1}\notin N$. Then we have $(gH)(nH)(gH)^{-1} = (gng^{-1})H\notin N/H$. Otherwise, $gng^{-1}\in N$ and this 
+  contradicts our assumption. However, this indicates that $N/H$ is not a normal subgroup of $G/H$. A contradiction. Thus, we proved this propostion
+  by hand.
+\end{proof}
+
+\subsection*{8.12}
+(Notation as in Proposition $8.11.$) Prove ‘by hand’ (that is, by using Proposition 6.2), that $HK$ 
+is a subgroup of $G$ if $H$ is normal.
+\begin{proof}
+  For any $h_1k_1, h_2k_2\in HK$, we have $(h_1k_1)(h_2k_2)^{-1} = h_1k_1k_2^{-1}h_2^{-1}$
+  $=h_1(k_1k_2^{-1}h_2^{-1}k_2k_1^{-1})(k_1k_2^{-1})$. Note that $k_{1}k_{2}^{-1}h_{2}^{-1}k_{2}k_{1}^{-1}\in H$ 
+  as $H$ is normal. Thus the expression is comprised as $h_{1}h(k_1k_2^{-1}) \in HK$. And according to 
+  proposition 6.2, $HK$ is a subgroup of $G$.
+\end{proof}
+
+\subsection*{8.13}
+Let $G$ be a finite commutative group, and assume $\lvert G\rvert$ is odd. Prove that
+every element of $G$ is a square.
+\begin{proof}
+  We would prove that:
+  $$
+  (\forall g\in G): \exists h\in G, g = h^{2}
+  $$
+  For each element $g\in G$, consider $\langle g\rangle$. According to Lagrange’s theorem, 
+  we have $\mbox{ord}(g) \mid \lvert G \rvert$. Thus, $\mbox{ord}(g)$ is odd. We have:
+  $$
+  g = ge_{G} = gg^{k} = g^{k+1} = (g^{\frac{k+1}{2}})^{2}
+  $$ Here $k = \mbox{ord}(g)$.
+\end{proof}
+
+\subsection*{8.14}
+Generalize the result of Exercise $8.13$: if $G$ is a group of order $n$, and $k$ is an
+integer relatively prime to $n$, then the function $G \rightarrow G, g \mapsto g^{k}$ is surjective.
+\begin{proof}
+  Similar to exercise8.13, we have to prove that each element of $g$ can be denoted as the form of $h^{k}$ for some 
+  $h\in G$. 
+  For each $g\in G$, let $s = \mbox{ord}(g)$, then $s\mid n$ and $\mbox{gcd}(s, k) = 1$. 
+  Thus, there exists $x, y\in \mathbb{Z}$ such that $xs + yk = 1$. We have:
+  $$
+  g = g^{xs + yk} = (g^{s})^{x}g^{yk} = (g^{y})^{k}
+  $$
+  The proof is done.
+\end{proof}
+
+\subsection*{8.15}
+Let $a, n$ be positive integers. Prove that $n$ divides $\varphi(a^{n} - 1)$, where $\varphi$ is
+Euler’s $\varphi$-function, see Exercise 6.14.
+
+\begin{proof}
+  Consider the multiplicative group $(\mathbb{Z}_{a^{n} - 1})^{*}$. Note that $[a^{i}]_{a^{n}-1}\in (\mathbb{Z}_{a^{n}-1})^{*}, i = 1,2,\cdots, n$
+  as $a^{i}$ is relatively prime to $a^{n}-1$. Consider $\langle [a]_{a^{n}-1}\rangle$. We have $([a]_{a^{n}-1})^{n} = [a^{n}]_{a^{n}-1} = [1]_{a^{n} - 1}$. Thus
+  $\mbox{ord}([a]_{a^{n}-1}) = n$ and $n\mid \lvert (\mathbb{Z}_{a^{n}-1})^{*} \rvert$, which is a direct translation of this 
+  proposition.
+\end{proof}
+
+\subsection*{8.17}
+Assume $G$ is a finite abelian group, and let $p$ be a prime divisor of $\lvert G\rvert$.
+Prove that there exists an element in $G$ of order $p$.
+
 \end{document}
 
