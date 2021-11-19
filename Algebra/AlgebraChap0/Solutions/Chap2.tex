@@ -1620,8 +1620,33 @@ that there exists a subgroup $H \subseteq G$ of order $d$.
 \subsection*{8.22}
 Let $\varphi: G \rightarrow G^{'}$ be a group homomorphism, and let $N$ be the smallest
 normal subgroup containing im$\varphi$. Prove that 
-$G/N$ satisfies the universal property
+$G^{'}/N$ satisfies the universal property
 of coker$\varphi$ in $\mathbf{Grp}$
+\begin{proof}
+  We have to prove the following commutative diagram is true:
+  $$
+  \begin{tikzcd}
+    G \ar[r, "\varphi"] \ar[rr, "0", bend left] & G^{'} \arrow[r, "\alpha"] \arrow[d, "\pi"] & L \\
+                                           & G^{'}/N \arrow[ru, "\exists !\overline{\alpha}"]               &  
+  \end{tikzcd}
+  $$
+
+  Note that for all $\alpha$ we have $\alpha \circ \varphi = 0$, which means, im$\varphi \subseteq \ker \alpha$.
+  We must prove that any element of $N$ is an element of $\ker \alpha$. Consider the set:
+  $$
+    A = \{g\in N \mid \alpha(g) = 0\}
+  $$
+  It's easy to see that $A$ is a normal subgroup of $G^{'}$. As for any element of $g\in G^{'}, a\in A\subseteq N$, we have 
+  $gag^{-1}\in N$ and $\alpha(gag^{-1}) = \alpha(g)\alpha(a)\alpha(g)^{-1} = 0$. Thus $gag^{-1}\in A$. Note that $A$ is a normal subgroup 
+  contains im$\varphi$, and is contained in $N$. We must have $N = A$. Thus, for any element of $N$, $\alpha$ maps this element to be 0 in $L$.
+
+  In conlusion, we have $N\subseteq \ker \alpha$. According to theorem 7.12, there exists unique homomorphim $\overline{\alpha}$ such that 
+  $\alpha = \overline{\alpha}\circ \pi$. This indicates that $G^{'}/N$ is the \textit{coker} of $\varphi$.
+  \\
+
+  \textbf{NOTE}: It's better to write $0$ in the above proof to be 1 as it might not be abelian group. For the abelian group case, $N$ is exactly im$\varphi$ 
+  because each subgroup of an abelian group is normal due to commutativaty.
+\end{proof}
 
 \section{9.Group Action}
 \subsection*{9.6}
