@@ -24,6 +24,15 @@
 Let $R$ be a ring, and let $S$ be any set. Explain how to endow the set $R^{S}$ of
 set-functions $S \rightarrow R$ of two operations $+, ·$ so as to make $R^{S}$ into a ring, such that
 $R^{S}$ is just a copy of $R$ if $S$ is a sigleton.
+\begin{proof}
+  The construction is straight forward, for any $f, g\in R^{S}$, let:
+  $$
+  f+g: S\rightarrow R, s\mapsto f(s) + g(s)
+  $$
+  $$
+  fg: S\rightarrow R, s\mapsto f(s)g(s)
+  $$
+\end{proof}
 
 \subsection*{1.12}
 Just as complex numbers may be viewed as combinations $a + bi$, where $a, b \in \mathbb{R}$, and $i$ satisﬁes the relation 
@@ -142,4 +151,73 @@ Prove that $R[x]$ is an integral domain if and only if $R$ is an integral domain
   when $\deg f,\deg g\geq 0$. Thus $R[x]$ is an integral domain.
 \end{proof}
 
+\subsection*{1.16}
+Let $R$ be a ring, and consider the ring of power series $R[[x]]$
+\begin{enumerate} [leftmargin=0cm,itemindent=.2cm,labelwidth=\itemindent,labelsep=0.2cm,align=right,label=(\roman*)]
+  \item Prove that a power series $a_0+ a_1x + a_2x^2+ \ldots$ is a unit in $R[[x]]$ if and only if
+  $a_0$ is a unit in R. What is the inverse of $1−x$ in $R[[x]]$?
+  \item Prove that $R[[x]]$ is an integral domain if and only if $R$ is.
+\end{enumerate}
+\begin{proof}
+  The proof is as follows:
+  \begin{enumerate} [leftmargin=0cm,itemindent=.2cm,labelwidth=\itemindent,labelsep=0.2cm,align=right,label=(\roman*)]
+    \item If $a_0+ a_1x + a_2x^2+ \ldots$ has inverse, let the inverse be $b_0 + b_1x + b_2x^2 + \ldots$, then we have 
+    $$
+    \begin{aligned}
+    1 &= (a_0+ a_1x + a_2x^2+ \ldots)(b_0 + b_1x + b_2x^2 + \ldots)\\
+    &= a_0b_0 + (a_0b_1 + a_1b_0)x +(a_0b_2 + a_1b_1 + a_2b_0)x^2+\ldots\\
+    \end{aligned}
+    $$
+    We must have $a_0b_0=1$, similarly we have $b_0a_0=1$. Thus indicates $a_0$ is an unit.\\
+    \noindent
+    On the other hand, if $a_0$ has inverse, we formally write the inverse of $f$ as:
+    $f^{-1} = b_0 + b_1x + b_2x^{2} + \ldots$. Thus $ff^{-1} = 1$ implies the followsing 
+    equations:
+    $$
+    \begin{aligned}
+      &a_0b_0 = 1\\
+      &a_0b_1 + a_1b_0 = 0\\
+      &a_0b_2 + a_1b_1 + a_2b_0 = 0\\
+      &a_0b_3 + a_1b_2 + a_2b_1 + a_3b_0 = 0\\
+      &\ldots
+    \end{aligned}
+    $$
+    $g$ is constructed by solve these equations:
+    $$
+    \begin{aligned}
+      &b_0 = a_0^{-1}\\
+      &b_1 = -a_0^{-1}a_1b_0\\
+      &b_2 = -a_0^{-1}(a_1b_1 + a_2b_0)\\
+      &\ldots\\
+      &b_k = -a_0^{-1}(\sum_{i=1}^{k}a_{i}b_{k-i})
+    \end{aligned}
+    $$
+    This indicates $f$ is an unit.
+
+  \item If $f, g\in R[[x]]$ and $f, g\neq 0$. Then write them in the following form:
+  $$
+  f = x^{p}(a_p + a_{p+1}x + \ldots), g = x^{q}(b_q + b_{q+1}x + \ldots)
+  $$
+  Then $fg = x^{p+q}(a_pb_q + \ldots)\neq 0$. In addition, $R$ is Commutative indicates $R[[x]]$ is also
+  commutative, thus $R[[x]]$ is an integral domain.
+  \end{enumerate}
+\end{proof}
+\section*{2. Category \textbf{Ring}}
+\subsection*{2.3}
+Let $S$ be a set, and consider the power set ring $\mathscr{P}(S)$ (Exercise 1.2), and the ring 
+$(\mathbb{Z}/2\mathbb{Z})^{S}$ you constructed in Exercise 1.3. Prove that these two rings are isomorphic. 
+(Cf. Exercise I.2.11.)
+\begin{proof}
+  First note that $\mathscr{P}(S)$ and $(\mathbb{Z}/2\mathbb{Z})^{S}$ are isomorphic in 
+  \textbf{Set}. For each $f\in (\mathbb{Z}/2\mathbb{Z})$, maps $f$ to $\varphi(f)$ by the 
+  following subset of $S$:
+  $$
+  \varphi(f) = \{s\in S\mid f(s) = [1]_{2}\}
+  $$
+  Then it's easy to show that $\varphi$ is both bijective and a ring homomorphim, therefore a ring isomorphism.
+\end{proof}
+
+\subsection*{2.9}
+The center of a ring $R$ consists of the elements a such that $ar = ra$ for all $r \in R$. Prove that the center 
+is a subring of R. Prove that the center of a division ring is a ﬁeld.
 \end{document}
