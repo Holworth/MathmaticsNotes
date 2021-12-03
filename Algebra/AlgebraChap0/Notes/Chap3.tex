@@ -1,0 +1,364 @@
+\documentclass[a4paper, pdf, 11.5pt]{article}
+\usepackage{amsthm} %lets us use \begin{proof}
+\usepackage{amsmath}
+\usepackage{amssymb} %gives us the character \varnothing
+\usepackage[dvipsnames]{xcolor}
+\usepackage{enumitem}
+\usepackage{pst-node}
+\usepackage{auto-pst-pdf}
+\usepackage{tikz-cd} 
+\usepackage{tikz}
+\usepackage{mathrsfs}
+\usepackage{extarrows}
+\usepackage{amsmath, amsthm, amssymb, calrsfs, wasysym, verbatim, bbm, color, graphics, geometry}
+
+\geometry{tmargin=.75in, bmargin=.75in, lmargin=.75in, rmargin = .75in}  
+
+\newcommand{\catname}[1]{{\normalfont\textbf{#1}}}
+\newcommand{\divides}{\mid}
+\newcommand{\notdivides}{\nmid}
+\newtheorem{definition}{Definition}
+\newtheorem{prop}{Proposition}
+\newtheorem{theorem}{Theorem}
+
+\newlist{notes}{enumerate}{1}
+\setlist[notes]{label=Note: ,leftmargin=*}
+\setlist[itemize]{leftmargin=*}
+\date{}
+
+\title{Chapter3 Rings and Modules}
+\begin{document}
+\maketitle
+\tableofcontents
+\section{Definiton of ring}
+\subsection{Basic Motivation:$\mbox{End}(G)$}
+The basic motivation of introduction of ring is the $\mbox{Hom}_{\mathbf{Ab}}(G, G)$(or simply $\mbox{End}(G)$), that is, the set of all endmorphism over an abelian group $G$. We can define the so called addition over this set as follows:
+$$
+(\forall f,g\in \mbox{End}(G): (f+g)(a) = f(a) + g(a)
+$$
+It's easy to show that $\mbox{End}(G)$ forms an abelian group  if $G$ is abelian. One thing to rememebr is that not any general group $G$ satisfies $\mbox{End}(G)$ is an abelian group. The key point is that the above-defined $f+g$ might not be a group homomorphism if $G$ is not abelian:
+$$
+\begin{aligned}
+(\forall f,g\in \mbox{End}(G), a,b\in G):\\(f+g)(a+b) &= f(a+b) + g(a+b)\\
+&= f(a) + f(b) + g(a) + g(b)\\
+&\xlongequal{G\;is\;abelian} f(a) + g(a) + f(b) + g(b)\\
+&= (f+g)(a) + (f+g)(b)
+\end{aligned} 
+$$
+
+In conclusion, $\mbox{End}(G)$ forms an abelian group under homomorphism addition. However, there is another type of operation: **Composition of homomorphisms**
+$$
+(f,g\in \mbox{End}(G)): (f\circ g)(a) = f(g(a))
+$$
+
+Thus, there are two kinds of different operations within set $\mbox{End}(G)$. That's the basic motivation of a new algebra structure, called \textbf{ring}.
+
+\subsection{Definition of ring}
+A ring $(R, +, ·)$ is an \textbf{abelian group} $(R, +)$ endowed with a second binary operation$·$(often omit this dot notion), satisfying of its own the requirements of being associative and having a two-sided identity:
+\begin{itemize}
+  \item \textbf{Associativity}: $(\forall r,s,t\in R):\quad (rs)t=r(st)$
+  \item \textbf{Existence of Identity}: $(\exists 1_{R}\in R)(\forall r\in R):\quad 1_{R}r=r1_{R} = r$
+\end{itemize}
+
+Also, there are laws combining two different operations, called \textbf{distributive law}:
+\begin{itemize}
+  \item  $(\forall r,s,t\in R):\quad r(s+t) = rs+rt, (r+s)t = rt+st$
+\end{itemize}
+The operation $+$ and $\cdot$ are called addition and multiplication resepctively. 
+
+Here are one point to note :  Within this book, a ring is always to be considered have \textbf{multiplication identity}. Some other definition may not require a ring to have an identity. \\
+\\
+\noindent
+\textbf{Examples}
+\begin{itemize}
+  \item  \textbf{Trivial ring}.  There is only one element $\{0\}$, which is the addition identity.
+  \item  \textbf{Integer ring}.  $(\mathbb{Z}, +, \times)$ forms a ring, where addition and multiplication are naturally integer addition and multiplication.
+  \item \textbf{Modular ring}.  The addition group $\mathbb{Z}/n\mathbb{Z}$ forms a ring. The addition and multiplication is modular addition and multiplication. 
+  \item  \textbf{Matrix ring}.  All square matrix of order $n$ forms a ring, the addition and multiplication are matrix addition and multiplication.
+\end{itemize}
+
+\subsection{Rings with special properties}
+\subsubsection{Commutative ring}
+\begin{definition}(Commutative Ring)
+  A ring $R$ is commutative, if  multiplication is commutative, that is 
+$$(\forall r,s\in R):\quad rs = sr$$
+$R$ is called commutative ring under in such case.
+\end{definition}
+
+In our examples, $\mathbb{Z}, \mathbb{Z}/n\mathbb{Z}$ are commutative rings. But matrix ring is not. 
+
+\subsubsection{Zero divisors and Integral domain}
+\begin{definition}(zero-devisor)
+  Let $R$ be a ring, and an element $r\in R$ is a left(resp.right) zero-divisor, if 
+  $$(\exists s\in R, s\neq0):\quad rs = 0(sr=0)$$
+\end{definition}
+The following proposition depicts the property of a zero-divisor:
+\begin{prop}
+Let $R$ be a ring and $r\in R$ is an element. The following statements are equavialent:
+\begin{itemize}
+  \item  $r$ is \textbf{not} a left zero divisor.
+  \item Function: $f:R\longrightarrow R, a\mapsto ra$ is injective.
+\end{itemize}
+\end{prop}
+\vspace{0.5cm}
+It is easy to prove the proposition and the right zero divisor case. By the definiton of $R$, we give the following definiton of integral domain:
+
+\begin{definition}
+ A ring $R$ is called an integral domain, if it is \textbf{commutative} and has no zero-divisors, i.e. 
+$$
+(\forall a,b\in R)\quad ab=0\Longrightarrow a=0\;\mbox{or}\;b=0
+$$
+\end{definition}
+\vspace{0.5cm}
+According to the definiton of integral domain and the property of zero-divisors We have the cancellation law holds:
+\\
+\noindent
+\textbf{(Cancellation)} If $R$ is an integral domain, then:
+$$
+(\forall a,b,c\in R, a\neq 0):\quad
+ab=ac\Longrightarrow b =c
+$$
+That is, in integral domain we can simply cut off the same component in a multiplication expression, which is the same as we do in group.\\
+\noindent
+\textbf{Examples}
+$\mathbb{Z}$ is an integral domain. However, both $Z/n\mathbb{Z}$ and matrix ring are not integral domain in general case. 
+For example, in matrix ring of order 2, we have:
+$$
+\begin{pmatrix}
+1 & 0\\
+0 & 0
+\end{pmatrix}
+\begin{pmatrix}
+0 & 0\\
+0 & 1
+\end{pmatrix}
+= \begin{pmatrix}
+0 & 0\\
+0 & 0
+\end{pmatrix}
+$$
+In $\mathbb{Z}/6\mathbb{Z}$, we have $[2]_{6}\times[3]_{6}=[0]_{6}$. Thus $\mathbb{Z}/6\mathbb{Z}$ is not an integral domain.
+However, there is a class of $n$ that makes $\mathbb{Z}/n\mathbb{Z}$ integral domain, in particular, they are actually field. 
+
+\subsubsection{Unit and division ring}
+
+\begin{definition}
+Let $R$ be a ring and an element $r\in R$. $r$ is called a left(resp. right) unit if 
+$$\exists v\in R, uv=1(\mbox{resp.}\;vu=1)$$ $r$ is an unit if it is both left and right side unit.
+\end{definition}
+\vspace{0.5cm}
+
+Similar to zero divisor, we given a depiction of unit as the following proposition:
+
+\begin{prop}
+Let $R$ be a ring and $r\in R$. 
+\begin{itemize}
+  \item  $r\;\mbox{is a left unit}\Longleftrightarrow f:R\longrightarrow R,a\mapsto ra\;\mbox{is surjective}$
+  \item  $r\;\mbox{is a left unit}\Longrightarrow r\;\mbox{is not a right zero-divisor}$
+  \item $\mbox{The inverse of two-sided unit is unique}$
+  \item  $\mbox{The set of all two-sided unit forms a group}$.
+\end{itemize}
+\end{prop}
+\vspace{0.5cm}
+\begin{proof}
+The proof of above propositions are easy. For the third proposition we could actually prove that if $r$ is a two sided unit, then the left-inverse and right inverse equals. 
+$$
+u = u1 = u(rv) = (ur)v = 1v = v
+$$
+That's why we can use the word $\textit{inverse}$ to denote both left and right inverse.
+\end{proof}
+\vspace{0.3cm}
+
+\begin{definition}(division ring and field)
+A division ring is a ring in which every non-zero element is an unit. A field is a non-zero commutative division ring.
+\end{definition}
+\vspace{0.5cm}
+\noindent
+It's obviously that both $\mathbb{Q}, \mathbb{R}$ are fields. The following theorem implies a class of special modular group:
+\begin{theorem}
+$\mathbb{Z}/n\mathbb{Z}$ is field if and only  if $n$ is a prime.
+\end{theorem}
+\noindent
+$\textit{Hint}.$ We only need to show that $[a]_{n}$ is unit if and only if $\mbox{gcd}(a, n) = 1$. 
+\vspace{0.5cm}
+
+\begin{theorem}
+ $R$ is a finite commutative ring, then $R$ is field if and ony if $R$ is integral domain.
+\end{theorem}
+\noindent
+$\textit{Hint}.$ Field is naturally an integral domain. If $R$ is an integral domain, prove that each $r\in R$ is unit by considering the left multiplication function. It must map some element to 1 since $R$ is finite and this map is injective.
+More specificly, one injective map from a finite set to iteself must be surjective
+\vspace{0.5cm}
+
+\subsection{Other examples of rings}
+\subsubsection{Polynomial rings}
+Let $R$ be a ring and define a polynomial $f(x)$ over $R$ as the following form:
+$$
+f(x) = \sum_{i\geq 0}a_ix^{i} = a_0+ a_1x+a_2x^{2}+\cdots
+$$
+Note that each $f(x)$ only has finitely many summation. The set of all $f(x)$ is a ring, called Polynomial ring over $R$, denoted as $R[x]$. 
+
+\begin{definition}(Degree of polynomial)
+Let $f(x)\in R[x]$, the degree of $f(x)$, denoted as $\mbox{deg}f$, is the maximum $n$ such that $a_{n}\neq 0$.  Typically we define $\mbox{deg}r = 0, r\in R$ and $\mbox{deg}0 = -\infty$.
+\end{definition}
+
+When $R$ is an integral domain, $R[x]$ is also an integral domain. And the following equation holds:
+$$
+\mbox{deg}(fg) = \mbox{deg}f + \mbox{deg}g
+$$
+
+\subsubsection{Monoid rings}
+Monoid rings is a ring constructed from a monoid and a ring. Here is the definition:
+\begin{definition}(Monoid rings)
+Let $R$ be a ring and $M$ a monoid, then consider all the following linear combinations:
+$$
+\sum_{m\in M}a_{m}\cdot m, a_{m}\in R
+$$
+Where only finitely many $a_{m}\neq 0$. The addition and multiplication are defined as follows:
+$$
+\begin{aligned}
+\sum_{m\in M}a_{m}\cdot m+\sum_{m\in M}b_{m}\cdot m &= \sum_{m\in M}(a_m+b_m)\cdot m\\
+(\sum_{m\in M}a_{m}\cdot m)(\sum_{m\in M}b_{m}\cdot m) &=\sum_{m\in M}(\sum_{m_1m_2=m}a_{m_1}b_{m_2})m
+\end{aligned}
+$$
+\end{definition}
+\vspace{0.3cm}
+Under this definition, it's easy to show that all combination forms a ring. It is called Monoid rings, 
+denoted as $R[M]$. Actually, the polynomial ring is a special case of general monoid ring, where we take 
+$M=\{1, x, x^{2}, x^{3}, \dots \}$. 
+
+\section{Category Ring}
+\subsection{Ring homomorphism}
+A ring homomorphism is a function between two rings that maintains two operations: $\cdot$ and $+$, that is:
+\begin{definition}
+Let $R, S$ be rings, a function $f: R\rightarrow S$ is a ring homomorphism, if:
+\begin{itemize}
+  \item  $(\forall a, b\in R):\quad f(a+b) = f(a) + f(b)$
+  \item  $(\forall a,b\in R): \quad f(ab) = f(a)f(b)$
+  \item  $f(1_{R}) = 1_{S}$
+\end{itemize}
+\end{definition}
+\vspace{0,3cm}
+
+Since $f$ is a function maintains $+$, it is basically a group homomorphism of the underlying abelian group. Thus, it naturally has: $f(0_{R})=0_{S}$. However, the second axiom does not induce the third one. That is: a function maintains both $\cdot$ and $+$ might be send identity to identity. 
+For example:
+$$
+f: \mathbb{Z}\rightarrow \mathbb{Z}, a\mapsto 0
+$$
+is a function maintaining both addition and multiplication. But it is not a ring homomorphism since it does not meet the 
+third requirements.
+\begin{prop}
+Let $R, S$ be non-zero rings, $f:R\rightarrow S$ is a ring homomorphim, the following statement is true:
+\begin{itemize}
+  \item  If $r\in R$ is an unit, then $f(r)$ is an unit in $S$, $f(r)^{-1} = f(r^{-1})$
+  \item If $r\in R$ is a zero-divisor, then $f(r)$ might not be a zero-divisor as $f(r)$ might be zero. 
+  \item The composition of ring homomorphism is still a ring homorphism.
+\end{itemize}
+\end{prop}
+\vspace{0.3cm}
+
+\subsection{Category $\textbf{Ring}$}
+The category "Ring" consists all rings, and the morphism set between two objects is the ring homomorphisms. 
+
+There are some interesting results in $\textbf{Ring}$: 
+ $\{0\}$ is a final object in $\textbf{Ring}$ but not a initial object. The reason is that the identity in $\{0\}$ is exactly its zero, which means $\{0\}$ only has a ring homomorphism to itself.
+ $(\mathbb{Z}, \cdot, +)$ is an initial object in $\textbf{Ring}$: any homomorphism $f: \mathbb{Z} \rightarrow R$ is uniquely determined by $f(1)$, i.e $f(n) = nf(1)=n1_{R}$.
+
+The following proposition describes the universal property of polynomial ring on $\mathbb{Z}$: 
+
+
+\begin{theorem}
+Let $A$ be a finite set: $A=\{a_1, a_2,\ldots, a_{k}\}$. Consider a new category $\mathscr{R}_{A}$: The object of $\mathscr{R}_{A}$ is $(j, R)$, where $R$ is a ring, and $j$ is 
+a set-function from $A$ to $R$.
+$$
+j:A\rightarrow R
+$$ 
+The morphism from object $(j_{1}, R_{1})$ to $(j_{2}, R_{2})$ is the following diagram:
+$$
+\begin{tikzcd}
+  R_1 \arrow[r, "\varphi"]              & R_2 \\
+  A \arrow[u, "j_1"] \arrow[ru, "j_2"'] &    
+\end{tikzcd}
+$$
+Then $(\mathbb{Z}[x_1,x_2,\ldots,x_{k}], \iota)$ is an initial object in $\mathscr{R}_{A}$, where $\iota(a_{i}) = x_{i}, i=1,2,\ldots, k$.
+\end{theorem}
+\vspace{0.2cm}
+\begin{proof}
+The proof this this theorem is pretty straight forward. We need to show for each $(j, R)$ in $\mathscr{R}_{A}$, the following diagram is true:
+To prove this, one ituitive way is to map each polynomial to its coresponding "value": $x_{i}$ is replaced as $j(a_{i})$, and the whole polynomial forms a linear summation of multiplication consists of $j(a_{i})$. The uniqueness is determined by the property of homomorphism.
+
+For each object $(R, j)$, we need to show the following diagram holds:
+$$
+\begin{tikzcd}[row sep=huge]
+  {\mathbb{Z}[x_1,x_2,\ldots,x_k]} \arrow[rr, "\exists!\varphi"] &  & R \\
+  A \arrow[rru, "j"'] \arrow[u, "\iota"]                         &  &  
+  \end{tikzcd}
+$$
+For a fixed object $(R, j)$, define $\varphi$ as follows:
+$$
+\begin{aligned}
+\varphi(\sum_{i}a_{i}x_1^{i_1}x_2^{i_2}\cdots x_{k}^{i_k}) &= \sum_{i}\varphi(a_{i})\varphi(x_1)^{i_1}\varphi(x_2)^{i_2}\cdots\varphi(x_k)^{i_k}\\
+&= \sum_{i} (a_i1_{R})\varphi(\iota(a_1))^{i_1}\varphi(\iota(a_2))^{i_2}\cdots\varphi(\iota(a_k))^{i_k}\\
+&= \sum_{i} (a_i1_{R})(j(a_1))^{i_1}(j(a_2))^{i_2}\cdots(j(a_k))^{i_k}
+\end{aligned}
+$$
+In the above construction, we do not only present a ring homomorphim that maps from 
+$\mathbb{Z}[x_1,x_2,\ldots, x_k]$ to $R$, but also shows the uniqueness by using the fact 
+that $R$ must maintains both addition and multiplication. Thus $\varphi$ is unique. The key to 
+the proof is that the fact that $\mathbb{Z}$ is initial in \textbf{Ring}.
+\end{proof}
+
+\subsection{Monomorphism and Epimorphism}
+\subsubsection{Monomorphism}
+\begin{definition}(Kernel of ring homomorphim)
+Let $R, S$ be rings and $f$ a ring homomorphism from $R$ to $S$, define kernel of this homomorphism as:
+$$
+\ker f=\{r\in R\mid f(r) = 0_{S}\}
+$$
+\end{definition}
+\vspace{0.3cm}
+\begin{theorem}(Equavalence of ring monomorphism)
+Let $f$ be a ring homomorphism from $R$ to $S$, the following statements are equavalent: 
+\begin{enumerate}
+  \item  $f$ is monomorphism 
+  \item  $\ker f=\{0_{R}\}$
+  \item  $f$ is injective as set-function
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+  $(1)\Rightarrow(2)$ Consider the following diagram:
+  $$
+  $$
+  
+\end{proof}
+\subsubsection{Epimorphism}
+\vspace{0.3cm}
+\begin{definition}
+A ring homomorphism $f:R\rightarrow S$ is a ring homomorphism, if and only if for any ring $T$ and ring homomorphism $S\rightarrow T, \varphi_1, \varphi_2$:
+$$
+f\circ \varphi_1 = f\circ \varphi_2\Longrightarrow \varphi_1 = \varphi_2 
+$$
+That is, the following commutative diagram
+$$
+\begin{tikzcd}[column sep=huge]
+  R \arrow[r, "f"] & S \arrow[r, "\varphi_1", shift left] \arrow[r, "\varphi_2"', shift right] & T
+\end{tikzcd}
+$$
+indicates $\varphi_1 = \varphi_2$. 
+\end{definition}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
