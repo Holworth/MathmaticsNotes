@@ -12,6 +12,29 @@
 \newcommand{\catname}[1]{{\normalfont\textbf{#1}}}
 \newcommand{\divides}{\mid}
 \newcommand{\notdivides}{\nmid}
+\makeatletter
+\renewenvironment{proof}[1][\proofname]{\par
+  \pushQED{\qed}%
+  \normalfont \topsep6\p@\@plus6\p@\relax
+  \trivlist
+  \item[%
+    \hskip\labelsep
+    \normalfont\bfseries % was \itshape
+    #1%
+    \@addpunct{.}% remove this if you don't want punctuation
+  ]\ignorespaces
+}{%
+  \popQED\endtrivlist\@endpefalse
+}
+\let\qed\relax % avoid a warning
+\DeclareRobustCommand{\qed}{%
+  \ifmmode \mathqed
+  \else
+    \leavevmode\unskip\penalty\@M\hbox{}\nobreak\hspace{.5em minus .1em}% was \hfill
+    \hbox{\qedsymbol}%
+  \fi
+}
+\makeatother
 
 \newlist{notes}{enumerate}{1}
 \setlist[notes]{label=Note: ,leftmargin=*}
@@ -217,7 +240,178 @@ $(\mathbb{Z}/2\mathbb{Z})^{S}$ you constructed in Exercise 1.3. Prove that these
   Then it's easy to show that $\varphi$ is both bijective and a ring homomorphim, therefore a ring isomorphism.
 \end{proof}
 
+\subsection*{2.6}
+Let $\alpha: R \rightarrow S$ be a ﬁxed ring homomorphism, and let 
+$s \in S$ be an element commuting with $\alpha(r)$ for all $r \in R$. Then there is a unique ring 
+homomorphism $\overline{\alpha}: R[x] \rightarrow S$ extending $\alpha$, and sending $x$ to $s$
+\begin{proof}
+  Define $\overline{\alpha}$ as follows:
+  $$
+  \overline{\alpha}(\sum_{i\geq 0} a_ix^{i}) = \sum_{i\geq 0}\alpha(a_i)s^{i}
+  $$
+  To prove this is a ring homomorphism, we need to show that $\overline{\alpha}$ maintains both addition and
+  multiplication(and send identity to identity, which is obvious). Addition is easy to verify, for multiplication, 
+  it is worthy noted $s$ conmmutes with $\alpha(r), r\in R$ makes it maintains multiplication:
+  $$
+  \overline{\alpha}((\sum_{i\geq 0}a_i x^i)(\sum_{i\geq 0}b_i x^{i}))=\overline{\alpha}(\sum_{i\geq 0}(\sum_{k+l=i}a_kb_l)x^{i})=\sum_{i\geq 0}\alpha(\sum_{k+l=i}a_kb_l)s^{i}
+  $$
+  $$
+  \begin{aligned}
+  \overline{\alpha}(\sum_{i\geq 0}a_ix^{i})\overline{\alpha}(\sum_{i\geq 0}b_ix^{i})&=(\sum_{i\geq 0}\alpha(a_i)s^{i})(\sum_{i\geq 0}\alpha(b_i)s^{i})\\
+  &=\sum_{i\geq 0}(\sum_{k+l=i}\alpha(a_k)s^{k}\alpha(b_l)s^{l})\\
+  &\stackrel{!}{=}\sum_{i\geq 0}(\sum_{k+l=i}\alpha(a_k)\alpha(b_l)s^{i})\\
+  &=\sum_{i\geq 0}(\alpha(\sum_{k+l=i}a_kb_l)s^{i})\\
+  &=\overline{\alpha}((\sum_{i\geq 0}a_ix^{i})(\sum_{i\geq 0}b_ix^{i}))
+  \end{aligned}
+  $$
+  Note that $!$ is true because $s$ commutates with all $\alpha(a_k)$ and $\alpha(b_l)$.
+  The uniqueness of $\overline{\alpha}$ comes from the fact that $\overline{\alpha}$ is homomorphism, and $\overline{\alpha}(r) = \alpha(r), \overline{\alpha}(x)=s$.
+\end{proof}
+\noindent
+\textbf{NOTE} Example 2.2 asks for particular situation, where a ring homomorphism $\varphi: \mathbb{Z}[x]\rightarrow S$ extends the unique homomorphism 
+$f:\mathbb{Z}\rightarrow S, n\mapsto n1_{S}$ and sends $x$ to any element of $S$ doesn't 
+necessarily consider the commutativity of $S$. The answer is clean here, any element $s\in S$ must commutes with the image 
+of $f$ since $s(n1_{S}) = ns = (n1_{S})s$
+
 \subsection*{2.9}
 The center of a ring $R$ consists of the elements a such that $ar = ra$ for all $r \in R$. Prove that the center 
 is a subring of R. Prove that the center of a division ring is a ﬁeld.
+\begin{proof}
+  Denote the center of $R$ as $Z(R)$, then for any $s, t\in Z(R), r\in R$, we have $r(s-t) = rs - rt = sr - tr = (s-t)r$, which indicates 
+  that $s-t\in Z(R)$. Thus, $Z(R)$ is an addition subgroup of $R$. \\
+
+  Moreover, $\forall s,t\in Z(R), r\in R$, we have $(st)r = s(tr) = s(rt)=(sr)t=  (rs)t=r(st)$. Thus $rs\in Z(R)$, indicating $Z(R)$ is closed 
+  under multiplication. The associativity and distributive law natively holds in $Z(R)$. And $1_{R}\in Z(R)$ obviousl. In conclusion, $Z(R)$
+  is a subring of $R$.
+
+  If $R$ is a division ring, for any $s\in Z(R)$, we must prove that $s^{-1}\in Z(R)$. Actually, 
+  for any $s\in Z(R), r\in R, sr=rs\Rightarrow rs^{-1} = s^{-1}r$. Thus $s^{-1}\in Z(R)$. And $Z(R)$ 
+  is obviously commutative, and therefore a field.
+\end{proof}
+\subsection*{2.10}
+The \textit{centralizer} of an element a of a ring $R$ consists of the elements $r \in R$ such that 
+$ar = ra$. Prove that the centralizer of $a$ is a subring of $R$, for every $a \in R$.
+Prove that the center of $R$ is the intersection of all its centralizers.
+Prove that every centralizer in a division ring is a division ring.
+\begin{proof}
+  To prove the centralizer of $a\in R$ is a subring of $R$ basically follows the same way as exercise 2.9 does. \\
+
+  For the second part, if $s\in Z(R)$, then $r$ commutes with any element $r\in R$, thus $s\in \mbox{Cen}_{R}(r),r\in R$.
+  and $s\in \bigcap_{r\in R}\mbox{Cen}_{R}(r)$, indicating $Z(R)\subseteq \bigcap_{r\in R}\mbox{Cen}_{R}(r)$. On the other 
+  hand, any element of $\bigcap_{r\in R}\mbox{Cen}_{R}(r)$ must commute with any element of $R$, thus belongs to 
+  $Z(R)$. In conclusion, $Z(R)=\bigcap_{r\in R}\mbox{Cen}_{R}(r)$.\\
+
+  For the third part, it suffices to show that if $r$ commutes with $a$ then so does $r^{-1}$. It is done in exercise 2.9 already.
+\end{proof}
+
+\subsection*{2.11}
+Let $R$ be a division ring consisting of $p^{2}$ elements, where $p$ is a prime. 
+Prove that $R$ is commutative.
+\begin{proof}
+  Assume that $R$ is not commutative, consider the center of $R$, denoted as $Z(R)$. Then $Z(R)\neq R$. Note that 
+  $Z(R)$ is an addition subgroup of $R$, Then it must have $\lvert Z(R)\rvert = p$ since $\lvert Z(R)\rvert$ divides 
+  $\lvert R\rvert$, which is $p^2$.\\
+
+  Consider one element $r\in R, r\notin Z(R)$, and its centralizer, denoted as $\mbox{Cen}_{R}(r)$, then since $r\notin Z(R)$,
+  it means $\mbox{Cen}_{R}(r)\neq R$. And exercise 2.10 indicates $\mbox{Cen}_{R}(r)$ is a subring of $R$, thus $\lvert \mbox{Cen}_{R}(r)\rvert=p$.\\
+
+  Exercise 2.10 also shows that $Z(R)\subseteq \mbox{Cen}_{R}(r)$, their cardinality equals to each other means $Z(R)=\mbox{Cen}_{R}(r)$. However, it's obvious
+  that $r\in \mbox{Cen}_{R}(r)$ but $r\notin Z(R)$, a contradiction.\\
+
+  In conclusion, we must have $Z(R)=R$ and $R$ is therefore commutative, further more, it's a field.
+\end{proof}
+\noindent
+\textbf{NOTE}\quad In fact, any finite division ring is commutative, thus a field. But the proof used here seems hard to extend to more complex condition, i.e. the case 
+of arbitary integer. Actually, it's even hard to extend this method to $p^{n}, n\geq 3$ case: $\lvert Z(R)\rvert$ might be 
+$p^{3}$ and $\mbox{Cen}_{R}(r)$ might be $p^{2}$ and no contradictions so far.
+
+\subsection*{2.12}
+Consider the inclusion map $\iota: \mathbb{Z} \rightarrow \mathbb{Q}$ . Describe the cokernel of $\iota$ in $\mathbf{Ab}$, 
+and its cokernel in $\mathbf{Ring}$ (as deﬁned by the appropriate universal property in the style of the one given in § II.8.6)
+\begin{proof}
+  Before we describe the cokernel requested above, we will review what these concepts(and kernel) means in category 
+  conception:\\
+  \textbf{Kernel} Let $G, H$ be group and $f: G\rightarrow H$ is a group homomorphism. Then Consider the following 
+  category: $\mathscr{K}_{\varphi}$: The object of $\mathscr{K}_{\varphi}$ is one group $S$ associated one morphism $j$, such that 
+  the following diagram holds:
+  $$
+  \begin{tikzcd}[column sep=huge]
+  S \arrow[r, "j"'] \arrow[rr, "0", bend left] & G \arrow[r, "f"'] & H
+  \end{tikzcd}
+  $$
+  And the morphism between $(j_1, S_1)$ and $(j_2, S_2)$ is the following diagram:
+  $$
+  % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZARgBoAGAXVJADcBDAGwFcYkQBxEAX1PU1z5CKAEwVqdJq3YAJHnxAZseAkXLiaDFm0QgAygH0R8-sqFEyxCVum7DxHhJhQA5vCKgAZgCcIAWyR1EBwIJDJJbXYAHSiGbzQACywQGkZ6ACMYRgAFARVhEG8sFwScExAffyQxYNDEIJsdEAArIxSQNMycvPNdIpKy3i9fAMQAZhoQwM0pJtaHVIys3LNVPuLS8srRidrqmcjdGLjE5KGKkf29xHDMsCgkMYbZ9nJ2zuWetY6YT0HKbhAA
+\begin{tikzcd}[column sep=huge]
+  S_2 \arrow[r, "j_2"'] \arrow[rr, "0", bend left] & G \arrow[r, "f"']                     & H \\
+                                                   & S_1 \arrow[u, "j_1"'] \arrow[lu, "\varphi"] &  
+  \end{tikzcd}
+  $$
+  And $\ker \varphi$ is defined to be the final object of $\mathscr{K}_{\varphi}$. That is, the following diagram holds:
+  $$
+  % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZARgBoAGAXVJADcBDAGwFcYkQBxEAX1PU1z5CKAEwVqdJq3YAJHnxAZseAkXLiaDFm0QgAOnoDWMAE4ACAGbz+yoUTLEJW6boDKPCTCgBzeEVAWJhAAtkjqIDgQSGQgjPQARjCMAAoCKsIgJljeABY4IJpSOiBWvAFBoYhiEVGI4XGJKWl2ulm5+YXa7Ab4OPTWJRVIAMw0kWGdLiAAVgWxCUmptqqt2XkDgSFI1eOIMYlgUCPhzsXkcw2LzSuxMBb5ZYNbiKM125PFBjAAHlhwOHAAIQGBgmNA5LAebhAA
+  \begin{tikzcd}[column sep=huge, ]
+  \ker f \arrow[r, "\iota"'] \arrow[rr, "0", bend left] & G \arrow[r, "f"']                               & H \\
+                                                        & S \arrow[u, "j"'] \arrow[lu, "\exists!\varphi"] &  
+  \end{tikzcd}
+  $$
+  And $\ker f$ exists as $\ker f=\{g\in G\mid f(g) = 0\}$. It's easy to verify such set is a subgroup of $G$ and this 
+  subgroup associated with the injection homomorphism satisﬁes the universal property of $\ker$.
+  \\
+  \\
+  \noindent
+  \textbf{Cokernel} Conceptually, cokernel just reverse all arrows in the above diagram. Let $G, H$ be groups and $f: G\rightarrow H$ is a 
+  group homomorphism, consider the category $\mathscr{C}_{f}$ of which objects and morphisms are following diagrams:
+  $$
+  % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAHEQBfU9TXfIRQBGclVqMWbABLdeIDNjwEiAJjHV6zVohABlAPqq5fJYKKjh4rVN2Hh3cTCgBzeEVAAzAE4QAtkhkIDgQSKIS2myeINQMdABGMAwACvzKQiDeWC4AFjgmID7+YdQhSOoRtiAAVkYxIHGJKWnmulm5+TxevgGIQWWIFYlgUEgAzEE2OiDEBUW94QNjmpLTtQ5dhT3jpaGDK5G6ADpH9N5oOVj1jUmpZipt2XmOXEA
+\begin{tikzcd}[column sep=huge]
+  G \arrow[r, "f"'] \arrow[rr, "0", bend left] & H \arrow[r, "j_2"'] \arrow[d, "j_1"] & S_2 \\
+                                               & S_1 \arrow[ru, "\varphi"']           &    
+  \end{tikzcd}
+  $$
+  And $\mbox{coker}f$ is an initial object in this category, that is, the following diagram holds:
+  % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAHEQBfU9TXfIRQBGclVqMWbABLdeIDNjwEiAJjHV6zVohABlOXyWCio4eK1TdAHWsBbAEYQAHsADGEANYwATlwBm3OIwUADm8ESg-j4QdkhkIDgQSKIS2myB1Ax0DjAMAAr8ykIgPlihABY4hiDRsSnUSUjqaVYgAFYgWTl5hcYqumWV1TxRMXGICU2ILblgUEgAzAmWOiDENXUTqdOLmpJrtmhYm+NLjckz++k21jDOWHA4cACEtvQ+aBUn3bkFRSZBuUqkEuEA
+  $$
+  \begin{tikzcd}[column sep=huge]
+  G \arrow[r, "f"'] \arrow[rr, "0", bend left] & H \arrow[r, "j"'] \arrow[d, "\pi"]           & S \\
+                                               & \mbox{coker}f \arrow[ru, "\exists!\varphi"'] &  
+  \end{tikzcd}
+  $$
+  As we have proved before, in $\mathbf{Grp}$, $\mbox{coker}f$ is $H/N$, where $N$ is the smallest normal subgroup that 
+  contains $\mbox{Im}f$. In particular, $\mbox{coker}f=H/\mbox{Im}f$ in $\mathbf{Ab}$.
+
+  If we replace groups with rings and group homomorphisms with ring homomorphisms, we can naturaly get the definition of kernel and cokernel 
+  in $\mathbf{Ring}$.\\
+
+  Now back to the problem itslef,$\mbox{coker}\iota$ in $\mathbf{Ab}$, as stated, is $\mathbb{Q}/\mathbb{Z}$. The associated $\pi$ is $\pi(q) = q+\mathbb{Z}$. 
+  And $\mbox{coker}\iota$ in $\mathbf{Ring}$ is $(0, \{0\})$. Actually if $(j, S)$ where $S$ is a ring  and $j$ is a ring homomorphism from $\mathbb{Q}$ to $S$, 
+  if it satisfies $j\circ \iota = 0$. Then we have:
+  $$
+  j(\frac{p}{q}) = j(pq^{-1}) = j(p)j(q)^{-1}=j(\iota(p))j(\iota(q))=0(p)0(q)^{-1}=0
+  $$
+  Thus $j$ maps each element to be 0 in $S$, thus $S$ could only be $\{0\}$ since $1_{S}=f(1_{\mathbb{Q}})=0$. This indicates there is only one object in this category,
+  and $\mbox{coker}\iota$ is this object.
+\end{proof}
+\subsection*{2.13}
+Verify that the ‘componentwise’ product $R_1\times R_2$ of two rings satisﬁes the universal property for products in a category, given in § I.5.4
+\begin{proof}
+  $(R_1\times R_2, \pi_1, \pi_2)$ is the product of $R_1$ and $R_2$, where $\pi_1(r_1,r_2)=r_1$ and $\pi_2(r_1, r_2)=r_2$. It's easy to show that $\pi_1, \pi_2$ are 
+  ring homomorphisms, we must show that the following diagrams holds:
+  % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZAZgBoAGAXVJADcBDAGwFcYkQAlAfQEYQBfUuky58hFGQBM1Ok1btukgUJAZseAkUmkeMhizaJOvADom8AW3gACRcuHqxRcjr1zDnATJhQA5vCJQADMAJwgLJG0QHAgkF1kDdjM0LF4QGkZ6ACMYRgAFEQ1xEBCsXwALHHsQUPDImhikHhp9eSNk1KVBYLCIxDJo2MQo1o8zGAAPLDgcOABCMwYQtHKsatq+gcbEeNH2ILTumt6kLaHmhLaari7KfiA
+  $$
+  % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZAZgBoAGAXVJADcBDAGwFcYkQAlAfQEYQBfUuky58hFGQBM1Ok1btukgUJAZseAkUmkeMhizaJOvADom8AW3gACRcuHqxRcjr1zDnATJhQA5vCJQADMAJwgLJG0QHAgkF1kDdjM0LF4QGkZ6ACMYRgAFEQ1xEBCsXwALHHsQUPDImhikHhp9eSNk1KVBYLCIxDJo2MQo1o8zGAAPLDgcOABCMwYQtHKsatq+gcbEeNH2ILSaHLAoJGJybpres4ah5oS2mq4lI5gTpABac-5KfiA
+\begin{tikzcd}
+  &  &                                                        & R_1 \\
+R \arrow[rr, "\exists!\varphi"] \arrow[rrru, "f_1", bend left] \arrow[rrrd, "f_2", bend right] &  & R_1\times R_2 \arrow[ru, "\pi_1"'] \arrow[rd, "\pi_2"] &     \\
+  &  &                                                        & R_2
+\end{tikzcd}
+$$
+For $(R, f_1, f_2)$, defines $\varphi: R\rightarrow R_1\times R_2, r\mapsto(f_1(r), f_2(r))$. Then the diagram is commutative. To prove the uniqueness, 
+consider another ring homomorphism $\varphi^{'}:R\rightarrow R_1\times R_2$ makes this diagram commutes, then $\varphi^{'}(r)=(r_1, r_2)$. Further we have $f_1(r) = \pi_1(\varphi(r)) = \pi_1(r_1, r_2)=r_1, f_2(r)=\pi_2(\varphi(r)) = \pi_2(r_1,r_2) = r_2$. 
+Thus $\varphi(r) = (f_1(r), f_2(r))$, the uniqueness is proved.\\
+
+In conclusion, $(R_1\times R_2, \pi_1, \pi_2)$ is the product of $R_1$ and $R_2$.
+\end{proof}
+\subsection*{2.16}
+Prove that there is (up to isomorphism) only one structure of ring with identity on the abelian group $(\mathbb{Z}, +)$.
 \end{document}
