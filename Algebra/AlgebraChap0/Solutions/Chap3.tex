@@ -414,4 +414,121 @@ In conclusion, $(R_1\times R_2, \pi_1, \pi_2)$ is the product of $R_1$ and $R_2$
 \end{proof}
 \subsection*{2.16}
 Prove that there is (up to isomorphism) only one structure of ring with identity on the abelian group $(\mathbb{Z}, +)$.
+\section*{3.Ideals and quotient rings}
+\subsection*{3.2}
+Let $\varphi: R \rightarrow S$ be a ring homomorphism, and let $J$ be an ideal of $S$. 
+Prove that $I = \varphi^{-1}(J)$ is an ideal of $R$. Thus, the inverse image of an image is 
+also an ideal, is the image of an ideal also an ideal? Prove it or given a counterexample.
+\begin{proof}
+  For any $s\in \varphi^{-1}(J), r\in R$, we have $\varphi(rs) = \varphi(r)\varphi(s)\in J, \varphi(sr)=\varphi(s)\varphi(r)\in J$ since $\varphi(s)\in J, \varphi(r)\in R$, which indicates 
+  that $rs\in \varphi^{-1}(J),sr\in \varphi^{-1}(J)$. Thus $\varphi^{-1}(J)$ is an ideal.
+
+  Then second proposition is false in general, the ring homomorphism image of an ideal is not necessarily
+  an ideal. Consider injection: $\iota: \mathbb{Z}\rightarrow \mathbb{Z}[x]$. However, the image 
+  of an ideal, say $2\mathbb{Z}$ is still $2\mathbb{Z}\subseteq \mathbb{Z}[x]$ and is not an ideal of 
+  $\mathbb{Z}$.
+
+  However, if $\varphi$ is surjective, then $\varphi(I)$ is also an ideal of the target ring.
+\end{proof}
+\subsection*{3.3}
+Let $\varphi: R \rightarrow S$ be a ring homomorphism, and let $J$ be an ideal of $R$.
+\begin{enumerate}
+  \item Show that $\varphi(J)$ need not be an ideal of $S$.
+
+  \item Assume that $\varphi$ is surjective; then prove that $\varphi(J)$ is an ideal of $S$.
+  
+  \item Assume that $\varphi$ is surjective, and let $I = \ker \varphi$ ; thus we may identify 
+  $S$ with $R/I$. Let $\overline{J} = \varphi(J)$, an ideal of $R/I$ by the previous point. Prove that
+  $$
+  \cfrac{R/I}{\overline{J}}\cong \frac{R}{I+J}
+  $$
+  \begin{proof}
+    The first proposition are proved in exercise 3.2, and the second 
+    one is easy to be proved following the definition. 
+
+    For the third proposition, note that actually we have $\overline{J}\cong (I+J)/J$, then according 
+    to proposition 3.14, we have:
+    $$
+    \frac{R/I}{\overline{J}}\cong \frac{R/J}{(I+J)/J}\cong R/(I+J)
+    $$
+    The proof is done.
+  \end{proof}
+  \subsection*{3.4}
+  Let $R$ be a ring such that every subgroup of $(R, +)$ is in fact an ideal of $R$. Prove that 
+  $R \cong \mathbb{Z}/n\mathbb{Z}$, where $n$ is the characteristic of $R$
+  \begin{proof}
+    Consider the subset:
+    $$
+    S=\{n1_{R}\mid n\in \mathbb{Z}\}
+    $$
+    It is a subgroup of $(R, +)$ because: 
+    $$
+    (\forall a1_{R}, b1_{R}\in S, a,b\in \mathbb{Z}):\quad a1_{R}-b1_{R}=(a-b)1_{R}\in S
+    $$
+    According to the assumption, we have $S$ to be an ideal, in particular, we have:
+    $$
+    (\forall r\in R): \quad r = r1_{R} \in S
+    $$
+    this indicates that $\forall r\in R, r=m1_{R}$ for some $m\in \mathbb{Z}$. And therefore 
+    $R=S$. This indicates $R\cong \mathbb{Z}$ or $R\cong \mathbb{Z}/n\mathbb{Z}$ for $n$ to be 
+    the characteristic of $R$.
+  \end{proof}
+  \subsection*{3.8}
+  Prove that a ring $R$ is a division ring if and only if its only left-ideals and right-ideals 
+  are $\{ 0 \}$ and $R$.
+  In particular, a commutative ring $R$ is a ﬁeld if and only if the only ideals of $R$ are $\{0\}$ 
+  and $R$.
+  \begin{proof}
+    Let $R$ be a ring, and $I$ be an ideal of $R$. Then if $I$ contains element 
+    other than $0_{R}$, we will have $I=R$ since $1_{R}\in I$. Thus the ideal of $R$ can only be 
+    $R$ and $\{0\}$ if $R$ is a division ring. 
+
+    On the other hand, if $R$ has only $\{0\}$ and $R$ as ideals, then any element of $R$ must be 
+    an unit, otherwise $aR$ where $a$ is a non-unit, could be a right-ideal, a contradiction.
+
+    The second part of this problem is nothing more than a special case of 
+    field.
+  \end{proof}
+  \subsection*{3.9}
+  Counterpoint to Exercise 3.8: it is not true that a ring $R$ is a division ring if and only if 
+  its only two-sided ideals are $\{0\}$ and $R$. A nonzero ring with this property is said to be 
+  simple; by Exercise 3.8, ﬁelds are the only simple commutative rings.
+  \begin{proof}
+    If $R$ is a division ring, then the ideals of $R$ could only be $R$ or $\{0\}$. However, the ideals
+    of $R$ are only $\{0\}$ and $R$ doesn't mean both left-ideals and right-ideals of $R$ are only 
+    $\{0\}$ and $R$.
+  \end{proof}
+\end{enumerate}
+\subsection*{3.11}
+Let $R$ be a ring containing $\mathbb{C}$ as a subring. Prove that there are no ring 
+homomorphisms $R \rightarrow \mathbb{R}$
+\begin{proof}
+  If there exists some ring homomorphism $R\rightarrow \mathbb{R}$, then it induce 
+  a ring homomorphism from $\mathbb{C}$ to $\mathbb{R}$. However, this can not be true
+  because:
+  $$
+  -1 = f(-1) = f(\mathbf{i} * \mathbf{i}) = f(\mathbf{i})^{2}
+  $$
+  There is no such $f(\mathbf{i})\in \mathbb{R}$ satisfies $f(\mathbf{i})^{2}=-1$
+\end{proof}
+\subsection*{3.12}
+Let $R$ be a commutative ring. Prove that the set of nilpotent elements of $R$ is an ideal of $R$. 
+(Cf. Exercise 1.6. This ideal is called the \textit{nilradical} of $R$.)
+Find a non-commutative ring in which the set of nilpotent elements is not an ideal.
+\begin{proof}
+  Let $N$ denotes the set of all nilpotent elements of $R$, first to prove that 
+  $N$ is a subgroup of $(R, +)$. For any $a, b\in N$, there exists some $m,n\in \mathbb{N}^{+}$
+  that $a^{m} = 0, b^{n} = 0$, then we shall have $(a-b)^{m+n+1} = 0$(using binomial theorem). This
+  indicates $a-b\in N$, and thus $N$ is a subgroup of $(R, +)$.
+
+  The second part is to prove that for any $r\in R, a\in N, ra\in N$. Note that $(ra)^{m} = r^{m}a^{m} = r^{m}0=0$.
+  Thus $ra\in N$. In conclusion, we have $N$ is an ideal of $R$.
+ 
+  \noindent
+  \textbf{NOTE} There might be some properties of this ideal, one most notable is that the 
+  quotient ring $R/N$ has no non-naive nilpotent element:
+  $$
+  (a+N)^{m} = 0_{R/N}\Rightarrow a^{m} + N = 0_{R/N}\Rightarrow a^{m}\in N\Rightarrow a\in N
+  $$
+\end{proof}
 \end{document}
