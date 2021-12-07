@@ -523,12 +523,93 @@ Find a non-commutative ring in which the set of nilpotent elements is not an ide
 
   The second part is to prove that for any $r\in R, a\in N, ra\in N$. Note that $(ra)^{m} = r^{m}a^{m} = r^{m}0=0$.
   Thus $ra\in N$. In conclusion, we have $N$ is an ideal of $R$.
- 
+
+  One counterexample for non-commutative case would be matrix ring $M_{n}(\mathbb{R})$. Note that 
+  $\begin{pmatrix}
+    0 & 0\\
+    1 & 0
+  \end{pmatrix}$ is a nilpotent element but 
+  $\begin{pmatrix}
+    0 & 0\\
+    1 & 0
+  \end{pmatrix}
+  \begin{pmatrix}
+    1 & 1\\
+    0 & 1
+  \end{pmatrix}=
+  \begin{pmatrix}
+    0 & 0\\
+    1 & 1
+  \end{pmatrix}
+  $ is not, which fails to make $N(M_{n}(\mathbb{R}))$ to be 
+  an ideal.\\
+  \\
+  \\
   \noindent
   \textbf{NOTE} There might be some properties of this ideal, one most notable is that the 
   quotient ring $R/N$ has no non-naive nilpotent element:
   $$
   (a+N)^{m} = 0_{R/N}\Rightarrow a^{m} + N = 0_{R/N}\Rightarrow a^{m}\in N\Rightarrow a\in N
   $$
+\end{proof}
+\subsection*{3.13}
+Let $R$ be a commutative ring, and let $N$ be its nilradical (cf. Exercise 3.12). 
+Prove that $R/N$ contains no nonzero nilpotent elements.(Such a ring is said to be reduced.)
+\begin{proof}
+  The proof is done in the "NOTE" section of exercise 3.12
+\end{proof}
+\subsection*{3.14}
+Prove that the characteristic of an integral domain is either $0$ or a prime integer. 
+Do you know any ring of characteristic 1?
+\begin{proof}
+  If the characteristic of $R$ is non-prime, say $\mbox{char}R = mn, m>1, n>1$. Then 
+  the definion of characteristic shows that $mn1_{R}=0$, which is $(m1_{R})(n1_{R}) = 0$. 
+  Note that $m>1, n>1$ indicates $m < \mbox{char}R, n < \mbox{char}R$, thus $m1_{R}\neq 0, 
+  n1_{R}\neq 0$. The equation $(m1_{R})(n1_{R})=0$ implies the multiplication of two non-zero 
+  elements is zero, which contradicts the definition of integral domain.
+
+  Ring of characteristic 1 could only be zero ring.
+\end{proof}
+
+\subsection*{3.15}
+A ring $R$ is \textit{boolean} if $a^2= a$ for all $a \in R$. Prove that $\mathscr{P}(S)$ is boolean, 
+for every set $S$ 
+(cf. Exercise 1.2). Prove that every boolean ring is commutative, and has characteristic 2. 
+Prove that if an integral domain $R$ is boolean, then $R \cong \mathbb{Z}/2\mathbb{Z}$
+\begin{proof}
+  $\mathscr{P}(S)$ is boolean as for any element $S\in \mathscr{P}(S)$ we have $S^{2} = S\cap S=S$.
+  First we prove that if $R$ is \textit{boolean}, then for each element $r\in R$, we have $2r=0$, thus 
+  the characteristic of $R$ is 2. Consider the following two equations:
+  $$
+  \begin{aligned}
+  (1+r) = (1+r)^{2} = 1+2r+r^{2} = 1+2r + r
+  \end{aligned}
+  $$
+  This indicates $\forall r\in R, 2r=0$. Further, $\forall a,b\in R$, we have:
+  $$
+  (a+b) = (a+b)^{2} = a^2 + ab + ba + b^{2} = a + ab + ba + b
+  $$ This means $ab+ba = 0$, note that $2ab=0$, these two equations imply $ab=ba, \forall a,b\in R$. Thus $R$ is commutative. The 
+  characteristic part is proved already. 
+
+  If $R$ is itself an integral domain, then for any element $r\in R$, we have:
+  $$
+  r^2 = r \Rightarrow r(r-1_{R}) = 0\Rightarrow r = 1_{R}
+  $$
+  This implies there are only two elements of $R$ if it is boolean and domain, thus is isomorphic to 
+  $\mathbb{Z}/2\mathbb{Z}$.
+\end{proof}
+
+\subsection*{3.17}
+Let $I, J$ be ideals of a ring $R$. State and prove a precise result relating the
+ideals $(I + J)/I$ of $R/I$ and $J/(I \cap J)$ of $R/(I \cap J)$
+\begin{proof}
+  $(I + J)/I$ is an ideal of quotient ring $R/I$. It's obvious that $I+J$ is an
+  ideal that contains $I$. And there is, actually a one-to-one corespondence between 
+  the ideal of $R/I$ and the ideal of $R$ that contains $I$. 
+
+  Considering the canonical project: $\pi: R\rightarrow R/I, r\mapsto r+I$. The for each 
+  ideal of $R/I$, say $S$, $\pi^{-1}(S)$ is an ideal of $R$ and it contains $I$. This 
+  map: $S\mapsto \pi^{-1}(S)$ has one inverse function: $J\mapsto J/I$. Thus the bijection 
+  exists.
 \end{proof}
 \end{document}
