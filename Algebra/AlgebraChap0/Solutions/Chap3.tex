@@ -796,4 +796,106 @@ $f_1(x), \ldots , f_r(x) \in R[x]$.
   The proof is done.
 \end{proof}
 
+\subsection*{4.12}
+Let $R$ be a commutative ring, and $a_1,\ldots, a_n$ elements of $R$. Prove that
+$$
+\cfrac{R[x_1,\ldots x_n]}{(x_1-a_1,\ldots x_n-a_n)}\cong R
+$$
+\begin{proof}
+  Prove by induction, for $n=1$, we have $$
+  \cfrac{R[x]}{(x-a)}\cong R
+  $$
+  Assume for $k$ the proposition is true, then for $k+1$:
+  $$
+  \begin{aligned}
+  \cfrac{R[x_1\ldots x_k, x_{k+1}]}{(x_1-a_1,\ldots x_{k}-a_{k},x_{k+1}-a_{k+1})}&=
+  \cfrac{R[x_1,\ldots x_{k}][x_{k+1}]}{(x_1-a_1,\ldots, x_{k+1}-a_{k+1})}\\
+    &\cong \cfrac{R[x_1,\ldots x_{k}]}{(x_1-a_1,\ldots x_k-a_k)}\\
+    &\cong R
+  \end{aligned}
+  $$
+  The most important step is to view $x_1-a_1,\ldots x_k-a_k$ as constant elements of 
+  $R[x_1,\ldots, x_k]$ and using exercise 4.11
+\end{proof}
+
+\subsection*{4.13}
+Let $R$ be an integral domain. For all $k = 1,\ldots, n$ prove that $(x_1,\ldots, x_k)$
+is prime in $R[x_1,\ldots, x_n]$.
+\begin{proof}
+  For $k=1,\ldots, n$, we have:
+  $$
+  \cfrac{R[x_1,\ldots x_n]}{(x_1,\ldots x_k)}=\cfrac{R[x_{k+1},\ldots x_{n}][x_1,\ldots x_k]}{(x_1,\ldots, x_k)}
+  \cong R[x_{k+1},\ldots x_n]\;(\mbox{exercise4.12})
+  $$
+  Note that $R[x_{k+1}, \ldots, x_{n}]$ is integral domain, thus $(x_1,\ldots x_{k})$ is prime.
+\end{proof}
+
+\subsection*{4.14}
+Prove ‘by hand’ that maximal ideals are prime, without using quotient rings.
+\begin{proof}
+  Let $M$ be one maximal ideal of $R$, and $ab\in M$. We assert that $a\in M$ or $b\in M$, otherwise
+  $a\notin R, b\notin R$, consider $(a)$ and $(b)$. We have $M\subsetneqq (a), M\subsetneqq (b)$. Thus we
+  must have $(a) = (b) = R$, which implies $a, b$ are units. Thus $ab$ are units and $M = R$,a contradiction.
+\end{proof}
+
+\subsection*{4.15}
+Let $\varphi: R \rightarrow S$ be a homomorphism of commutative rings, and let $I \subseteq S$ be an ideal. 
+Prove that if $I$ is a prime ideal in $S$, then $\varphi^{-1} (I)$ is a prime ideal in $R$. 
+Show that $\varphi^{-1}(I)$ is not necessarily maximal if $I$ is maximal.
+\begin{proof}
+  If $ab\in \varphi^{-1}(I)$, then $\varphi(ab)=\varphi(a)\varphi(b)\in I$. Note that $I$ is prime, then 
+  $\varphi(a)\in I$ or $\varphi(b)\in I$. Thus $a\in \varphi^{-1}(I)$ or $b\in \varphi^{-1}(I)$. Indicating 
+  $\varphi^{-1}(I)$ is prime.
+  One counterexample is consider $\varphi: \mathbb{R}\rightarrow \mathbb{R}[x], r\mapsto r$. Then the 
+  ideal $(x^{2} + 1)$ is maximal in $\mathbb{R}[x]$, but the inverse image $\varphi^{-1}((x^{2} + 1))$
+  is $\{0\}$, which is not maximal in $\mathbb{R}$.
+\end{proof}
+
+\subsection*{4.16}
+Let $R$ be a commutative ring, and let $P$ be a prime ideal of $R$. Suppose 0 is the only zero-divisor of $R$ contained in $P$. 
+Prove that $R$ is an integral domain.
+\begin{proof}
+  If $a,b\neq 0$ but $ab=0$, then $ab\in P$ and $a\in P$ or $b\in P$, say $a\in P$, then $a=0$ since 
+  $0$ is the only zero-divisor contained in $P$, a contradiction. Thus there is no non-zero zero divisor, 
+  and $R$ is an integral domain.
+\end{proof}
+
+\subsection*{4.18}
+Let $R$ be a commutative ring, and let $N$ be its nilradical (Exercise 3.12). 
+Prove that $N$ is contained in every prime ideal of $R$.
+\begin{proof}
+  Recall that the nilradical of $R$ is the set consists of all nilponent elements of $R$
+  (and is an ideal). Note that for each $P$, where $P$ is a prime ideal, and any element 
+  $r\in N$, $\exists n\in \mathbb{N}^{+}$, s.t. $r^{n} = 0$. We have 
+  $r^{n}=0\in N $, thus $r\in N$ or $r^{n-1}\in N$. If $r\in N$, we're done, otherwise 
+  $r^{n-1}\in N$ indicates $r\in N$ or $r^{n-2}\in N$. Repeate the process we will have $r\in N$
+  at last. Thus, $N\subseteq P$ for any prime ideal $P$.
+\end{proof}
+\noindent
+\textbf{NOTE} Actually $N=\bigcap_{P is prime}P$
+
+\subsection*{4.19}
+Let $R$ be a commutative ring, let $P$ be a prime ideal in $R$, and let $I_j$ be ideals 
+of $R$.
+\begin{enumerate} [leftmargin=0.6cm,itemindent=.2cm,labelwidth=\itemindent,labelsep=0.2cm,align=right,label=(\roman*)]
+\item Assume that $I_1\cdots I_r \subseteq P$; prove that $I_j \subseteq P$ for some $j$.
+\item By (i), if $\cap_{j=1}^{r}I_j\subseteq P$ , then $P$ contains one of the ideals $I_j$ . Prove or disprove:
+if $\cap_{j=1}^{\infty}I_j\subseteq P$ , then $P$ contains one of the ideals $I_j$ .
+\end{enumerate}
+
+\begin{proof}
+  Here are proofs:
+\begin{enumerate} [leftmargin=0.6cm,itemindent=.2cm,labelwidth=\itemindent,labelsep=0.2cm,align=right,label=(\roman*)]
+  \item If for any $I_{i}, i=1,\ldots, r$, there is some element $a_{i}$ such that $a_{i}\in I_{i}$ but $a_{i}\notin P$
+  ,then $a_1a_2\cdots a_{r}\notin P$(otherwise some $a_{i}\in P$ since $P$ is prime). Thus 
+  $a_1a_2\cdots a_{r}\in I_{1}\cdots I_{r}$ but $a_1a_2\cdots a_{r}\notin P$, a contradiction. Thus we must 
+  have some $I_{j}$ such that $I_{j}\subseteq P$.
+  \item The proposition is false, consider $\mathbb{Z}$, and $P = (p)$ for some prime number $p$. Then it's 
+  easy to prove $(p)$ is prime ideal: $ab\in (p)\Rightarrow p\mid ab\Rightarrow p\mid a$ or $p\mid b\Rightarrow a\in (p)$
+  or $b\in (p)$.
+
+  Consider $I_j = (p_j)$ where $p_{j}$ is the $j^{th}$ prime number(except for $p$). Then $\cap_{j=1}^{\infty}I_j=\{0\}$ satisfies the 
+  condition $\cap_{j=1}^{\infty}I_{j}\subseteq P$ but none of $I_{j}$ makes $I_{j}\subseteq P$ true.
+\end{enumerate}
+\end{proof}
 \end{document}
