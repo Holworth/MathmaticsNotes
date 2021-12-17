@@ -716,6 +716,84 @@ The function $N$ is a ‘norm’; it is very useful in the study of $Q (\sqrt{d}
   $$
   And the multiplication defined over $\mathbb{Q}^{\oplus 2}$ is $(a, b)(e, f)=(ae+dbf, af+be)$
 \end{enumerate}
+The proof is done.
+\end{proof}
+
+\subsection*{4.11}
+Let $R$ be a commutative ring, $a \in R$, and 
+$f_1(x), \ldots , f_r(x) \in R[x]$.
+\begin{enumerate}
+  \item Prove the equality of ideals
+  $$
+  (f_1 (x), \ldots, f_r (x), x - a) = (f_1 (a), \ldots , f_r (a), x - a) .
+  $$
+
+  \item Prove the useful substitution trick
+  $$
+  \frac{R[x]}{(f_1(x), \ldots, f_r(x), x-a)}\cong 
+  \frac{R}{(f_1(a), \ldots, f_r(a))}
+  $$
+\end{enumerate}
+\begin{proof}
+  (1) Since $x-a$ is a mononic polynomial, then for each $f_i(x)$, there exists one 
+  $g_i(x), t_i(x)$ such that $\deg t_i(x) < \deg (x-a) = 1$. And:
+  $$
+  f_i(x) = g_i(x)(x-a) + t_i(x)
+  $$
+  Let $x=a$, we fill have: $t_i(a) = f_i(a)$. Note that $\deg t_i(x) < 1$, then we must 
+  have $t_i(x) = f_i(a)\in R$, which means:
+  $$
+  f_i(x) = (x-a)g_i(x) + f_i(a)
+  $$
+  Indicating: $(f_i(x))\subseteq (x-a, f_i(a))$. Thus we have:
+  $$
+  (f_1(x), \ldots ,f_r(x))\subseteq (f_1(a), \ldots , f_r(a), x-a)
+  $$
+  Also, $f_i(x) = (x-a)g_i(x) + f_i(a)$ indicates $f_i(a) = f_i(x) - (x-a)g_i(x)$, and $(f_i(a))\subseteq (f_i(x), x-a)$. Similarly 
+  we have:
+  $$
+  (f_1(a), \ldots , f_r(a), x-a)\subseteq(f_1(x), \ldots ,f_r(x))
+  $$
+  In conclusion, we have:
+  $$
+  (f_1(a), \ldots , f_r(a), x-a) = (f_1(x), \ldots ,f_r(x))
+  $$\\
+  (2)Consider the following ring homomorphism:
+  $$
+  R[x]\longrightarrow R \longrightarrow \frac{R}{(f_1(a),\ldots,f_r(a))}
+  $$
+  $$
+  f(x)\mapsto f(a)\mapsto f(a) + (f_1(a),\ldots, f_r(a))
+  $$
+  Then it's easy to see that this homomorphism is surjective, since $R[x]\longrightarrow R$ is surjective 
+  and $R\longrightarrow \cfrac{R}{(f_1(a),\ldots, f_r(a))}$ is surjective.
+
+  Denote this ring homomorphism as $\varphi$, consider $\ker \varphi$:
+  $$
+  \ker \varphi = \{f(x)\in R[x]\mid f(a) \in (f_1(a), \ldots, f_r(a))\}
+  $$
+  Note that for each $f(x)\in (f_1(x),\ldots, f_r(x), x-a)$ we have:
+  $$
+  f(x) = \sum_{i=1}^{r}r_i(x)f_i(x) + r(x)(x-a)
+  $$ and $f(a) = \sum_{i=1}^{r}r_i(a)f_i(a)\in (f_1(a),\ldots,f_r(a))$, this implies that 
+  $$
+  (f_1(x), \ldots, f_r(x))\subseteq \ker \varphi
+  $$
+  On the other hand, let $f(x)\in \ker\varphi$, using remainder divison, we have:
+  $$
+  f(x) = g(x)(x-a) + f(a)
+  $$
+  Note that $f(a)\in (f_1(a), \ldots, f_r(a))$, thus $f(x)\in (f_1(a),\ldots, f_r(a), x-a)$. Thus we have:
+  $$
+  f(x)\subseteq (f_1(a), \ldots, f_r(a), x-a) = (f_1(x),\ldots, f_r(x), x-a)
+  $$ and $$
+  \ker \varphi = (f_1(x),\ldots, f_r(x), x-a)
+  $$
+  According to the fundamental homomorphism theorem, we have:
+  $$
+  \cfrac{R[x]}{(f_1(x),\ldots f_r(x), x-a)}\cong \cfrac{R}{(f_1(a), \ldots, f_r(a))}
+  $$
+  The proof is done.
 \end{proof}
 
 \end{document}
