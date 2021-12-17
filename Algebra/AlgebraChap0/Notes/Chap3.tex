@@ -482,4 +482,75 @@ prime ideal and maximal ideal:
   $I$ is maximal according to the definition.
 \end{proof}
 The set of all prime ideals of $R$ is called the \textit{spectrum} of $R$.
+
+\section{Modules over ring}
+\subsection{Definition of $R$-module}
+Conceptually, an $R$-module is a ring action on an abelian group $M$, by action, we mean
+a ring homomorphism from $R$ to $\mbox{End}_{\mbox{Ab}}(M)$. And one element $r\in R$ acts 
+on one element $m\in M$ actually means the target ring endmorphism maps $m$.
+
+\begin{definition}
+  Let $R$ be a ring, an abelian gorup $M$ is said to be a left $R$-module, if there exists 
+  one function:
+  $$
+  R\times M\rightarrow M, (r, m)\mapsto rm
+  $$  such that, $\forall r, s\in R, m,n\in M$:
+  \begin{itemize}[leftmargin=0.7cm]
+    \item $r(m+n) = rm+rn$
+    \item $(r+s)m = rm + sm$
+    \item $(rs)m = r(sm)$
+    \item $1m = m$
+  \end{itemize}
+\end{definition}
+
+Similarly we can define the structure of right-$R$-module. If $R$ is commutative, both left-$R$-module
+and right-$R$-module are exactly the same. We will call $R$-module and ommit "left" for simplicity.
+
+There are many examples of $R$-module. For example, any abelian group is actually one $\mathbb{Z}$-module. 
+A special class of $R$-module, endowed with ring structure, is $R$-algebra. Check the textbook for more 
+details.
+
+\subsection{Category $R$-\mbox{Mod}}
+\begin{definition}
+  Let $M, N$ be $R$-modules, one function $\varphi$ from $M$ to $N$ is called $R$-module homomorphism if it is
+  an abelian and maintain module structure: 
+  \begin{itemize}[leftmargin=0.7cm]
+    \item $(\forall m_1,m_2\in M):\quad \varphi(m_1+m_2) = \varphi(m_1) + \varphi(m_2)$
+    \item $(\forall r\in R, m\in M):\quad \varphi(rm)=r\varphi(m)$
+  \end{itemize}
+\end{definition}
+
+All $R$-modules endowed with $R$-module homomorphism forms a category, called $R$-\mbox{Mod}. There are similarities
+between $R$-\mbox{Mod} and \mbox{Ab}, one particular example is that $\mbox{Hom}_{R-Mod}(M, N)$ is also an abelian group
+and actually an $R$-module if $R$ is commutative.
+
+\subsection{Submodule and quotients}
+Conceptually, a submodule is a subset that maintains module structure. The formal definition is as follows:
+\begin{definition}
+  Let $M$ be $R$-module, a submodule $N\subseteqq M$ is a subgroup of abelian group $M$ and for each $r\in R, n\in N$, 
+  $rn\in N$.
+\end{definition}
+Thus, a left ideal of $R$ can be viewed as a submodule of $R$. Obviously, let $r\in R$ be a fixed element, then $rM$ is a 
+submodule of $M$(if $R$ is commutative). Let $I$ be an ideal of $R$, then the set $IM=\{rm\mid r\in I,m\in M\}$ is also a 
+submodule of $M$.
+
+Let $N$ be a submodule of $M$, since $N$ is a subgroup of $M$ in abelian conception, there is naturally one 
+quotient group: $M/N$. The question is, how to construct an $R$-module structure over this quotien group? One intuitive 
+way is:
+$$
+(\forall r\in R, m+N\in M/N):\quad r(m+N):= rm+N
+$$
+This definition is well-defined: if $m_1+N=m_2+N$ then $m_1-m_1\in N$, and $r(m_1-m_2)\in N$
+according to the definition of submodule. Thus $rm_1+N=rm_2+N$. It's also easy to verify this 
+"action" meets the requirements of an $R$-modules. 
+
+Abelian group $M/N$ endowed with "ring action" defined above has a module structure, it is called 
+quotient module $M$ by $N$.
+
+The universal property of $M/N$ is similar to group and ring counterparts, as follows:
+\begin{theorem}
+  Let $M$ be one $R$-module and $N$ a submodule of $M$, if $P$ is another $R$-module with an $R$-module homomorphism 
+  such that $N\subseteq\ker \varphi$. Then the following diagram is commutative:
+\end{theorem}
+
 \end{document}

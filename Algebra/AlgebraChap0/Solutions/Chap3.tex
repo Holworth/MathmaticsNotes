@@ -898,4 +898,33 @@ if $\cap_{j=1}^{\infty}I_j\subseteq P$ , then $P$ contains one of the ideals $I_
   condition $\cap_{j=1}^{\infty}I_{j}\subseteq P$ but none of $I_{j}$ makes $I_{j}\subseteq P$ true.
 \end{enumerate}
 \end{proof}
+
+\subsection*{4.23}
+A ring $R$ has Krull dimension 0 if every prime ideal in $R$ is maximal. Prove that ﬁelds and boolean rings 
+(Exercise 3.15) have Krull dimension 0
+\begin{proof}
+  If $R$ is a ring, then $R$ has only two ideals: $(0)$ and $R$, thus the only prime chain would be 
+  $(0)$ and Krull dimension is 0. (Note that $(0)$ is a prime ideal if $R$ is integral domain).
+\end{proof}
+
+\subsection*{4.24}
+Prove that the ring $\mathbb{Z}[x]$ has Krull dimension $\geq 2$. 
+(It is in fact exactly 2; thus it corresponds to a surface from the point of view of algebraic geometry.)
+\begin{proof}
+  Consider the following prime ideal chain:
+  $$
+  (0)\subsetneqq (x) \subsetneqq (2, x)
+  $$
+  First, $(0)$ is prime ideal in $\mathbb{Z}[x]$. $(x)$ is prime ideal according to exercise
+  4.13; $(2, x)$ is prime since:
+  $$
+  \cfrac{\mathbb{Z}[x]}{(2, x)}\cong \cfrac{\mathbb{Z}}{(2)}\cong \mathbb{Z}/2\mathbb{Z}
+  $$
+  Second, each prime ideal is a proper subset of the following one:
+  $$
+  2\notin x \Rightarrow (x)\neq (2,x) 
+  $$
+  Thus we construct a prime ideal chain which has length 2, and the Krull dimension of $\mathbb{Z}[x]$ is greater or 
+  equal to 2.
+\end{proof}
 \end{document}
